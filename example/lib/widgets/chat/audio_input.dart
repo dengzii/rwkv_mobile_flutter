@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gaimon/gaimon.dart';
 import 'package:halo/halo.dart';
+import 'package:halo_alert/halo_alert.dart';
 import 'package:halo_state/halo_state.dart';
 import 'package:zone/config.dart';
+import 'package:zone/gen/l10n.dart';
 import 'package:zone/model/demo_type.dart';
 import 'package:zone/model/world_type.dart';
 import 'package:zone/state/p.dart';
@@ -46,6 +48,7 @@ class AudioInput extends ConsumerWidget {
     }
 
     String bottomMessage = "";
+    double bottomMessageSize = 12;
 
     if (demoType == DemoType.world) {
       switch (currentWorldType) {
@@ -75,10 +78,11 @@ class AudioInput extends ConsumerWidget {
 
     if (demoType == DemoType.tts) {
       shouldShow = audioInteractorShown;
-      bottomMessage = "Press and hold the microphone button above\nrelease to send";
+      bottomMessage = S.current.hold_to_record_release_to_send;
       bottomAdjust = audioInteractorShown ? 24.0 : 0;
       showGradient = false;
       curve = Curves.easeOut;
+      bottomMessageSize = 16;
     }
 
     return AnimatedPositioned(
@@ -162,7 +166,7 @@ class AudioInput extends ConsumerWidget {
                     T(
                       bottomMessage,
                       s: TS(
-                        s: 12,
+                        s: bottomMessageSize,
                         c: primary.q(.5),
                       ),
                       textAlign: TextAlign.center,
@@ -181,6 +185,7 @@ class AudioInput extends ConsumerWidget {
     final receiving = P.chat.receivingTokens.q;
     if (receiving) return;
     Gaimon.light();
+    Alert.info(S.current.recording_your_voice);
     await P.world.startRecord();
   }
 
@@ -195,6 +200,8 @@ class AudioInput extends ConsumerWidget {
     final receiving = P.chat.receivingTokens.q;
     if (receiving) return;
     Gaimon.medium();
-    await P.world.stopRecord();
+    final success = await P.world.stopRecord();
+    if (!success) return;
+    Alert.success(S.current.finish_recording);
   }
 }

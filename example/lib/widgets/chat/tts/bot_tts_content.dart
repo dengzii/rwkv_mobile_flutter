@@ -105,7 +105,8 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
 
     final overallProgress = widget.msg.ttsOverallProgress ?? 0.0;
     final perWavProgress = widget.msg.ttsPerWavProgress ?? [];
-    final filePaths = widget.msg.ttsFilePaths ?? [];
+
+    final allDone = overallProgress >= 1;
 
     return C(
       decoration: const BD(color: kC),
@@ -116,25 +117,21 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
         mainAxisSize: MainAxisSize.min,
         c: CAA.stretch,
         children: [
-          if (overallProgress >= 1)
-            C(
-              padding: const EI.s(v: 4),
-              child: T(S.current.all_done, s: TS(c: kB.q(.8), w: FW.w600)),
+          if (!allDone)
+            Wrap(
+              children: [
+                ...perWavProgress.map((e) {
+                  return Co(
+                    children: [
+                      Icon(Icons.audio_file, color: primaryColor),
+                      2.h,
+                      if (e < 1) T((e * 100).toStringAsFixed(0) + "%", s: TS(c: kB.q(.8), w: FW.w600, s: 10)),
+                      if (e >= 1) Icon(Icons.check, color: primaryColor, size: 12),
+                    ],
+                  );
+                }),
+              ],
             ),
-          Wrap(
-            children: [
-              ...perWavProgress.map((e) {
-                return Co(
-                  children: [
-                    Icon(Icons.audio_file, color: primaryColor),
-                    2.h,
-                    if (e < 1) T((e * 100).toStringAsFixed(0) + "%", s: TS(c: kB.q(.8), w: FW.w600, s: 10)),
-                    if (e >= 1) Icon(Icons.check, color: primaryColor, size: 12),
-                  ],
-                );
-              }),
-            ],
-          ),
           if (changing)
             Padding(
               padding: const EI.o(v: 4),
@@ -185,10 +182,20 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
                     (length / 1000).toStringAsFixed(0) + "s",
                     s: TS(c: kB.q(.8), w: FW.w600),
                   ),
+                  if (allDone)
+                    GD(
+                      onTap: _onSharePressed,
+                      child: C(
+                        decoration: const BD(color: kC),
+                        padding: const EI.o(l: 8, r: 4),
+                        child: const Icon(Icons.share),
+                      ),
+                    ),
                 ],
               ),
             ),
-          if (!changing)
+          if (allDone) 12.h,
+          if (!changing && !allDone)
             Ro(
               m: MAA.start,
               children: [

@@ -227,6 +227,9 @@ class _TTSDebugger extends ConsumerWidget {
     final selectedSpkPanelFilter = ref.watch(P.tts.selectedSpkPanelFilter);
     final selectedLanguage = ref.watch(P.tts.selectedLanguage);
 
+    final startTime = ref.watch(P.world.startTime);
+    final endTime = ref.watch(P.world.endTime);
+
     return Positioned(
       left: 0,
       top: 0,
@@ -264,6 +267,10 @@ class _TTSDebugger extends ConsumerWidget {
                   T(selectedSpkPanelFilter.toString()),
                   T("selectedLanguage".codeToName),
                   T(selectedLanguage.toString()),
+                  T("startTime".codeToName),
+                  T(startTime.toString()),
+                  T("endTime".codeToName),
+                  T(endTime.toString()),
                 ].indexMap((index, e) {
                   return C(
                     margin: EI.o(t: index % 2 == 0 ? 0 : 1),

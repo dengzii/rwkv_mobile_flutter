@@ -27,6 +27,7 @@ extension _TTSStatic on _TTS {
     "Korean": Language.ko,
     "Chinese(PRC)": Language.zh_Hans,
   };
+  static const _defaultSpkName = "Chinese(PRC)_Aventurine_4";
 }
 
 class _TTS {
@@ -78,7 +79,8 @@ extension _$TTS on _TTS {
 
     final spkPairs = this.spkPairs.q;
 
-    selectedSpkName.q = spkPairs.keys.where((e) => e.contains("Chinese")).random;
+    final defaultSpk = spkPairs.keys.firstWhereOrNull((e) => e.contains(_TTSStatic._defaultSpkName));
+    selectedSpkName.q = defaultSpk ?? spkPairs.keys.where((e) => e.contains("Chinese")).random;
 
     selectSourceAudioPath.q = null;
 

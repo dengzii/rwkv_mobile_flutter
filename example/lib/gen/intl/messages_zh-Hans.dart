@@ -30,7 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("关于"),
     "according_to_the_following_audio_file":
-        MessageLookupByLibrary.simpleMessage("根据下面的音频文件"),
+        MessageLookupByLibrary.simpleMessage("根据: "),
     "all_done": MessageLookupByLibrary.simpleMessage("全部完成"),
     "application_internal_test_group": MessageLookupByLibrary.simpleMessage(
       "应用内测群",
@@ -104,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "filter": MessageLookupByLibrary.simpleMessage(
       "你好，这个问题我暂时无法回答，让我们换个话题再聊聊吧。",
     ),
+    "finish_recording": MessageLookupByLibrary.simpleMessage("录音完成"),
     "follow_system": MessageLookupByLibrary.simpleMessage("跟随系统"),
     "follow_us_on_twitter": MessageLookupByLibrary.simpleMessage(
       "在 Twitter 上关注我们",
@@ -121,6 +122,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "generating": MessageLookupByLibrary.simpleMessage("生成中..."),
     "hide_stack": MessageLookupByLibrary.simpleMessage("隐藏思维链堆栈"),
+    "hold_to_record_release_to_send": MessageLookupByLibrary.simpleMessage(
+      "按住录音，松开发送",
+    ),
     "human": MessageLookupByLibrary.simpleMessage("人类"),
     "i_want_rwkv_to_say": MessageLookupByLibrary.simpleMessage("我想让 RWKV 说..."),
     "imitate_target": MessageLookupByLibrary.simpleMessage("使用"),
@@ -146,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "medium": MessageLookupByLibrary.simpleMessage("中 (110%)"),
     "memory_used": m1,
     "model_settings": MessageLookupByLibrary.simpleMessage("模型设置"),
+    "my_voice": MessageLookupByLibrary.simpleMessage("我的声音"),
     "network_error": MessageLookupByLibrary.simpleMessage("网络错误"),
     "new_chat": MessageLookupByLibrary.simpleMessage("新聊天"),
     "new_game": MessageLookupByLibrary.simpleMessage("新游戏"),
@@ -154,6 +159,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_puzzle": MessageLookupByLibrary.simpleMessage("没有数独"),
     "number": MessageLookupByLibrary.simpleMessage("数字"),
     "ok": MessageLookupByLibrary.simpleMessage("确定"),
+    "or_select_a_wav_file_to_let_rwkv_to_copy_it":
+        MessageLookupByLibrary.simpleMessage("或者选择一个 wav 文件，让 RWKV 模仿它。"),
     "or_you_can_start_a_new_empty_chat": MessageLookupByLibrary.simpleMessage(
       "或开始一个空白聊天",
     ),
@@ -169,6 +176,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_the_difficulty": MessageLookupByLibrary.simpleMessage(
       "请输入难度",
     ),
+    "please_grant_permission_to_use_microphone":
+        MessageLookupByLibrary.simpleMessage("请授予使用麦克风的权限"),
     "please_load_model_first": MessageLookupByLibrary.simpleMessage("请先加载模型"),
     "please_select_a_world_type": MessageLookupByLibrary.simpleMessage(
       "请选择 World 类型",
@@ -195,6 +204,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "qq_group_2": MessageLookupByLibrary.simpleMessage("QQ 群 2"),
     "reason": MessageLookupByLibrary.simpleMessage("推理"),
     "reasoning_enabled": MessageLookupByLibrary.simpleMessage("推理模式"),
+    "recording_your_voice": MessageLookupByLibrary.simpleMessage("正在录音..."),
     "remaining": MessageLookupByLibrary.simpleMessage("剩余时间："),
     "reselect_model": MessageLookupByLibrary.simpleMessage("重新选择模型"),
     "reset": MessageLookupByLibrary.simpleMessage("重置"),
@@ -245,8 +255,13 @@ class MessageLookup extends MessageLookupByLibrary {
     "you_can_now_start_to_chat_with_rwkv": MessageLookupByLibrary.simpleMessage(
       "现在可以开始与 RWKV 聊天了",
     ),
+    "you_can_record_your_voice_and_let_rwkv_to_copy_it":
+        MessageLookupByLibrary.simpleMessage("您可以录制您的声音，然后让 RWKV 模仿它。"),
     "you_can_select_a_role_to_chat": MessageLookupByLibrary.simpleMessage(
       "您可以选择角色进行聊天",
+    ),
+    "your_voice_is_too_short": MessageLookupByLibrary.simpleMessage(
+      "您的声音太短，请长按按钮更久以获取您的声音。",
     ),
   };
 }

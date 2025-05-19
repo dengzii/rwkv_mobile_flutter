@@ -139,7 +139,7 @@
   "difficulty_must_be_less_than_81": "Difficulty must be less than 81",
   "number": "Number",
   "ok": "OK",
-  "according_to_the_following_audio_file": "According to the following audio file",
+  "according_to_the_following_audio_file": "According to: ",
   "qq_group_1": "QQ Group 1",
   "qq_group_2": "QQ Group 2",
   "discord": "Discord",
@@ -158,5 +158,13 @@
   "turn_transfer": "Turn transfer",
   "continue_using_smaller_model": "Continue using smaller model",
   "reselect_model": "Reselect model",
-  "size_recommendation": "It is recommended to choose at least a 1.5B model for better performance."
+  "size_recommendation": "It is recommended to choose at least a 1.5B model for better performance.",
+  "you_can_record_your_voice_and_let_rwkv_to_copy_it": "You can record your voice and then let RWKV to copy it.",
+  "or_select_a_wav_file_to_let_rwkv_to_copy_it": "Or select a wav file to let RWKV to copy it.",
+  "hold_to_record_release_to_send": "Hold to Record, Release to Send",
+  "recording_your_voice": "Recording your voice...",
+  "finish_recording": "Recording finished",
+  "please_grant_permission_to_use_microphone": "Please grant permission to use microphone.",
+  "your_voice_is_too_short": "Your voice is too short, please press the button longer to retrieve your voice.",
+  "my_voice": "My voice"
 }

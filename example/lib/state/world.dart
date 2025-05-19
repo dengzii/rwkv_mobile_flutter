@@ -33,16 +33,16 @@ class _World {
 extension $World on _World {
   FV startRecord() async {
     qq;
-    recording.q = true;
     await stopPlaying();
     final hasPermission = await _recorder.hasPermission();
     if (!hasPermission) {
-      Alert.warning("Please grant permission to use microphone.");
+      Alert.warning(S.current.please_grant_permission_to_use_microphone);
       return;
     }
 
     final t = HF.debugShorterUS;
     startTime.q = t;
+    recording.q = true;
     _currentStreamController = StreamController<Uint8List>();
     final rawAudioStream = _currentStreamController!.stream;
     final audioStream = rawAudioStream.asBroadcastStream();
@@ -62,7 +62,8 @@ extension $World on _World {
     );
   }
 
-  FV stopRecord({bool isCancel = false}) async {
+  Future<bool> stopRecord({bool isCancel = false}) async {
+    if (!recording.q) return false;
     qq;
     recording.q = false;
 
@@ -72,7 +73,7 @@ extension $World on _World {
 
     if (isCancel) {
       _audioData.clear();
-      return;
+      return false;
     }
 
     final t = HF.debugShorterUS;
@@ -80,9 +81,9 @@ extension $World on _World {
 
     final audioLengthInMilliseconds = endTime.q - startTime.q;
 
-    if (audioLengthInMilliseconds < 1000) {
-      Alert.warning("Your voice is too short, please press the button longer to retrieve your voice.");
-      return;
+    if (audioLengthInMilliseconds < 1000_000) {
+      Alert.warning(S.current.your_voice_is_too_short);
+      return false;
     }
 
     if (_audioData.isEmpty) throw Exception("😡 audioData is empty");
@@ -90,10 +91,15 @@ extension $World on _World {
     final cacheDir = P.app.cacheDir.q;
     if (cacheDir == null) throw Exception("😡 cacheDir is null");
 
-    final path = "${cacheDir.path}/${HF.debugShorterUS}.wav";
+    final path = "${cacheDir.path}/${HF.debugShorterS}.${S.current.my_voice}.wav";
     final file = File(path);
 
-    List<int> wavHeader = _createWavHeader(dataSize: _audioData.expand((x) => x).length, sampleRate: 16000, numChannels: 1, bitsPerSample: 16);
+    List<int> wavHeader = _createWavHeader(
+      dataSize: _audioData.expand((x) => x).length,
+      sampleRate: 16000,
+      numChannels: 1,
+      bitsPerSample: 16,
+    );
 
     await file.writeAsBytes(wavHeader);
 
@@ -104,6 +110,8 @@ extension $World on _World {
     audioFileStreamController.add((file, audioLengthInMilliseconds));
 
     _audioData.clear();
+
+    return true;
   }
 
   FV play({required String path}) async {
@@ -187,7 +195,7 @@ extension _$World on _World {
     qqq("hasPermission: $hasPermission");
 
     if (!hasPermission) {
-      Alert.warning("Please grant permission to use microphone.");
+      Alert.warning(S.current.please_grant_permission_to_use_microphone);
       await _recorder.pause();
       await _recorder.stop();
       await _audioPlayer.stop();

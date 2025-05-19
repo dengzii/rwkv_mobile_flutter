@@ -30,23 +30,23 @@ class UserTtsContent extends ConsumerWidget {
             ),
           ),
           padding: const EI.s(h: 6, v: 4),
-          child: Co(
-            c: CAA.start,
-            children: [
+          child: Text.rich(
+            // c: CAA.start,
+            TextSpan(children: [
               if (msg.ttsSourceAudioPath != null) ...[
-                T(S.current.according_to_the_following_audio_file),
-                T(P.tts.flagChange(msg.ttsSourceAudioPath!.split("/").last).replaceAll("_", " ")),
+                TextSpan(text: S.current.according_to_the_following_audio_file),
+                TextSpan(text: P.tts.flagChange(msg.ttsSourceAudioPath!.split("/").last).replaceAll("_", " ")),
               ],
               if (msg.ttsSpeakerName != null) ...[
-                T("模仿 ${P.tts.safe(msg.ttsSpeakerName!)} 的声音"),
+                TextSpan(text: " 模仿 ${P.tts.safe(msg.ttsSpeakerName!)} 的声音"),
               ],
-              if (msg.ttsSpeakerName == null && msg.ttsInstruction != null) ...[
-                T(msg.ttsInstruction!),
+              if (msg.ttsSpeakerName == null && msg.ttsInstruction != null && msg.ttsInstruction!.isNotEmpty) ...[
+                TextSpan(text: msg.ttsInstruction!),
               ],
               if (msg.ttsCFMSteps != null) ...[
-                T("CFM Steps: ${msg.ttsCFMSteps!}"),
+                TextSpan(text: " CFM Steps: ${msg.ttsCFMSteps!}"),
               ],
-            ],
+            ]),
           ),
         ),
         4.h,

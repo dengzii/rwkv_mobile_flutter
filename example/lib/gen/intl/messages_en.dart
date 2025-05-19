@@ -31,9 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
     "about": MessageLookupByLibrary.simpleMessage("About"),
     "according_to_the_following_audio_file":
-        MessageLookupByLibrary.simpleMessage(
-          "According to the following audio file",
-        ),
+        MessageLookupByLibrary.simpleMessage("According to: "),
     "all_done": MessageLookupByLibrary.simpleMessage("All done"),
     "application_internal_test_group": MessageLookupByLibrary.simpleMessage(
       "Application Internal Test Group",
@@ -131,6 +129,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "filter": MessageLookupByLibrary.simpleMessage(
       "Hello, I can\'t answer this question yet, let\'s talk about something else.",
     ),
+    "finish_recording": MessageLookupByLibrary.simpleMessage(
+      "Recording finished",
+    ),
     "follow_system": MessageLookupByLibrary.simpleMessage("System"),
     "follow_us_on_twitter": MessageLookupByLibrary.simpleMessage(
       "Follow us on Twitter",
@@ -150,6 +151,9 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "generating": MessageLookupByLibrary.simpleMessage("Generating..."),
     "hide_stack": MessageLookupByLibrary.simpleMessage("Hide CoT Stack"),
+    "hold_to_record_release_to_send": MessageLookupByLibrary.simpleMessage(
+      "Hold to Record, Release to Send",
+    ),
     "human": MessageLookupByLibrary.simpleMessage("Human"),
     "i_want_rwkv_to_say": MessageLookupByLibrary.simpleMessage(
       "I want RWKV to say...",
@@ -185,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "medium": MessageLookupByLibrary.simpleMessage("Medium (110%)"),
     "memory_used": m1,
     "model_settings": MessageLookupByLibrary.simpleMessage("Model Settings"),
+    "my_voice": MessageLookupByLibrary.simpleMessage("My voice"),
     "network_error": MessageLookupByLibrary.simpleMessage("Network error"),
     "new_chat": MessageLookupByLibrary.simpleMessage("New chat"),
     "new_game": MessageLookupByLibrary.simpleMessage("New Game"),
@@ -197,6 +202,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_puzzle": MessageLookupByLibrary.simpleMessage("No puzzle"),
     "number": MessageLookupByLibrary.simpleMessage("Number"),
     "ok": MessageLookupByLibrary.simpleMessage("OK"),
+    "or_select_a_wav_file_to_let_rwkv_to_copy_it":
+        MessageLookupByLibrary.simpleMessage(
+          "Or select a wav file to let RWKV to copy it.",
+        ),
     "or_you_can_start_a_new_empty_chat": MessageLookupByLibrary.simpleMessage(
       "Or you can start a new empty chat",
     ),
@@ -214,6 +223,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "please_enter_the_difficulty": MessageLookupByLibrary.simpleMessage(
       "Please enter the difficulty",
     ),
+    "please_grant_permission_to_use_microphone":
+        MessageLookupByLibrary.simpleMessage(
+          "Please grant permission to use microphone.",
+        ),
     "please_load_model_first": MessageLookupByLibrary.simpleMessage(
       "Please load model first",
     ),
@@ -249,6 +262,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "reason": MessageLookupByLibrary.simpleMessage("Reason"),
     "reasoning_enabled": MessageLookupByLibrary.simpleMessage(
       "Reasoning enabled",
+    ),
+    "recording_your_voice": MessageLookupByLibrary.simpleMessage(
+      "Recording your voice...",
     ),
     "remaining": MessageLookupByLibrary.simpleMessage("Remaining:"),
     "reselect_model": MessageLookupByLibrary.simpleMessage("Reselect model"),
@@ -322,8 +338,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "you_can_now_start_to_chat_with_rwkv": MessageLookupByLibrary.simpleMessage(
       "You can now start to chat with RWKV",
     ),
+    "you_can_record_your_voice_and_let_rwkv_to_copy_it":
+        MessageLookupByLibrary.simpleMessage(
+          "You can record your voice and then let RWKV to copy it.",
+        ),
     "you_can_select_a_role_to_chat": MessageLookupByLibrary.simpleMessage(
       "You can select a role to chat",
+    ),
+    "your_voice_is_too_short": MessageLookupByLibrary.simpleMessage(
+      "Your voice is too short, please press the button longer to retrieve your voice.",
     ),
   };
 }

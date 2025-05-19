@@ -139,7 +139,7 @@
   "difficulty_must_be_less_than_81": "难度必须小于 81",
   "number": "数字",
   "ok": "确定",
-  "according_to_the_following_audio_file": "根据下面的音频文件",
+  "according_to_the_following_audio_file": "根据: ",
   "qq_group_1": "QQ 群 1",
   "qq_group_2": "QQ 群 2",
   "discord": "Discord",
@@ -158,5 +158,13 @@
   "turn_transfer": "落子权转移",
   "continue_using_smaller_model": "继续使用较小模型",
   "reselect_model": "重新选择模型",
-  "size_recommendation": "推荐至少选择 1.5B 模型，效果更好"
+  "size_recommendation": "推荐至少选择 1.5B 模型，效果更好",
+  "you_can_record_your_voice_and_let_rwkv_to_copy_it": "您可以录制您的声音，然后让 RWKV 模仿它。",
+  "or_select_a_wav_file_to_let_rwkv_to_copy_it": "或者选择一个 wav 文件，让 RWKV 模仿它。",
+  "hold_to_record_release_to_send": "按住录音，松开发送",
+  "recording_your_voice": "正在录音...",
+  "finish_recording": "录音完成",
+  "please_grant_permission_to_use_microphone": "请授予使用麦克风的权限",
+  "your_voice_is_too_short": "您的声音太短，请长按按钮更久以获取您的声音。",
+  "my_voice": "我的声音"
 }

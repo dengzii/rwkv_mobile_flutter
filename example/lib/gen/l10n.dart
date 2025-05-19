@@ -1187,10 +1187,10 @@ class S {
     return Intl.message('OK', name: 'ok', desc: '', args: []);
   }
 
-  /// `According to the following audio file`
+  /// `According to: `
   String get according_to_the_following_audio_file {
     return Intl.message(
-      'According to the following audio file',
+      'According to: ',
       name: 'according_to_the_following_audio_file',
       desc: '',
       args: [],
@@ -1360,6 +1360,81 @@ class S {
       desc: '',
       args: [],
     );
+  }
+
+  /// `You can record your voice and then let RWKV to copy it.`
+  String get you_can_record_your_voice_and_let_rwkv_to_copy_it {
+    return Intl.message(
+      'You can record your voice and then let RWKV to copy it.',
+      name: 'you_can_record_your_voice_and_let_rwkv_to_copy_it',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Or select a wav file to let RWKV to copy it.`
+  String get or_select_a_wav_file_to_let_rwkv_to_copy_it {
+    return Intl.message(
+      'Or select a wav file to let RWKV to copy it.',
+      name: 'or_select_a_wav_file_to_let_rwkv_to_copy_it',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hold to Record, Release to Send`
+  String get hold_to_record_release_to_send {
+    return Intl.message(
+      'Hold to Record, Release to Send',
+      name: 'hold_to_record_release_to_send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recording your voice...`
+  String get recording_your_voice {
+    return Intl.message(
+      'Recording your voice...',
+      name: 'recording_your_voice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Recording finished`
+  String get finish_recording {
+    return Intl.message(
+      'Recording finished',
+      name: 'finish_recording',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please grant permission to use microphone.`
+  String get please_grant_permission_to_use_microphone {
+    return Intl.message(
+      'Please grant permission to use microphone.',
+      name: 'please_grant_permission_to_use_microphone',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your voice is too short, please press the button longer to retrieve your voice.`
+  String get your_voice_is_too_short {
+    return Intl.message(
+      'Your voice is too short, please press the button longer to retrieve your voice.',
+      name: 'your_voice_is_too_short',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `My voice`
+  String get my_voice {
+    return Intl.message('My voice', name: 'my_voice', desc: '', args: []);
   }
 }
 

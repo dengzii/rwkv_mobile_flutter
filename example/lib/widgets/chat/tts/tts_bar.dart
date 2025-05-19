@@ -118,26 +118,33 @@ class _AudioInteractor extends ConsumerWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: "You can record your voice and then let RWKV to copy it. ",
+                        text: S.current.you_can_record_your_voice_and_let_rwkv_to_copy_it,
                         style: TS(
                           c: primary,
                           w: FW.w600,
                         ),
                       ),
                       TextSpan(
-                        text: "Or select a wav file to let RWKV to copy it.",
+                        text: S.current.or_select_a_wav_file_to_let_rwkv_to_copy_it,
                         style: const TS(
                           c: Colors.blue,
                           w: FW.w600,
                         ),
                         recognizer: TapGestureRecognizer()..onTap = _onUploadFilePressed,
                       ),
-                      const WidgetSpan(
-                          child: Icon(
-                        Icons.upload_file,
-                        color: Colors.blue,
-                        size: 20,
-                      )),
+                      WidgetSpan(
+                        child: GD(
+                          onTap: _onUploadFilePressed,
+                          child: C(
+                            decoration: BD(color: kC),
+                            child: Icon(
+                              Icons.upload_file,
+                              color: Colors.blue,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -861,7 +868,7 @@ class _TextField extends ConsumerWidget {
     qq;
     final loaded = P.rwkv.loaded.q;
     if (!loaded) {
-      Alert.info("Please load model first");
+      Alert.info(S.current.please_load_model_first);
       P.fileManager.modelSelectorShown.q = true;
       return;
     }
