@@ -136,8 +136,8 @@ class _AudioInteractor extends ConsumerWidget {
                         child: GD(
                           onTap: _onUploadFilePressed,
                           child: C(
-                            decoration: BD(color: kC),
-                            child: Icon(
+                            decoration: const BD(color: kC),
+                            child: const Icon(
                               Icons.upload_file,
                               color: Colors.blue,
                               size: 20,
