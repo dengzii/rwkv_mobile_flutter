@@ -33,6 +33,8 @@ class _Preference {
         1.3: S.current.extra_large,
         1.4: S.current.ultra_large,
       };
+
+  late final latestRuntimeAddress = qs<int>(0);
 }
 
 /// Private methods
@@ -54,6 +56,11 @@ extension _$Preference on _Preference {
       preferredTextScaleFactor.q = textScaleFactor;
     } else {
       preferredTextScaleFactor.q = -1;
+    }
+
+    final latestRuntimeAddress = sp.getInt("halo_state.latestRuntimeAddress");
+    if (latestRuntimeAddress != null) {
+      this.latestRuntimeAddress.q = latestRuntimeAddress;
     }
   }
 }
@@ -107,5 +114,12 @@ extension $Preference on _Preference {
     preferredLanguage.q = res;
     final sp = await SharedPreferences.getInstance();
     await sp.setString("halo_state.language", res.locale.toString());
+  }
+
+  FV saveLatestRuntimeAddress(int latestRuntimeAddress) async {
+    qqr("saveLatestRuntimeAddress: $latestRuntimeAddress");
+    this.latestRuntimeAddress.q = latestRuntimeAddress;
+    final sp = await SharedPreferences.getInstance();
+    await sp.setInt("halo_state.latestRuntimeAddress", latestRuntimeAddress);
   }
 }

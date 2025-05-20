@@ -113,11 +113,12 @@ extension $RWKVLoad on _RWKV {
       }
     } else {
       final options = StartOptions(
-        modelPath,
-        tokenizerPath,
-        backend,
-        _receivePort.sendPort,
-        rootIsolateToken!,
+        modelPath: modelPath,
+        tokenizerPath: tokenizerPath,
+        backend: backend,
+        sendPort: _receivePort.sendPort,
+        rootIsolateToken: rootIsolateToken!,
+        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
       );
       await RWKVMobile().runIsolate(options);
     }
@@ -126,6 +127,8 @@ extension $RWKVLoad on _RWKV {
       qqq("waiting for sendPort...");
       await Future.delayed(const Duration(milliseconds: 50));
     }
+
+    send(to_rwkv.GetLatestRuntimeAddress());
 
     send(to_rwkv.LoadVisionEncoder(encoderPath));
     await setModelConfig(
@@ -164,11 +167,12 @@ extension $RWKVLoad on _RWKV {
       qqr("initRuntime done in ${endMS - startMS}ms");
     } else {
       final options = StartOptions(
-        modelPath,
-        tokenizerPath,
-        backend,
-        _receivePort.sendPort,
-        rootIsolateToken!,
+        modelPath: modelPath,
+        tokenizerPath: tokenizerPath,
+        backend: backend,
+        sendPort: _receivePort.sendPort,
+        rootIsolateToken: rootIsolateToken!,
+        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
       );
       await RWKVMobile().runIsolate(options);
     }
@@ -177,6 +181,8 @@ extension $RWKVLoad on _RWKV {
       qqq("waiting for sendPort...");
       await Future.delayed(const Duration(milliseconds: 50));
     }
+
+    send(to_rwkv.GetLatestRuntimeAddress());
 
     send(to_rwkv.LoadWhisperEncoder(encoderPath));
     await setModelConfig(
@@ -229,11 +235,12 @@ extension $RWKVLoad on _RWKV {
       }
     } else {
       final options = StartOptions(
-        modelPath,
-        tokenizerPath,
-        backend,
-        _receivePort.sendPort,
-        rootIsolateToken!,
+        modelPath: modelPath,
+        tokenizerPath: tokenizerPath,
+        backend: backend,
+        sendPort: _receivePort.sendPort,
+        rootIsolateToken: rootIsolateToken!,
+        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
       );
       await RWKVMobile().runIsolate(options);
     }
@@ -242,6 +249,8 @@ extension $RWKVLoad on _RWKV {
       qqq("waiting for sendPort...");
       await Future.delayed(const Duration(milliseconds: 50));
     }
+
+    send(to_rwkv.GetLatestRuntimeAddress());
 
     if (_ttsPerformanceTimer != null) {
       _ttsPerformanceTimer!.cancel();
@@ -303,11 +312,12 @@ extension $RWKVLoad on _RWKV {
       }
     } else {
       final options = StartOptions(
-        modelPath,
-        tokenizerPath,
-        backend,
-        _receivePort.sendPort,
-        rootIsolateToken!,
+        modelPath: modelPath,
+        tokenizerPath: tokenizerPath,
+        backend: backend,
+        sendPort: _receivePort.sendPort,
+        rootIsolateToken: rootIsolateToken!,
+        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
       );
       await RWKVMobile().runIsolate(options);
     }
@@ -316,6 +326,8 @@ extension $RWKVLoad on _RWKV {
       qqq("waiting for sendPort...");
       await Future.delayed(const Duration(milliseconds: 50));
     }
+
+    send(to_rwkv.GetLatestRuntimeAddress());
 
     P.app.demoType.q = DemoType.chat;
     await setModelConfig(usingReasoningModel: usingReasoningModel);
@@ -350,14 +362,16 @@ extension $RWKVLoad on _RWKV {
         modelPath: modelPath,
         backend: backend,
         tokenizerPath: tokenizerPath,
+        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
       ));
     } else {
       final options = StartOptions(
-        modelPath,
-        tokenizerPath,
-        backend,
-        _receivePort.sendPort,
-        rootIsolateToken!,
+        modelPath: modelPath,
+        tokenizerPath: tokenizerPath,
+        backend: backend,
+        sendPort: _receivePort.sendPort,
+        rootIsolateToken: rootIsolateToken!,
+        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
       );
       await RWKVMobile().runIsolate(options);
     }
@@ -366,6 +380,8 @@ extension $RWKVLoad on _RWKV {
       qqq("waiting for sendPort...");
       await Future.delayed(const Duration(milliseconds: 50));
     }
+
+    send(to_rwkv.GetLatestRuntimeAddress());
 
     P.app.demoType.q = DemoType.othello;
 
@@ -402,14 +418,16 @@ extension $RWKVLoad on _RWKV {
         modelPath: modelPath,
         backend: backend,
         tokenizerPath: tokenizerPath,
+        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
       ));
     } else {
       final options = StartOptions(
-        modelPath,
-        tokenizerPath,
-        backend,
-        _receivePort.sendPort,
-        rootIsolateToken!,
+        modelPath: modelPath,
+        tokenizerPath: tokenizerPath,
+        backend: backend,
+        sendPort: _receivePort.sendPort,
+        rootIsolateToken: rootIsolateToken!,
+        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
       );
       await RWKVMobile().runIsolate(options);
     }
@@ -418,6 +436,8 @@ extension $RWKVLoad on _RWKV {
       qqq("waiting for sendPort...");
       await Future.delayed(const Duration(milliseconds: 50));
     }
+
+    send(to_rwkv.GetLatestRuntimeAddress());
 
     P.app.demoType.q = DemoType.sudoku;
 
@@ -538,6 +558,7 @@ extension $RWKV on _RWKV {
       modelPath: modelPath,
       backend: backend,
       tokenizerPath: tokenizerPath,
+      latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
     ));
     return _initRuntimeCompleter.future;
   }
@@ -772,6 +793,10 @@ extension _$RWKV on _RWKV {
   void _handleFromRWKV(from_rwkv.FromRWKV message) {
     _messagesController.add(message);
     switch (message) {
+      case from_rwkv.LatestRuntimeAddress response:
+        P.preference.saveLatestRuntimeAddress(response.latestRuntimeAddress);
+        break;
+
       case from_rwkv.Error response:
         if (kDebugMode) {
           String errorLog = "error: ${response.message}";

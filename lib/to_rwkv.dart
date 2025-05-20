@@ -70,8 +70,14 @@ class InitRuntime extends ToRWKV {
   final String modelPath;
   final Backend backend;
   final String tokenizerPath;
+  final int latestRuntimeAddress;
 
-  InitRuntime({required this.modelPath, required this.backend, required this.tokenizerPath});
+  InitRuntime({
+    required this.modelPath,
+    required this.backend,
+    required this.tokenizerPath,
+    required this.latestRuntimeAddress,
+  });
 }
 
 class LoadTTSModels extends ToRWKV {
@@ -246,3 +252,5 @@ class SetVisionPrompt extends ToRWKV {
 
 /// stop之后responseBufferContent还保留着，然后resume之后responseBufferContent会先短暂清空，然后变成stop前已经生成了的内容并接着生成
 class Stop extends ToRWKV {}
+
+class GetLatestRuntimeAddress extends ToRWKV {}

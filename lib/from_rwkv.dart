@@ -154,3 +154,9 @@ class TTSResult extends FromRWKV {
 }
 
 class TTSCFMSteps extends FromRWKV {}
+
+class LatestRuntimeAddress extends FromRWKV {
+  final int latestRuntimeAddress;
+
+  LatestRuntimeAddress({required this.latestRuntimeAddress, super.toRWKV});
+}
