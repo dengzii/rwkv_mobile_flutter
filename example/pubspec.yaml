@@ -55,15 +55,15 @@ dependencies:
   vclibs: # https://pub.dev/packages/vclibs/
 
 dev_dependencies:
-  sentry_dart_plugin: ^2.4.1
   build_runner: # https://pub.dev/packages/build_runner/
   custom_lint: # https://pub.dev/packages/custom_lint/
-  flutter_gen_runner: # https://pub.dev/packages/flutter_gen_runner:/
+  flutter_gen_runner: # https://pub.dev/packages/flutter_gen_runner/
   flutter_lints: # https://pub.dev/packages/flutter_lints/
   freezed: # https://pub.dev/packages/freezed/
   icons_launcher: # https://pub.dev/packages/icons_launcher/
   json_serializable: # https://pub.dev/packages/json_serializable/
   riverpod_lint: # https://pub.dev/packages/riverpod_lint/
+  sentry_dart_plugin: ^2.4.1 # https://pub.dev/packages/sentry_dart_plugin/
 
 flutter:
   uses-material-design: true
