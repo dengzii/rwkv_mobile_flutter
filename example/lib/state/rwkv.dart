@@ -34,12 +34,10 @@ class _RWKV {
   late final decodeSpeed = qs<double>(.0);
   late final argumentsPanelShown = qs(false);
 
-  // TODO: @wangce 或许, 默认参数应该和 weights 绑定, 比如, Othello model 的 topK 应该始终是 1
   late final arguments = qsff<Argument, double>((ref, argument) {
     return argument.defaults;
   });
 
-  // TODO: @wangce 或许, 默认参数应该和 weights 绑定, 比如, G1 系列模型默认使用 reasoning
   late final usingReasoningModel = qp((ref) {
     return ref.watch(_usingReasoningModel);
   });
