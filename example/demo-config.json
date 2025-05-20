@@ -60,19 +60,6 @@
         "tags": ["reason", "cpu"]
       },
       {
-        "name": "RWKV7-G1 2.9B 50% trained",
-        "type": "gguf",
-        "modelSize": 2.9,
-        "fileName": "RWKV7-G1-2.9B-50%25trained-20250417-ctx4k-Q6_K.gguf",
-        "url": "mollysama/rwkv-mobile-models/resolve/main/gguf/RWKV7-G1-2.9B-50%25trained-20250417-ctx4k-Q6_K.gguf",
-        "fileSize": 2567852800,
-        "sha256": "80822a7feb5047cc625e6bcdce104424117614623f1f4739320cc2a02a9a6fd9",
-        "quantization": "Q6_K",
-        "platforms": ["macos", "windows", "linux", "android"],
-        "backends": ["llamacpp"],
-        "tags": ["reason", "cpu"]
-      },
-      {
         "name": "RWKV7-G1 0.1B",
         "type": "st",
         "modelSize": 0.1,
