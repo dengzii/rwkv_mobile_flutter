@@ -15,19 +15,24 @@ import 'package:zone/widgets/model_item.dart';
 
 class WorldGroupItem extends ConsumerWidget {
   final WorldType worldType;
+  final (String, String) socPair;
 
-  const WorldGroupItem(this.worldType, {super.key});
+  const WorldGroupItem(this.worldType, {super.key, required this.socPair});
 
   void _onDownloadAllTap() async {
     final availableModels = P.fileManager.availableModels.q;
-    final fileInfos = availableModels.where((e) => e.worldType == worldType).toList();
+    final fileInfos = availableModels.where((e) => e.worldType == worldType).where((file) {
+      return file.isEncoder || (!file.isEncoder && file.fileName == socPair.$2);
+    }).toList();
     final missingFileInfos = fileInfos.where((e) => P.fileManager.locals(e).q.hasFile == false).toList();
     missingFileInfos.forEach((e) => P.fileManager.getFile(fileInfo: e));
   }
 
   void _onDeleteAllTap() async {
     final availableModels = P.fileManager.availableModels.q;
-    final fileInfos = availableModels.where((e) => e.worldType == worldType).toList();
+    final fileInfos = availableModels.where((e) => e.worldType == worldType).where((file) {
+      return file.isEncoder || (!file.isEncoder && file.fileName == socPair.$2);
+    }).toList();
     fileInfos.forEach((e) => P.fileManager.deleteFile(fileInfo: e));
   }
 
@@ -39,7 +44,7 @@ class WorldGroupItem extends ConsumerWidget {
     final availableModels = P.fileManager.availableModels.q;
     final fileInfos = availableModels.where((e) => e.worldType == worldType).toList();
     final encoderFileKey = fileInfos.firstWhere((e) => e.isEncoder);
-    final modelFileKey = fileInfos.firstWhere((e) => !e.isEncoder);
+    final modelFileKey = fileInfos.firstWhere((e) => !e.isEncoder && e.fileName == socPair.$2);
     final encoderLocalFile = P.fileManager.locals(encoderFileKey).q;
     final modelLocalFile = P.fileManager.locals(modelFileKey).q;
 
@@ -61,8 +66,9 @@ class WorldGroupItem extends ConsumerWidget {
             backend: modelFileKey.backend!,
           );
         case WorldType.engVisualQA:
-        case WorldType.visualQA:
-        case WorldType.engVisualQAReason:
+        case WorldType.qa:
+        case WorldType.reasoningQA:
+        case WorldType.ocr:
           await P.rwkv.loadWorldVision(
             modelPath: modelLocalFile.targetPath,
             encoderPath: encoderLocalFile.targetPath,
@@ -92,7 +98,9 @@ class WorldGroupItem extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final availableModels = P.fileManager.availableModels.q;
-    final fileInfos = availableModels.where((e) => e.worldType == worldType).toList();
+    final fileInfos = availableModels.where((e) => e.worldType == worldType).where((file) {
+      return file.isEncoder || (!file.isEncoder && file.fileName == socPair.$2);
+    }).toList();
     if (fileInfos.isEmpty) return const SizedBox.shrink();
     final primaryColor = Theme.of(context).colorScheme.primaryContainer;
 
@@ -104,8 +112,17 @@ class WorldGroupItem extends ConsumerWidget {
     final allMissing = files.every((e) => !e.hasFile);
     final downloading = files.any((e) => e.downloading);
 
+    qqr("""worldType: $worldType
+fileInfos: ${fileInfos.map((e) => e.fileName).join(", ")}
+hasFile: ${fileInfos.map((e) => P.fileManager.locals(e).q.hasFile).join(", ")}
+allDownloaded: $allDownloaded
+allMissing: $allMissing
+downloading: $downloading""");
+
+    final isCurrentModel = P.rwkv.currentModel.q?.fileName == socPair.$2;
+
     final currentWorldType = ref.watch(P.rwkv.currentWorldType);
-    final alreadyStarted = currentWorldType == worldType;
+    final alreadyStarted = currentWorldType == worldType && isCurrentModel;
     final loading = ref.watch(P.rwkv.loading);
 
     return ClipRRect(
@@ -141,8 +158,8 @@ class WorldGroupItem extends ConsumerWidget {
                 if (allMissing && !downloading)
                   TextButton(
                     onPressed: _onDownloadAllTap,
-                    child: const T(
-                      "Download All",
+                    child: T(
+                      S.current.download_all,
                       s: TS(
                         w: FW.w600,
                       ),
@@ -207,3 +224,7 @@ class WorldGroupItem extends ConsumerWidget {
     );
   }
 }
+
+// RWKV7-0.4B-G1-SigLIP2-a16w8_8gen3_combined_embedding.bin
+// RWKV7-0.4B-G1-SigLIP2-a16w8_8gen3_combined_embedding.bin
+// RWKV7-0.4B-G1-SigLIP2-a16w8_8gen3_combined_embedding.bin

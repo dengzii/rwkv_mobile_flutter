@@ -283,8 +283,9 @@ class List extends ConsumerWidget {
       case null:
         break;
       case WorldType.engVisualQA:
-      case WorldType.visualQA:
-      case WorldType.engVisualQAReason:
+      case WorldType.qa:
+      case WorldType.reasoningQA:
+      case WorldType.ocr:
         if (messages.length == 1 && messages.first.type == model.MessageType.userImage) {
           bottom += 46;
         }

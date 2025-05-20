@@ -73,17 +73,23 @@ class Suggestions extends ConsumerWidget {
       case DemoType.world:
         switch (currentWorldType) {
           case WorldType.engVisualQA:
-          case WorldType.engVisualQAReason:
+          case WorldType.reasoningQA:
             show = imagePath != null && imagePath.isNotEmpty && messages.length == 1;
             suggestions = [
               "Please describe this image for me~",
             ];
             break;
-          case WorldType.visualQA:
+          case WorldType.qa:
             show = imagePath != null && imagePath.isNotEmpty && messages.length == 1;
             suggestions = [
               "请向我描述这张图片",
               "Please describe this image for me~",
+            ];
+            break;
+          case WorldType.ocr:
+            show = imagePath != null && imagePath.isNotEmpty && messages.length == 1;
+            suggestions = [
+              "What is written in this image?",
             ];
             break;
           case WorldType.engAudioQA:

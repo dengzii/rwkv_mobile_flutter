@@ -113,6 +113,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "Difficulty must be less than 81",
     ),
     "discord": MessageLookupByLibrary.simpleMessage("Discord"),
+    "download_all": MessageLookupByLibrary.simpleMessage("Download all"),
     "download_missing": MessageLookupByLibrary.simpleMessage(
       "Download missing files",
     ),

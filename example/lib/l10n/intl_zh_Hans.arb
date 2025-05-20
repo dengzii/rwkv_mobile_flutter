@@ -166,5 +166,6 @@
   "finish_recording": "录音完成",
   "please_grant_permission_to_use_microphone": "请授予使用麦克风的权限",
   "your_voice_is_too_short": "您的声音太短，请长按按钮更久以获取您的声音。",
-  "my_voice": "我的声音"
+  "my_voice": "我的声音",
+  "download_all": "下载全部"
 }

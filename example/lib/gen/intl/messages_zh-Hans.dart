@@ -92,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
       "难度必须小于 81",
     ),
     "discord": MessageLookupByLibrary.simpleMessage("Discord"),
+    "download_all": MessageLookupByLibrary.simpleMessage("下载全部"),
     "download_missing": MessageLookupByLibrary.simpleMessage("下载缺失文件"),
     "download_model": MessageLookupByLibrary.simpleMessage("下载模型"),
     "download_source": MessageLookupByLibrary.simpleMessage("下载源"),

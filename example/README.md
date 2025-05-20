@@ -25,9 +25,11 @@
 
 ### 设置环境
 
-- 使用 `fastlane switch_env env:chat` 切换至 chat app
-- 使用 `fastlane switch_env env:tts` 切换至 tts app
-- 使用 `fastlane switch_env env:world` 切换至 world app
+- 使用 `fastlane switch_env env:chat` 切换至 chat app (RWKV Chat)
+- 使用 `fastlane switch_env env:tts` 切换至 tts app (RWKV Talk)
+- 使用 `fastlane switch_env env:world` 切换至 world app (RWKV See)
+- 使用 `fastlane switch_env env:othello` 切换至 world app (RWKV Othello)
+- 使用 `fastlane switch_env env:sudoku` 切换至 world app (RWKV Sudoku)
 
 ### 运行
 

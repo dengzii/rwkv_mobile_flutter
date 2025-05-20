@@ -82,11 +82,21 @@ extension $FileManager on _FileManager {
         final expectFileSize = fileInfo.fileSize;
         final fileSize = await File(path).length();
         fileSizeVerified = expectFileSize == fileSize;
+        if (kDebugMode) {
+          if (!fileSizeVerified) {
+            qqw("fileSizeVerified: $fileSizeVerified");
+            qqw("expectFileSize: $expectFileSize");
+            qqw("fileSize: $fileSize");
+          }
+        }
         if (!kDebugMode) {
           if (!fileSizeVerified) File(path).delete();
         }
       }
       final state = locals(fileInfo);
+      if (fileInfo.fileName == "RWKV7-0.4B-G1-SigLIP2-a16w8_8gen3_combined_embedding.bin") {
+        qqr("fileInfo: $fileInfo\nfileSizeVerified: $fileSizeVerified\npath: $path\nfileExists: $pathExists");
+      }
       state.q = state.q.copyWith(hasFile: fileSizeVerified);
     }
   }

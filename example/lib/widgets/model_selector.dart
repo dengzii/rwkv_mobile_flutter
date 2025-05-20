@@ -124,7 +124,15 @@ class ModelSelector extends ConsumerWidget {
             4.h,
             if (demoType == DemoType.chat) T(S.current.size_recommendation, s: TS(c: kB.q(.7), s: 14, w: FW.w600)),
             if (demoType == DemoType.world)
-              for (final worldType in WorldType.values.where((e) => e.available)) WorldGroupItem(worldType),
+              ...WorldType.values.where((e) => e.available).map((e) {
+                return e.socPairs.where((pair) {
+                  return pair.$1 == "" || pair.$1 == P.rwkv.soc.q;
+                }).map((pair) {
+                  return WorldGroupItem(e, socPair: pair);
+                });
+              }).reduce((v, e) {
+                return [...v, ...e];
+              }),
             if (demoType == DemoType.tts)
               for (final fileInfo in ttsCores) TTSGroupItem(fileInfo),
             if (demoType == DemoType.chat || demoType == DemoType.sudoku)

@@ -1436,6 +1436,16 @@ class S {
   String get my_voice {
     return Intl.message('My voice', name: 'my_voice', desc: '', args: []);
   }
+
+  /// `Download all`
+  String get download_all {
+    return Intl.message(
+      'Download all',
+      name: 'download_all',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

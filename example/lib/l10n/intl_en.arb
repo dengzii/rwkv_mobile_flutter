@@ -166,5 +166,6 @@
   "finish_recording": "Recording finished",
   "please_grant_permission_to_use_microphone": "Please grant permission to use microphone.",
   "your_voice_is_too_short": "Your voice is too short, please press the button longer to retrieve your voice.",
-  "my_voice": "My voice"
+  "my_voice": "My voice",
+  "download_all": "Download all"
 }

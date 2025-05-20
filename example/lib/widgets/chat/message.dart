@@ -126,7 +126,7 @@ class Message extends ConsumerWidget {
     String cotResult = "";
 
     final worldType = ref.watch(P.rwkv.currentWorldType);
-    final subStringCount = worldType == WorldType.engVisualQAReason ? 8 : 9;
+    final subStringCount = worldType == WorldType.reasoningQA ? 8 : 9;
 
     if (usingReasoningModel) {
       assert(!msg.isMine);
@@ -138,7 +138,7 @@ class Message extends ConsumerWidget {
           if (endIndex + subStringCount < finalContent.length) {
             final startIndex = endIndex + subStringCount;
             cotResult = finalContent.substring(startIndex);
-            if (worldType == WorldType.engVisualQAReason) {
+            if (worldType == WorldType.reasoningQA) {
               if (cotResult.endsWith("</answer>")) cotResult = cotResult.replaceFirst("</answer>", "");
               if (cotResult.startsWith("<answer>")) cotResult = cotResult.replaceFirst("<answer>", "");
             }
@@ -249,9 +249,10 @@ class Message extends ConsumerWidget {
         }
       case null:
       case WorldType.engVisualQA:
-      case WorldType.visualQA:
-      case WorldType.engVisualQAReason:
+      case WorldType.qa:
+      case WorldType.reasoningQA:
       case WorldType.engAudioQA:
+      case WorldType.ocr:
         break;
     }
 

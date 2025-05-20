@@ -28,6 +28,7 @@ class Debugger extends ConsumerWidget {
     }
 
     final currentWorldType = ref.watch(P.rwkv.currentWorldType);
+    final currentModel = ref.watch(P.rwkv.currentModel);
     final visualFloatHeight = ref.watch(P.world.visualFloatHeight);
     final loading = ref.watch(P.rwkv.loading);
     final playing = ref.watch(P.world.playing);
@@ -88,6 +89,8 @@ class Debugger extends ConsumerWidget {
                   if (currentWorldType != null && !isOthello) T(currentWorldType.toString()),
                   if (currentWorldType != null && !isOthello) T("visualFloatHeight".codeToName),
                   if (currentWorldType != null) T(visualFloatHeight.toString()),
+                  T("currentModel".codeToName),
+                  T(currentModel?.fileName ?? "null"),
                   T("loading".codeToName),
                   T(loading.toString()),
                   if (currentWorldType != null) T("playing".codeToName),

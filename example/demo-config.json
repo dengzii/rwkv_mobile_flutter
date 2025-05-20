@@ -531,14 +531,13 @@
         "modelSize": 0.4,
         "url": "mollysama/rwkv-mobile-models/resolve/main/multimodal/model/RWKV7-0.4B-G1-SigLIP2-a16w8_8gen3_combined_embedding.bin",
         "fileName": "RWKV7-0.4B-G1-SigLIP2-a16w8_8gen3_combined_embedding.bin",
-        "fileSize": 543603352,
+        "fileSize": 543664792,
         "quantization": "a16w8",
         "platforms": ["android"],
         "backends": ["qnn"],
         "tags": ["npu", "core"],
         "socLimitations": ["8 Gen 3"]
       },
-
       {
         "name": "RWKV7 Whisper Small adapter For 0.4B ENQA",
         "type": "gguf",
