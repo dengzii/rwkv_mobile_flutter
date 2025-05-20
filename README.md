@@ -8,6 +8,20 @@
 - 后端 (C++): [rwkv-mobile](https://github.com/MollySophia/rwkv-mobile)
 - 权重: [mollysama/rwkv-mobile-models](https://huggingface.co/mollysama/rwkv-mobile-models/tree/main)
 
+## 更新后端二进制库文件
+
+- Windows:
+使用PowerShell执行脚本
+```
+& ./fetch_latest_libraries.ps1
+```
+
+- Linux / macOS:
+终端执行脚本
+```
+./fetch_latest_libraries.sh
+```
+
 ## Demos
 
 ### RWKV Chat
