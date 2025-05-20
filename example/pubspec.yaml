@@ -49,10 +49,10 @@ dependencies:
   record: # https://pub.dev/packages/record/
   sentry_flutter: # https://pub.dev/packages/sentry_flutter/
   share_plus: # https://pub.dev/packages/share_plus/
+  shared_preferences: # https://pub.dev/packages/shared_preferences/
   system_info2: # https://pub.dev/packages/system_info2/
   url_launcher: # https://pub.dev/packages/url_launcher/
   vclibs: # https://pub.dev/packages/vclibs/
-  shared_preferences: # https://pub.dev/packages/shared_preferences/
 
 dev_dependencies:
   sentry_dart_plugin: ^2.4.1
