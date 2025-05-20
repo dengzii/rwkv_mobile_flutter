@@ -20,7 +20,9 @@ extension $Device on _Device {
     } else {
       await HF.wait(200);
       final result = await compute((message) async {
-        final free = SysInfo.getFreePhysicalMemory();
+        final free = Platform.isAndroid || Platform.isLinux
+            ? _getLinuxAvailableMemory()
+            : SysInfo.getFreePhysicalMemory();
         final total = SysInfo.getTotalPhysicalMemory();
         qqq("free: $free, total: $total");
         return [free, total];
@@ -43,4 +45,33 @@ extension _$Device on _Device {
       // freeMemory.value = 0;
     }
   }
+}
+
+int _getLinuxAvailableMemory() {
+  final out = _exec('cat', ['/proc/meminfo']);
+  final lines = out?.replaceAll('\r\n', '\n').split('\n') ?? [];
+  for (final line in lines) {
+    if (!line.contains("MemAvailable:")) continue;
+    final parts = line.split(' ').where((element) => element.isNotEmpty).toList();
+    try {
+      return int.parse(parts[1]) * 1024;
+    } catch (e) {
+      qqe(e);
+    }
+  }
+  return -1;
+}
+
+String? _exec(String executable, List<String> arguments,
+    {bool runInShell = false}) {
+  try {
+    final result =
+        Process.runSync(executable, arguments, runInShell: runInShell);
+    if (result.exitCode == 0) {
+      return result.stdout.toString();
+    }
+  } catch (e) {
+    qqe(e);
+  }
+  return null;
 }
