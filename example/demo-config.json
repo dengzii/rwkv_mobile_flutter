@@ -357,7 +357,7 @@
         "quantization": "NF4",
         "platforms": ["ios", "macos", "web"],
         "backends": ["webRwkv"],
-        "tags": ["gpu"],
+        "tags": ["reason", "gpu"],
         "isDebug": true
       },
       {
@@ -371,7 +371,7 @@
         "quantization": "Q6_K",
         "platforms": ["macos", "windows", "linux", "android"],
         "backends": ["llamacpp"],
-        "tags": ["cpu"]
+        "tags": ["reason", "cpu"]
       },
       {
         "name": "test: github-releases",
