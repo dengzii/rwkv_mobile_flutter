@@ -84,6 +84,7 @@ class Message extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final isMine = msg.isMine;
     final alignment = isMine ? Alignment.centerRight : Alignment.centerLeft;
     const marginHorizontal = 12.0;
@@ -98,7 +99,7 @@ class Message extends ConsumerWidget {
     final received = ref.watch(P.chat.receivedTokens.select((v) => msg.changing ? v : ""));
 
     String finalContent = changing ? (received.isEmpty ? content : received) : content;
-    if (msg.isSensitive) finalContent = S.current.filter;
+    if (msg.isSensitive) finalContent = s.filter;
 
     finalContent = finalContent.replaceAll("\n", "\n\n");
     while (finalContent.contains("\n\n\n")) {
@@ -377,7 +378,7 @@ class Message extends ConsumerWidget {
                       decoration: const BD(color: kC),
                       child: Ro(
                         children: [
-                          T(thisMessageIsReceiving ? S.current.thinking : S.current.thought_result, s: TS(c: kB.q(.5), w: FW.w600)),
+                          T(thisMessageIsReceiving ? s.thinking : s.thought_result, s: TS(c: kB.q(.5), w: FW.w600)),
                           showingCotContent ? Icon(Icons.expand_more, color: kB.q(.5)) : Icon(Icons.expand_less, color: kB.q(.5)),
                         ],
                       ),

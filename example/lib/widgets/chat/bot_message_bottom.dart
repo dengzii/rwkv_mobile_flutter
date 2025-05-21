@@ -21,6 +21,7 @@ class BotMessageBottom extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     if (msg.isMine) return const SizedBox.shrink();
     final demoType = ref.watch(P.app.demoType);
     if (demoType == DemoType.tts) return const SizedBox.shrink();
@@ -137,7 +138,7 @@ class BotMessageBottom extends ConsumerWidget {
                   borderRadius: 4.r,
                 ),
                 child: T(
-                  S.current.chat_resume,
+                  s.chat_resume,
                   s: TS(c: primaryColor, w: FW.w600, s: 16),
                 ),
               ),

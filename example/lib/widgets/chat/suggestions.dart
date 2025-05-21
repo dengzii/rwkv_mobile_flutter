@@ -72,14 +72,7 @@ class Suggestions extends ConsumerWidget {
         suggestions = ref.watch(P.chat.suggestions);
       case DemoType.world:
         switch (currentWorldType) {
-          case WorldType.engVisualQA:
           case WorldType.reasoningQA:
-            show = imagePath != null && imagePath.isNotEmpty && messages.length == 1;
-            suggestions = [
-              "Please describe this image for me~",
-            ];
-            break;
-          case WorldType.qa:
             show = imagePath != null && imagePath.isNotEmpty && messages.length == 1;
             suggestions = [
               "请向我描述这张图片",
@@ -89,9 +82,27 @@ class Suggestions extends ConsumerWidget {
           case WorldType.ocr:
             show = imagePath != null && imagePath.isNotEmpty && messages.length == 1;
             suggestions = [
+              "请向我描述这张图片",
+              "Please describe this image for me~",
+              "图片上的文字是什么意思？",
+              "可以帮我识别一下这张图片上的文字吗？",
+              "图片里的文字内容是什么？",
+              "这张图片里写了什么？",
+              "What does the text in the image mean?",
+              "Can you help me recognize the text on this image?",
+              "What is the text content in this image?",
               "What is written in this image?",
+              "What do you see in this picture?",
+            ].shuffled.take(5).toList();
+            break;
+          case WorldType.qa:
+            show = imagePath != null && imagePath.isNotEmpty && messages.length == 1;
+            suggestions = [
+              "请向我描述这张图片",
+              "Please describe this image for me~",
             ];
             break;
+          case WorldType.engVisualQA:
           case WorldType.engAudioQA:
           case WorldType.chineseASR:
           case WorldType.engASR:

@@ -48,6 +48,7 @@ class _Chat {
 
   late final hasFocus = qs(false);
 
+  @Deprecated("Use P.suggestion.suggestions instead")
   late final suggestions = qs<List<String>>([]);
 
   late final autoPauseId = qsn<int>();
@@ -344,6 +345,7 @@ extension $Chat on _Chat {
     _pauseMessageById(id: id);
   }
 
+  @Deprecated("Use P.suggestion.loadSuggestions instead")
   FV loadSuggestions() async {
     final demoType = P.app.demoType.q;
     final isChat = demoType == DemoType.chat;

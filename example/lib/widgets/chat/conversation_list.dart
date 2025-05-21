@@ -48,6 +48,7 @@ class _Empty extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     return Co(
       m: MAA.center,
       c: CAA.stretch,
@@ -59,8 +60,8 @@ class _Empty extends ConsumerWidget {
             c: CAA.center,
             children: [
               const Icon(Icons.add),
-              T(S.current.new_chat, s: const TS(s: 20)),
-              T(S.current.create_a_new_one_by_clicking_the_button_above, s: TS(s: 10, c: kB.q(.5))),
+              T(s.new_chat, s: const TS(s: 20)),
+              T(s.create_a_new_one_by_clicking_the_button_above, s: TS(s: 10, c: kB.q(.5))),
             ],
           ),
         ),
@@ -80,6 +81,7 @@ class _Item extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final current = ref.watch(P.conversation.current);
     final isCurrent = current?.id == conversation.id;
     final primary = Theme.of(context).colorScheme.primary;
@@ -88,7 +90,7 @@ class _Item extends ConsumerWidget {
     return CupertinoContextMenu(
       actions: [
         CupertinoContextMenuAction(
-          child: T(S.current.delete),
+          child: T(s.delete),
           onPressed: () {},
         ),
       ],

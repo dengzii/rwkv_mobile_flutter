@@ -108,16 +108,19 @@ class RWKVMobile {
 
     // TODO: @Molly please use this variable to initialize runtime
     // TODO: 需要检查一下地址里是否有东西, 如果不是 hot restart 而是 cold boot, 前端传递的 address 里面可能没有东西
-    final latestRuntimeAddress = options.latestRuntimeAddress;
-    if (kDebugMode) print("💬 latestRuntimeAddress: $latestRuntimeAddress");
-
     rwkvmobile_runtime_t runtime;
-    if (latestRuntimeAddress != 0) {
-      if (kDebugMode) print("💬 got previous runtime address, releasing");
-      runtime = ffi.Pointer.fromAddress(latestRuntimeAddress);
-      rwkvMobile.rwkvmobile_runtime_release(runtime);
-      runtime = ffi.nullptr;
-    }
+
+    // if (kDebugMode && backend == Backend.llamacpp) {
+    //   final latestRuntimeAddress = options.latestRuntimeAddress;
+    //   if (kDebugMode) print("💬 latestRuntimeAddress: $latestRuntimeAddress");
+
+    //   if (latestRuntimeAddress != 0) {
+    //     if (kDebugMode) print("💬 got previous runtime address, releasing");
+    //     runtime = ffi.Pointer.fromAddress(latestRuntimeAddress);
+    //     rwkvMobile.rwkvmobile_runtime_release(runtime);
+    //     runtime = ffi.nullptr;
+    //   }
+    // }
 
     // runtime initializations
     switch (backend) {

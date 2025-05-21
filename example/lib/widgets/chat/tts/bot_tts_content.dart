@@ -84,6 +84,7 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
     if (widget.msg.isMine) return const SizedBox.shrink();
     final demoType = ref.watch(P.app.demoType);
     if (demoType != DemoType.tts) return const SizedBox.shrink();
+    final s = S.of(context);
 
     _syncWavDuration().then((value) {
       if (_length == value) return;
@@ -152,7 +153,7 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
                     ),
                   ),
                   8.w,
-                  T(S.current.generating + " " + (overallProgress * 100).toStringAsFixed(0) + "%", s: TS(c: kB.q(.8), w: FW.w500)),
+                  T(s.generating + " " + (overallProgress * 100).toStringAsFixed(0) + "%", s: TS(c: kB.q(.8), w: FW.w500)),
                 ],
               ),
             ),

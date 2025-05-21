@@ -39,6 +39,7 @@ class ReasonButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final color = Theme.of(context).colorScheme.primary;
     final usingReasoningModel = ref.watch(P.rwkv.usingReasoningModel);
     final loading = ref.watch(P.rwkv.loading);
@@ -74,12 +75,12 @@ class ReasonButton extends ConsumerWidget {
               ),
             if (!loading)
               T(
-                S.current.reason,
+                s.reason,
                 s: TS(c: usingReasoningModel ? kW : kB.q(.25)),
               ),
             if (loading)
               T(
-                S.current.loading,
+                s.loading,
                 s: TS(c: usingReasoningModel ? kW : color),
               ),
           ],

@@ -23,6 +23,7 @@ class AudioInput extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final paddingBottom = ref.watch(P.app.paddingBottom);
     final primary = Theme.of(context).colorScheme.primary;
     final demoType = ref.watch(P.app.demoType);
@@ -80,7 +81,7 @@ class AudioInput extends ConsumerWidget {
 
     if (demoType == DemoType.tts) {
       shouldShow = audioInteractorShown;
-      bottomMessage = S.current.hold_to_record_release_to_send;
+      bottomMessage = s.hold_to_record_release_to_send;
       bottomAdjust = audioInteractorShown ? 24.0 : 0;
       showGradient = false;
       curve = Curves.easeOut;

@@ -39,6 +39,7 @@ class LanguageButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final color = Theme.of(context).colorScheme.primary;
     final preferChinese = ref.watch(P.rwkv.preferChinese);
     final loading = ref.watch(P.rwkv.loading);
@@ -68,9 +69,9 @@ class LanguageButton extends ConsumerWidget {
                 c: CAA.start,
                 m: MAA.center,
                 children: [
-                  if (preferChinese) T(S.current.prefer, s: const TS(c: kW, s: 10, height: 1)),
-                  if (preferChinese) T(S.current.chinese, s: const TS(c: kW, s: 10, height: 1)),
-                  if (!preferChinese) T(S.current.auto, s: TS(c: kB.q(.25), s: 10, height: 1)),
+                  if (preferChinese) T(s.prefer, s: const TS(c: kW, s: 10, height: 1)),
+                  if (preferChinese) T(s.chinese, s: const TS(c: kW, s: 10, height: 1)),
+                  if (!preferChinese) T(s.auto, s: TS(c: kB.q(.25), s: 10, height: 1)),
                 ],
               ),
             ],

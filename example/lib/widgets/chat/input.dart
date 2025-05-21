@@ -91,6 +91,7 @@ class _TextField extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final primary = Theme.of(context).colorScheme.primary;
     final loaded = ref.watch(P.rwkv.loaded);
     final loading = ref.watch(P.rwkv.loading);
@@ -103,9 +104,9 @@ class _TextField extends ConsumerWidget {
       case DemoType.othello:
       case DemoType.sudoku:
       case DemoType.world:
-        hintText = S.current.send_message_to_rwkv;
+        hintText = s.send_message_to_rwkv;
       case DemoType.tts:
-        hintText = S.current.i_want_rwkv_to_say;
+        hintText = s.i_want_rwkv_to_say;
     }
 
     bool textFieldEnabled = loaded && !loading;

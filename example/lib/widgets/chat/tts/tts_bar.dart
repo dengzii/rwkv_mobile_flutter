@@ -24,6 +24,7 @@ class TTSBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final audioInteractorShown = ref.watch(P.tts.audioInteractorShown);
     final intonationShown = ref.watch(P.tts.intonationShown);
     final spkShown = ref.watch(P.tts.spkShown);
@@ -37,7 +38,7 @@ class TTSBar extends ConsumerWidget {
     String target = "";
 
     if (selectedSpkName != null) {
-      target = S.current.imitate_target + ": " + (P.tts.safe(selectedSpkName));
+      target = s.imitate_target + ": " + (P.tts.safe(selectedSpkName));
       target += " " + pairs[selectedSpkName];
       final flag = selectedLanguage.flag;
       if (flag != null) target += " " + flag;
@@ -58,7 +59,7 @@ class TTSBar extends ConsumerWidget {
             if (selectSourceAudioPath != null)
               C(
                 padding: const EI.s(v: 4),
-                child: T(S.current.imitate_target + ": " + (sourceWavName ?? ""), s: TS(c: primary, w: FW.w600)),
+                child: T(s.imitate_target + ": " + (sourceWavName ?? ""), s: TS(c: primary, w: FW.w600)),
               ),
             const _Actions(),
             if (audioInteractorShown) const _AudioInteractor(),
@@ -104,6 +105,7 @@ class _AudioInteractor extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final primary = Theme.of(context).colorScheme.primary;
     return SB(
       height: 250,
@@ -118,14 +120,14 @@ class _AudioInteractor extends ConsumerWidget {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: S.current.you_can_record_your_voice_and_let_rwkv_to_copy_it,
+                        text: s.you_can_record_your_voice_and_let_rwkv_to_copy_it,
                         style: TS(
                           c: primary,
                           w: FW.w600,
                         ),
                       ),
                       TextSpan(
-                        text: S.current.or_select_a_wav_file_to_let_rwkv_to_copy_it,
+                        text: s.or_select_a_wav_file_to_let_rwkv_to_copy_it,
                         style: const TS(
                           c: Colors.blue,
                           w: FW.w600,
@@ -217,6 +219,7 @@ class _AudioButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final primary = Theme.of(context).colorScheme.primary;
     final demoType = ref.watch(P.app.demoType);
     final borderRadius = demoType != DemoType.tts ? 12.r : 6.r;
@@ -232,7 +235,7 @@ class _AudioButton extends ConsumerWidget {
             borderRadius: borderRadius,
           ),
           child: T(
-            S.current.voice_cloning + (audioInteractorShown ? " ×" : ""),
+            s.voice_cloning + (audioInteractorShown ? " ×" : ""),
             s: TS(c: audioInteractorShown ? kW : primary),
           ),
         ),
@@ -246,6 +249,7 @@ class _SpkButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final primaryContainer = Theme.of(context).colorScheme.primaryContainer;
     final primary = Theme.of(context).colorScheme.primary;
     final demoType = ref.watch(P.app.demoType);
@@ -264,7 +268,7 @@ class _SpkButton extends ConsumerWidget {
             borderRadius: borderRadius,
           ),
           child: T(
-            S.current.prebuilt_voices + (spkShown ? " ×" : ""),
+            s.prebuilt_voices + (spkShown ? " ×" : ""),
             s: TS(c: spkShown ? kW : primary),
           ),
         ),
@@ -278,6 +282,7 @@ class _IntonationButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final primary = Theme.of(context).colorScheme.primary;
     final demoType = ref.watch(P.app.demoType);
     final borderRadius = demoType != DemoType.tts ? 12.r : 6.r;
@@ -293,7 +298,7 @@ class _IntonationButton extends ConsumerWidget {
             borderRadius: borderRadius,
           ),
           child: T(
-            S.current.intonations + (intonationShown ? " ×" : ""),
+            s.intonations + (intonationShown ? " ×" : ""),
             s: TS(c: intonationShown ? kW : primary),
           ),
         ),

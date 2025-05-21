@@ -107,6 +107,7 @@ class ModelItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final localFile = ref.watch(P.fileManager.locals(fileInfo));
     final hasFile = localFile.hasFile;
     final downloading = localFile.downloading;
@@ -121,11 +122,11 @@ class ModelItem extends ConsumerWidget {
       case DemoType.fifthteenPuzzle:
       case DemoType.othello:
       case DemoType.sudoku:
-        startTitle = S.current.start_a_new_game;
+        startTitle = s.start_a_new_game;
       case DemoType.chat:
       case DemoType.tts:
       case DemoType.world:
-        startTitle = S.current.start_to_chat;
+        startTitle = s.start_to_chat;
     }
 
     return ClipRRect(
@@ -157,7 +158,7 @@ class ModelItem extends ConsumerWidget {
                     ),
                     padding: const EI.a(8),
                     child: T(
-                      loading ? S.current.loading : startTitle,
+                      loading ? s.loading : startTitle,
                       s: const TS(c: kW),
                     ),
                   ),
@@ -171,7 +172,7 @@ class ModelItem extends ConsumerWidget {
                       borderRadius: 8.r,
                     ),
                     padding: const EI.a(8),
-                    child: T(S.current.chatting, s: const TS(c: kW)),
+                    child: T(s.chatting, s: const TS(c: kW)),
                   ),
                 ),
               if (!isCurrentModel) 8.w,
@@ -285,6 +286,7 @@ class FileKeyItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final localFile = ref.watch(P.fileManager.locals(fileInfo));
     final fileSize = fileInfo.fileSize;
     final progress = localFile.progress;
@@ -396,10 +398,10 @@ class FileKeyItem extends ConsumerWidget {
         if (downloading)
           Wrap(
             children: [
-              T(S.current.speed, s: const TS(c: kB)),
+              T(s.speed, s: const TS(c: kB)),
               T("${networkSpeed.toStringAsFixed(1)}MB/s"),
               12.w,
-              T(S.current.remaining, s: const TS(c: kB)),
+              T(s.remaining, s: const TS(c: kB)),
               if (timeRemaining.inMinutes > 0) T("${timeRemaining.inMinutes}m"),
               if (timeRemaining.inMinutes == 0) T("${timeRemaining.inSeconds}s"),
             ],

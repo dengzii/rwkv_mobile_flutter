@@ -44,6 +44,7 @@ class AppInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final paddingBottom = ref.watch(P.app.paddingBottom);
     final demoType = ref.watch(P.app.demoType);
     final iconPath = "assets/img/${demoType.name}/icon.png";
@@ -136,8 +137,8 @@ class AppInfo extends ConsumerWidget {
                 ),
                 _buildCommunityLink(
                   icon: Icons.discord,
-                  title: S.current.discord,
-                  subtitle: S.current.join_our_discord_server,
+                  title: s.discord,
+                  subtitle: s.join_our_discord_server,
                   onTap: _openDiscord,
                 ),
                 _buildCommunityLink(
@@ -152,14 +153,14 @@ class AppInfo extends ConsumerWidget {
             TextButton(
               onPressed: _openFeedback,
               child: T(
-                S.current.feedback,
+                s.feedback,
               ),
             ),
             12.h,
             TextButton(
               onPressed: () => _showLicensePage(context, version, buildNumber, iconWidget),
               child: T(
-                S.current.license,
+                s.license,
               ),
             ),
             paddingBottom.h,

@@ -125,6 +125,7 @@ class TTSGroupItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final availableModels = P.fileManager.availableModels.q;
     final fileInfos = availableModels.toList().where((e) => !e.tags.contains("core")).toList();
     fileInfos.insert(0, fileInfo);
@@ -177,7 +178,7 @@ class TTSGroupItem extends ConsumerWidget {
                   TextButton(
                     onPressed: _onDownloadAllTap,
                     child: T(
-                      S.current.download_missing,
+                      s.download_missing,
                       s: const TS(
                         w: FW.w600,
                       ),
@@ -187,7 +188,7 @@ class TTSGroupItem extends ConsumerWidget {
                   TextButton(
                     onPressed: _onDeleteAllTap,
                     child: T(
-                      S.current.delete_all,
+                      s.delete_all,
                       s: const TS(
                         w: FW.w600,
                       ),
@@ -197,7 +198,7 @@ class TTSGroupItem extends ConsumerWidget {
                   TextButton(
                     onPressed: null,
                     child: T(
-                      S.current.exploring,
+                      s.exploring,
                       s: const TS(
                         w: FW.w600,
                       ),
@@ -208,7 +209,7 @@ class TTSGroupItem extends ConsumerWidget {
                   TextButton(
                     onPressed: loading ? null : _onStartToChatTap,
                     child: T(
-                      loading ? S.current.loading : S.current.start_to_chat,
+                      loading ? s.loading : s.start_to_chat,
                       s: const TS(
                         w: FW.w600,
                       ),
@@ -218,7 +219,7 @@ class TTSGroupItem extends ConsumerWidget {
                   TextButton(
                     onPressed: loading ? null : _onContinueTap,
                     child: T(
-                      loading ? S.current.loading : S.current.back_to_chat,
+                      loading ? s.loading : s.back_to_chat,
                       s: const TS(
                         w: FW.w600,
                       ),
