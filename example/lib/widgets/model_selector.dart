@@ -82,7 +82,7 @@ class ModelSelector extends ConsumerWidget {
     final s = S.of(context);
     final memUsed = ref.watch(P.device.memUsed);
     final memFree = ref.watch(P.device.memFree);
-    final paddingBottom = ref.watch(P.app.paddingBottom);
+    final paddingBottom = ref.watch(P.app.quantizedIntPaddingBottom);
 
     final memUsedString = gbDisplay(memUsed);
     final memFreeString = gbDisplay(memFree);

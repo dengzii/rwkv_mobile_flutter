@@ -778,7 +778,7 @@ class _Console extends ConsumerWidget {
     final received = (ref.watch(P.othello.received)).split("\n");
     final usePortrait = ref.watch(P.othello.usePortrait);
     final paddingTop = ref.watch(P.app.paddingTop);
-    final paddingBottom = ref.watch(P.app.paddingBottom);
+    final paddingBottom = ref.watch(P.app.quantizedIntPaddingBottom);
     final paddingLeft = ref.watch(P.app.paddingLeft);
 
     return Material(

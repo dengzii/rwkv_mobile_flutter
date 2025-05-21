@@ -45,7 +45,7 @@ class AppInfo extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = S.of(context);
-    final paddingBottom = ref.watch(P.app.paddingBottom);
+    final paddingBottom = ref.watch(P.app.quantizedIntPaddingBottom);
     final demoType = ref.watch(P.app.demoType);
     final iconPath = "assets/img/${demoType.name}/icon.png";
     final version = ref.watch(P.app.version);
