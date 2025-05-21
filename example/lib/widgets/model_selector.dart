@@ -87,7 +87,6 @@ class ModelSelector extends ConsumerWidget {
     final memUsedString = gbDisplay(memUsed);
     final memFreeString = gbDisplay(memFree);
     final demoType = ref.watch(P.app.demoType);
-    final hasDownloadedModels = ref.watch(P.fileManager.hasDownloadedModels);
     final availableModels = ref.watch(P.fileManager.availableModels);
     final ttsCores = ref.watch(P.fileManager.ttsCores);
 
@@ -96,7 +95,7 @@ class ModelSelector extends ConsumerWidget {
       child: C(
         margin: const EI.o(t: 12),
         child: ListView(
-          padding: const EI.o(l: 8, r: 8),
+          padding: const EI.o(l: 12, r: 12),
           controller: scrollController,
           children: [
             Ro(
@@ -110,20 +109,13 @@ class ModelSelector extends ConsumerWidget {
                 ),
               ],
             ),
-            if (demoType == DemoType.chat) T(s.chat_please_select_a_model, s: const TS(s: 16, w: FW.w500)),
-            if (demoType == DemoType.world) T(s.please_select_a_world_type, s: const TS(s: 16, w: FW.w500)),
-            if (!hasDownloadedModels) 4.h,
-            if (!hasDownloadedModels) T(s.chat_you_need_download_model_if_you_want_to_use_it),
-            4.h,
-            T(s.ensure_you_have_enough_memory_to_load_the_model, s: TS(c: kB.q(.7), s: 12)),
-            4.h,
-            T(s.memory_used(memUsedString, memFreeString), s: TS(c: kB.q(.7), s: 12)),
-            4.h,
-            T(s.download_source, s: TS(c: kB.q(.7), s: 14, w: FW.w600)),
-            4.h,
+            if (demoType == DemoType.world)
+              T(s.please_select_a_world_type, s: const TS(s: 16, w: FW.w500)),
+            T(s.memory_used(memUsedString, memFreeString),
+                s: TS(c: kB.q(.7), s: 12)),
             const _DownloadSource(),
-            4.h,
-            if (demoType == DemoType.chat) T(s.size_recommendation, s: TS(c: kB.q(.7), s: 14, w: FW.w600)),
+            if (demoType == DemoType.chat)
+              T("👉${s.size_recommendation}👈", s: TS(c: kB.q(.7), s: 12, w: FW.w500)),
             if (demoType == DemoType.world)
               ...WorldType.values.where((e) => e.available).map((e) {
                 return e.socPairs.where((pair) {
@@ -163,30 +155,41 @@ class _DownloadSource extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentSource = ref.watch(P.fileManager.downloadSource);
     final primary = Theme.of(context).colorScheme.primary;
-    return Wrap(
-      runSpacing: 4,
-      spacing: 4,
-      children: FileDownloadSource.values.where((e) => kDebugMode ? true : !e.isDebug).map((e) {
-        return GD(
-          onTap: () {
-            P.fileManager.downloadSource.q = e;
-          },
-          child: C(
-            decoration: BD(
-              color: e == currentSource ? primary : kC,
-              borderRadius: 4.r,
-              border: Border.all(
-                color: primary,
+    return Co(
+      c: CrossAxisAlignment.stretch,
+      children: [
+        4.h,
+        T(S.current.download_source, s: TS(c: kB.q(.7), s: 12, w: FW.w600)),
+        4.h,
+        Wrap(
+          runSpacing: 4,
+          spacing: 4,
+          children: FileDownloadSource.values
+              .where((e) => kDebugMode || !e.isDebug)
+              .map((e) {
+            return GD(
+              onTap: () {
+                P.fileManager.downloadSource.q = e;
+              },
+              child: C(
+                decoration: BD(
+                  color: e == currentSource ? primary : kC,
+                  borderRadius: 4.r,
+                  border: Border.all(
+                    color: primary,
+                  ),
+                ),
+                padding: const EI.s(h: 6, v: 2),
+                child: T(
+                  e.name,
+                  s: TS(c: e == currentSource ? kW : kB.q(.7), s: 14),
+                ),
               ),
-            ),
-            padding: const EI.s(h: 6, v: 4),
-            child: T(
-              e.name,
-              s: TS(c: e == currentSource ? kW : kB.q(.7), s: 14),
-            ),
-          ),
-        );
-      }).toList(),
+            );
+          }).toList(),
+        ),
+        8.h,
+      ],
     );
   }
 }
