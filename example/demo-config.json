@@ -378,7 +378,7 @@
         "name": "ModRWKV7-V-0.4B-thinking Encoder",
         "type": "gguf",
         "modelSize": 0.4,
-        "url": "mollysama/rwkv-mobile-models/resolve/main/multimodal/vision_encoder/RWKV7-0.4B-G1-SigLIP2-ColdStart-encoder-f16.gguf",
+        "url": "mollysama/rwkv-mobile-models/resolve/main/multimodal/model/RWKV7-0.4B-G1-SigLIP2-ColdStart-encoder-f16.gguf",
         "fileName": "RWKV7-0.4B-G1-SigLIP2-ColdStart-encoder-f16.gguf",
         "fileSize": 197526912,
         "quantization": "fp16",
