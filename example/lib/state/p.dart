@@ -70,6 +70,7 @@ part "tts.dart";
 part "preference.dart";
 part "guard.dart";
 part "sudoku.dart";
+part "suggestion.dart";
 
 abstract class P {
   static final app = _App();
@@ -86,6 +87,7 @@ abstract class P {
   static final preference = _Preference();
   static final guard = _Guard();
   static final sudoku = _Sudoku();
+  static final suggestion = _Suggestion();
 
   static FV init() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -108,6 +110,7 @@ abstract class P {
       tts._init(),
       guard._init(),
       sudoku._init(),
+      suggestion._init(),
     ]);
   }
 }
