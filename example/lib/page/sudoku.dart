@@ -306,7 +306,7 @@ class _UI extends ConsumerWidget {
     final screenWidth = ref.watch(P.app.screenWidth);
     final screenHeight = ref.watch(P.app.screenHeight);
 
-    final paddingBottom = ref.watch(P.app.paddingBottom);
+    final paddingBottom = ref.watch(P.app.quantizedIntPaddingBottom);
     final paddingTop = ref.watch(P.app.paddingTop);
     final min = math.min(screenWidth, screenHeight - paddingBottom - paddingTop);
 

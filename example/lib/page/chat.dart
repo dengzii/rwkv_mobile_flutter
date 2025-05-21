@@ -163,7 +163,7 @@ class _RoleSelector extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final s = S.of(context);
     final roles = ref.watch(P.chat.roles);
-    final paddingBottom = ref.watch(P.app.paddingBottom);
+    final paddingBottom = ref.watch(P.app.quantizedIntPaddingBottom);
     final loading = ref.watch(P.rwkv.loading);
 
     return ClipRRect(

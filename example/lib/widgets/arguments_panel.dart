@@ -40,7 +40,7 @@ class ArgumentsPanel extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final s = S.of(context);
-    final paddingBottom = ref.watch(P.app.paddingBottom);
+    final paddingBottom = ref.watch(P.app.quantizedIntPaddingBottom);
     return ClipRRect(
       borderRadius: 16.r,
       child: C(
