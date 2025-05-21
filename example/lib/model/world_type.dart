@@ -1,7 +1,8 @@
 enum WorldType {
   reasoningQA,
-  qa,
   ocr,
+  @Deprecated("")
+  qa,
   @Deprecated("")
   engVisualQA,
   @Deprecated("")
@@ -15,7 +16,7 @@ enum WorldType {
   String get displayName => switch (this) {
         WorldType.reasoningQA => "Visual QA Reasoning (🇨🇳 Chinese & 🇺🇸 English)",
         WorldType.qa => "Visual QA (🇨🇳 Chinese & 🇺🇸 English)",
-        WorldType.ocr => "OCR (🇨🇳 Chinese & 🇺🇸 English)",
+        WorldType.ocr => "Visual + OCR (🇨🇳 Chinese & 🇺🇸 English)",
         WorldType.engVisualQA => "Visual QA (🇺🇸 English)",
         WorldType.engAudioQA => "Audio QA (🇺🇸 English)",
         WorldType.chineseASR => "ASR (🇨🇳 Chinese)",
@@ -25,7 +26,7 @@ enum WorldType {
   String get taskDescription => switch (this) {
         WorldType.reasoningQA => "Visual Question Answering (Reasoning)",
         WorldType.qa => "Visual Question Answering",
-        WorldType.ocr => "OCR",
+        WorldType.ocr => "Visual + OCR",
         WorldType.engVisualQA => "Visual Question Answering",
         WorldType.engAudioQA => "Audio Question Answering",
         WorldType.chineseASR => "Automatic Speech Recognition",

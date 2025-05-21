@@ -94,9 +94,6 @@ extension $FileManager on _FileManager {
         }
       }
       final state = locals(fileInfo);
-      if (fileInfo.fileName == "RWKV7-0.4B-G1-SigLIP2-a16w8_8gen3_combined_embedding.bin") {
-        qqr("fileInfo: $fileInfo\nfileSizeVerified: $fileSizeVerified\npath: $path\nfileExists: $pathExists");
-      }
       state.q = state.q.copyWith(hasFile: fileSizeVerified);
     }
   }
