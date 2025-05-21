@@ -109,13 +109,10 @@ class ModelSelector extends ConsumerWidget {
                 ),
               ],
             ),
-            if (demoType == DemoType.world)
-              T(s.please_select_a_world_type, s: const TS(s: 16, w: FW.w500)),
-            T(s.memory_used(memUsedString, memFreeString),
-                s: TS(c: kB.q(.7), s: 12)),
+            if (demoType == DemoType.world) T(s.please_select_a_world_type, s: const TS(s: 16, w: FW.w500)),
+            T(s.memory_used(memUsedString, memFreeString), s: TS(c: kB.q(.7), s: 12)),
             const _DownloadSource(),
-            if (demoType == DemoType.chat)
-              T("👉${s.size_recommendation}👈", s: TS(c: kB.q(.7), s: 12, w: FW.w500)),
+            if (demoType == DemoType.chat) T("👉${s.size_recommendation}👈", s: TS(c: kB.q(.7), s: 12, w: FW.w500)),
             if (demoType == DemoType.world)
               ...WorldType.values.where((e) => e.available).map((e) {
                 return e.socPairs.where((pair) {
@@ -164,9 +161,7 @@ class _DownloadSource extends ConsumerWidget {
         Wrap(
           runSpacing: 4,
           spacing: 4,
-          children: FileDownloadSource.values
-              .where((e) => kDebugMode || !e.isDebug)
-              .map((e) {
+          children: FileDownloadSource.values.where((e) => kDebugMode || !e.isDebug).map((e) {
             return GD(
               onTap: () {
                 P.fileManager.downloadSource.q = e;
