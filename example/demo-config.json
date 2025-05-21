@@ -540,7 +540,7 @@
     ]
   },
   "tts": {
-    "latest_build": 416,
+    "latest_build": 418,
     "latest_build_ios": 411,
     "note_zh": ["提升应用程序的稳定性", "修复了已知问题"],
     "note_en": ["Improve application stability", "Fix known issues"],
