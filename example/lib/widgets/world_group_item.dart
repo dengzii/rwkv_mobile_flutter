@@ -161,7 +161,7 @@ downloading: $downloading""");
                     onPressed: _onDownloadAllTap,
                     child: T(
                       s.download_all,
-                      s: TS(
+                      s: const TS(
                         w: FW.w600,
                       ),
                     ),

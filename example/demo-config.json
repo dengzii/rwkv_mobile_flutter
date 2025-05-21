@@ -1,6 +1,6 @@
 {
   "chat": {
-    "latest_build": 411,
+    "latest_build": 413,
     "latest_build_ios": 411,
     "note_zh": ["提升应用程序的稳定性", "修复了已知问题"],
     "note_en": ["Improve application stability", "Fix known issues"],
@@ -367,7 +367,7 @@
     ]
   },
   "world": {
-    "latest_build": 409,
+    "latest_build": 417,
     "latest_build_ios": 409,
     "note_zh": ["提升应用程序的稳定性", "修复了已知问题"],
     "note_en": ["Improve application stability", "Fix known issues"],
@@ -540,7 +540,7 @@
     ]
   },
   "tts": {
-    "latest_build": 404,
+    "latest_build": 416,
     "latest_build_ios": 411,
     "note_zh": ["提升应用程序的稳定性", "修复了已知问题"],
     "note_en": ["Improve application stability", "Fix known issues"],
@@ -721,7 +721,7 @@
     "model_config": []
   },
   "sudoku": {
-    "latest_build": 412,
+    "latest_build": 415,
     "latest_build_ios": 1,
     "note_zh": ["提升应用程序的稳定性", "修复了已知问题"],
     "note_en": ["Improve application stability", "Fix known issues"],
