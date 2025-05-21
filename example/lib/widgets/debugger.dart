@@ -64,6 +64,8 @@ class Debugger extends ConsumerWidget {
 
     final recording = ref.watch(P.world.recording);
 
+    final latestRuntimeAddress = ref.watch(P.preference.latestRuntimeAddress);
+
     return Positioned(
       left: 0,
       top: 0,
@@ -115,6 +117,8 @@ class Debugger extends ConsumerWidget {
                   // T(autoPauseId.toString()),
                   T("editingIndex".codeToName),
                   T(editingIndex.toString()),
+                  T("latestRuntimeAddress".codeToName),
+                  T(latestRuntimeAddress.toString()),
                   if (demoType == DemoType.tts) ...[
                     T("ttsDone".codeToName),
                     T(ttsDone.toString()),

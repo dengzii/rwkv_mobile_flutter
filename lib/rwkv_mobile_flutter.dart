@@ -102,21 +102,40 @@ class RWKVMobile {
     final inputsPtr = calloc.allocate<ffi.Pointer<ffi.Char>>(maxMessages);
 
     var modelPath = options.modelPath;
-    var modelBackend = options.backend.asArgument;
+    final backend = options.backend;
+    var modelBackendString = backend.asArgument;
     var tokenizerPath = options.tokenizerPath;
 
+    // TODO: @Molly please use this variable to initialize runtime
+    // TODO: 需要检查一下地址里是否有东西, 如果不是 hot restart 而是 cold boot, 前端传递的 address 里面可能没有东西
+    final latestRuntimeAddress = options.latestRuntimeAddress;
+    if (kDebugMode) print("💬 latestRuntimeAddress: $latestRuntimeAddress");
+
     rwkvmobile_runtime_t runtime;
+    if (latestRuntimeAddress != 0) {
+      if (kDebugMode) print("💬 got previous runtime address, releasing");
+      runtime = ffi.Pointer.fromAddress(latestRuntimeAddress);
+      rwkvMobile.rwkvmobile_runtime_release(runtime);
+      runtime = ffi.nullptr;
+    }
 
     // runtime initializations
-    if (modelBackend == 'qnn') {
-      // TODO: better solution for this
-      final tempDir = await getTemporaryDirectory();
-      if (kDebugMode) print("💬 tempDir: ${tempDir.path}");
-      rwkvMobile.rwkvmobile_runtime_add_adsp_library_path((tempDir.path + '/assets/lib/').toNativeUtf8().cast<ffi.Char>());
+    switch (backend) {
+      case Backend.qnn:
+        // TODO: better solution for this
+        final tempDir = await getTemporaryDirectory();
+        if (kDebugMode) print("💬 tempDir: ${tempDir.path}");
+        rwkvMobile.rwkvmobile_runtime_add_adsp_library_path((tempDir.path + '/assets/lib/').toNativeUtf8().cast<ffi.Char>());
 
-      runtime = rwkvMobile.rwkvmobile_runtime_init_with_name_extra(modelBackend.toNativeUtf8().cast<ffi.Char>(), (tempDir.path + '/assets/lib/libQnnHtp.so').toNativeUtf8().cast<ffi.Void>());
-    } else {
-      runtime = rwkvMobile.rwkvmobile_runtime_init_with_name(modelBackend.toNativeUtf8().cast<ffi.Char>());
+        runtime = rwkvMobile.rwkvmobile_runtime_init_with_name_extra(
+          modelBackendString.toNativeUtf8().cast<ffi.Char>(),
+          (tempDir.path + '/assets/lib/libQnnHtp.so').toNativeUtf8().cast<ffi.Void>(),
+        );
+      case Backend.ncnn:
+      case Backend.llamacpp:
+      case Backend.webRwkv:
+      case Backend.mnn:
+        runtime = rwkvMobile.rwkvmobile_runtime_init_with_name(modelBackendString.toNativeUtf8().cast<ffi.Char>());
     }
 
     if (runtime.address == 0) throw Exception('😡 Failed to initialize runtime');
@@ -133,6 +152,11 @@ class RWKVMobile {
     // TODO: @WangCe 逐渐地迁移到 handler 方法中, 最好不要在该方法声明局部变量
     await for (final _FromFrontend message in receivePort) {
       switch (message) {
+        // 🟥 getLatestRuntimeAddress
+        case GetLatestRuntimeAddress req:
+          if (kDebugMode) print("✅ getLatestRuntimeAddress: ${runtime.address}");
+          sendPort.send(LatestRuntimeAddress(latestRuntimeAddress: runtime.address, toRWKV: req));
+
         // 🟥 setMaxLength
         case SetMaxLength req:
           final arg = req.maxLength;
@@ -352,18 +376,18 @@ class RWKVMobile {
         // 🟥 initRuntime
         case InitRuntime req:
           modelPath = req.modelPath;
-          modelBackend = req.backend.asArgument;
+          modelBackendString = req.backend.asArgument;
           tokenizerPath = req.tokenizerPath;
           if (runtime.address != 0) rwkvMobile.rwkvmobile_runtime_release(runtime);
 
-          if (modelBackend == 'qnn') {
+          if (modelBackendString == 'qnn') {
             // TODO: better solution for this
             final tempDir = await getTemporaryDirectory();
             rwkvMobile.rwkvmobile_runtime_add_adsp_library_path((tempDir.path + '/assets/lib/').toNativeUtf8().cast<ffi.Char>());
 
-            runtime = rwkvMobile.rwkvmobile_runtime_init_with_name_extra(modelBackend.toNativeUtf8().cast<ffi.Char>(), (tempDir.path + '/assets/lib/libQnnHtp.so').toNativeUtf8().cast<ffi.Void>());
+            runtime = rwkvMobile.rwkvmobile_runtime_init_with_name_extra(modelBackendString.toNativeUtf8().cast<ffi.Char>(), (tempDir.path + '/assets/lib/libQnnHtp.so').toNativeUtf8().cast<ffi.Void>());
           } else {
-            runtime = rwkvMobile.rwkvmobile_runtime_init_with_name(modelBackend.toNativeUtf8().cast<ffi.Char>());
+            runtime = rwkvMobile.rwkvmobile_runtime_init_with_name(modelBackendString.toNativeUtf8().cast<ffi.Char>());
           }
 
           if (runtime.address == 0) {
