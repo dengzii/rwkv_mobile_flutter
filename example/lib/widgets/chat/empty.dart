@@ -15,6 +15,7 @@ class Empty extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final messages = ref.watch(P.chat.messages);
     if (messages.isNotEmpty) return Positioned.fill(child: IgnorePointer(child: Container()));
     final loaded = ref.watch(P.rwkv.loaded);
@@ -57,14 +58,14 @@ class Empty extends ConsumerWidget {
                     const Spacer(),
                     Image.asset(logoPath, width: 140),
                     12.h,
-                    T(S.current.chat_welcome_to_use(Config.appTitle), s: const TS(s: 18, w: FW.w600)),
+                    T(s.chat_welcome_to_use(Config.appTitle), s: const TS(s: 18, w: FW.w600)),
                     12.h,
                     ConstrainedBox(
                       constraints: const BoxConstraints(maxWidth: 500),
-                      child: T(S.current.intro),
+                      child: T(s.intro),
                     ),
                     12.h,
-                    if (!loaded) T(S.current.start_a_new_chat_by_clicking_the_button_below),
+                    if (!loaded) T(s.start_a_new_chat_by_clicking_the_button_below),
                     if (!loaded) 12.h,
                     if (!loaded)
                       TextButton(
@@ -72,10 +73,10 @@ class Empty extends ConsumerWidget {
                           P.fileManager.modelSelectorShown.q = false;
                           P.fileManager.modelSelectorShown.q = true;
                         },
-                        child: T(demoType == DemoType.world ? S.current.select_a_world_type : S.current.select_a_model, s: const TS(s: 16, w: FW.w600)),
+                        child: T(demoType == DemoType.world ? s.select_a_world_type : s.select_a_model, s: const TS(s: 16, w: FW.w600)),
                       ),
                     if (!loaded) 12.h,
-                    if (loaded) T(S.current.you_are_now_using("")),
+                    if (loaded) T(s.you_are_now_using("")),
                     4.h,
                     if (loaded)
                       C(

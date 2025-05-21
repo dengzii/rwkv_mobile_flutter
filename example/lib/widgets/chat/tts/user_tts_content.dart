@@ -14,6 +14,7 @@ class UserTtsContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final demoType = ref.watch(P.app.demoType);
     if (demoType != DemoType.tts) return const SizedBox.shrink();
     final primary = Theme.of(context).colorScheme.primary;
@@ -34,7 +35,7 @@ class UserTtsContent extends ConsumerWidget {
             // c: CAA.start,
             TextSpan(children: [
               if (msg.ttsSourceAudioPath != null) ...[
-                TextSpan(text: S.current.according_to_the_following_audio_file),
+                TextSpan(text: s.according_to_the_following_audio_file),
                 TextSpan(text: P.tts.flagChange(msg.ttsSourceAudioPath!.split("/").last).replaceAll("_", " ")),
               ],
               if (msg.ttsSpeakerName != null) ...[

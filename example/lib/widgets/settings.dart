@@ -18,6 +18,7 @@ class Settings extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final paddingBottom = ref.watch(P.app.paddingBottom);
     final paddingTop = ref.watch(P.app.paddingTop);
     final demoType = ref.watch(P.app.demoType);
@@ -81,7 +82,7 @@ class Settings extends ConsumerWidget {
             m: MAA.start,
             children: [
               T(
-                S.current.application_settings,
+                s.application_settings,
                 s: TS(w: FW.w500, c: kB.q(.8), s: 12),
               ),
             ],
@@ -90,15 +91,15 @@ class Settings extends ConsumerWidget {
           FormItem(
             isSectionStart: true,
             icon: Icon(Icons.format_size_outlined, color: kB.q(.667), size: 16),
-            title: S.current.font_size,
+            title: s.font_size,
             info: "${P.preference.textScalePairs[preferredTextScaleFactor]}",
             onTap: P.preference.showTextScaleFactorDialog,
           ),
           FormItem(
             isSectionEnd: true,
             icon: Icon(Icons.language_outlined, color: kB.q(.667), size: 16),
-            title: S.current.application_language,
-            info: preferredLanguage.display ?? S.current.follow_system,
+            title: s.application_language,
+            info: preferredLanguage.display ?? s.follow_system,
             onTap: P.preference.showLocaleDialog,
           ),
           12.h,
@@ -106,7 +107,7 @@ class Settings extends ConsumerWidget {
             m: MAA.start,
             children: [
               T(
-                S.current.join_the_community,
+                s.join_the_community,
                 s: TS(w: FW.w500, c: kB.q(.8), s: 12),
               ),
             ],
@@ -115,26 +116,26 @@ class Settings extends ConsumerWidget {
           FormItem(
             icon: Icon(Icons.chat_bubble_outline, color: kB.q(.667), size: 16),
             isSectionStart: true,
-            title: S.current.qq_group_1,
-            subtitle: "${S.current.application_internal_test_group}: 332381861",
+            title: s.qq_group_1,
+            subtitle: "${s.application_internal_test_group}: 332381861",
             onTap: _openQQGroup1,
           ),
           FormItem(
             icon: Icon(Icons.chat_bubble_outline, color: kB.q(.667), size: 16),
-            title: S.current.qq_group_2,
-            subtitle: "${S.current.technical_research_group}: 325154699",
+            title: s.qq_group_2,
+            subtitle: "${s.technical_research_group}: 325154699",
             onTap: _openQQGroup2,
           ),
           FormItem(
             icon: Icon(Icons.chat_bubble_outline, color: kB.q(.667), size: 16),
-            title: S.current.discord,
-            subtitle: S.current.join_our_discord_server,
+            title: s.discord,
+            subtitle: s.join_our_discord_server,
             onTap: _openDiscord,
           ),
           FormItem(
             isSectionEnd: true,
             icon: Icon(Icons.tag, color: kB.q(.667), size: 16),
-            title: S.current.twitter,
+            title: s.twitter,
             subtitle: "@BlinkDL_AI",
             onTap: _openTwitter,
           ),
@@ -143,7 +144,7 @@ class Settings extends ConsumerWidget {
             m: MAA.start,
             children: [
               T(
-                S.current.about,
+                s.about,
                 s: TS(w: FW.w500, c: kB.q(.8), s: 12),
               ),
             ],
@@ -151,13 +152,13 @@ class Settings extends ConsumerWidget {
           8.h,
           FormItem(
             isSectionStart: true,
-            title: S.current.feedback,
+            title: s.feedback,
             icon: Icon(Icons.feedback_outlined, color: kB.q(.667), size: 16),
             onTap: _openFeedback,
           ),
           FormItem(
             isSectionEnd: true,
-            title: S.current.license,
+            title: s.license,
             icon: Icon(Icons.contact_page_outlined, color: kB.q(.667), size: 16),
             onTap: () => _showLicensePage(context, version, buildNumber, iconWidget),
           ),

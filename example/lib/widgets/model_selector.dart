@@ -79,6 +79,7 @@ class ModelSelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final memUsed = ref.watch(P.device.memUsed);
     final memFree = ref.watch(P.device.memFree);
     final paddingBottom = ref.watch(P.app.paddingBottom);
@@ -100,7 +101,7 @@ class ModelSelector extends ConsumerWidget {
           children: [
             Ro(
               children: [
-                Exp(child: T(S.current.chat_welcome_to_use(Config.appTitle), s: const TS(s: 18, w: FW.w600))),
+                Exp(child: T(s.chat_welcome_to_use(Config.appTitle), s: const TS(s: 18, w: FW.w600))),
                 IconButton(
                   onPressed: () {
                     pop();
@@ -109,20 +110,20 @@ class ModelSelector extends ConsumerWidget {
                 ),
               ],
             ),
-            if (demoType == DemoType.chat) T(S.current.chat_please_select_a_model, s: const TS(s: 16, w: FW.w500)),
-            if (demoType == DemoType.world) T(S.current.please_select_a_world_type, s: const TS(s: 16, w: FW.w500)),
+            if (demoType == DemoType.chat) T(s.chat_please_select_a_model, s: const TS(s: 16, w: FW.w500)),
+            if (demoType == DemoType.world) T(s.please_select_a_world_type, s: const TS(s: 16, w: FW.w500)),
             if (!hasDownloadedModels) 4.h,
-            if (!hasDownloadedModels) T(S.current.chat_you_need_download_model_if_you_want_to_use_it),
+            if (!hasDownloadedModels) T(s.chat_you_need_download_model_if_you_want_to_use_it),
             4.h,
-            T(S.current.ensure_you_have_enough_memory_to_load_the_model, s: TS(c: kB.q(.7), s: 12)),
+            T(s.ensure_you_have_enough_memory_to_load_the_model, s: TS(c: kB.q(.7), s: 12)),
             4.h,
-            T(S.current.memory_used(memUsedString, memFreeString), s: TS(c: kB.q(.7), s: 12)),
+            T(s.memory_used(memUsedString, memFreeString), s: TS(c: kB.q(.7), s: 12)),
             4.h,
-            T(S.current.download_source, s: TS(c: kB.q(.7), s: 14, w: FW.w600)),
+            T(s.download_source, s: TS(c: kB.q(.7), s: 14, w: FW.w600)),
             4.h,
             const _DownloadSource(),
             4.h,
-            if (demoType == DemoType.chat) T(S.current.size_recommendation, s: TS(c: kB.q(.7), s: 14, w: FW.w600)),
+            if (demoType == DemoType.chat) T(s.size_recommendation, s: TS(c: kB.q(.7), s: 14, w: FW.w600)),
             if (demoType == DemoType.world)
               ...WorldType.values.where((e) => e.available).map((e) {
                 return e.socPairs.where((pair) {

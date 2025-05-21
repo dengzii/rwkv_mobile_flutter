@@ -108,6 +108,8 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
 
     final allDone = overallProgress >= 1;
 
+    final s = S.of(context);
+
     return C(
       decoration: const BD(color: kC),
       padding: const EI.o(),
@@ -152,7 +154,7 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
                     ),
                   ),
                   8.w,
-                  T(S.current.generating + " " + (overallProgress * 100).toStringAsFixed(0) + "%", s: TS(c: kB.q(.8), w: FW.w500)),
+                  T(s.generating + " " + (overallProgress * 100).toStringAsFixed(0) + "%", s: TS(c: kB.q(.8), w: FW.w500)),
                 ],
               ),
             ),

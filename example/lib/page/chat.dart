@@ -161,6 +161,7 @@ class _RoleSelector extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final roles = ref.watch(P.chat.roles);
     final paddingBottom = ref.watch(P.app.paddingBottom);
     final loading = ref.watch(P.rwkv.loading);
@@ -171,9 +172,9 @@ class _RoleSelector extends ConsumerWidget {
         margin: const EI.o(t: 16),
         child: Co(
           children: [
-            T(S.current.new_chat, s: const TS(s: 16, w: FW.w600)),
+            T(s.new_chat, s: const TS(s: 16, w: FW.w600)),
             12.h,
-            T(S.current.you_can_select_a_role_to_chat),
+            T(s.you_can_select_a_role_to_chat),
             12.h,
             Exp(
               child: ListView.builder(
@@ -207,7 +208,7 @@ class _RoleSelector extends ConsumerWidget {
                               borderRadius: 8.r,
                             ),
                             padding: const EI.a(8),
-                            child: T(loading ? S.current.loading : S.current.start_to_chat, s: const TS(c: kW)),
+                            child: T(loading ? s.loading : s.start_to_chat, s: const TS(c: kW)),
                           ),
                         ),
                       ],
@@ -221,12 +222,12 @@ class _RoleSelector extends ConsumerWidget {
             Ro(
               children: [
                 12.w,
-                Exp(child: T(S.current.or_you_can_start_a_new_empty_chat, s: const TS(c: kB, s: 16))),
+                Exp(child: T(s.or_you_can_start_a_new_empty_chat, s: const TS(c: kB, s: 16))),
                 TextButton(
                   onPressed: _onStartChatTap,
                   child: C(
                     padding: const EI.s(h: 12, v: 4),
-                    child: T(S.current.start_a_new_chat, s: const TS(c: kB, s: 20)),
+                    child: T(s.start_a_new_chat, s: const TS(c: kB, s: 20)),
                   ),
                 ),
                 12.w,

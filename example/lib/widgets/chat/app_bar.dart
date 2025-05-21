@@ -45,6 +45,7 @@ class ChatAppBar extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final loaded = ref.watch(P.rwkv.loaded);
 
     final demoType = ref.watch(P.app.demoType);
@@ -53,7 +54,7 @@ class ChatAppBar extends ConsumerWidget {
     final currentWorldType = ref.watch(P.rwkv.currentWorldType);
     final currentGroupInfo = ref.watch(P.rwkv.currentGroupInfo);
 
-    String displayName = S.current.click_to_select_model;
+    String displayName = s.click_to_select_model;
     if (currentGroupInfo != null) {
       displayName = currentGroupInfo.displayName;
     } else if (currentModel != null) {

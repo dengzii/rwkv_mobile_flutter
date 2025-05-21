@@ -97,6 +97,7 @@ class WorldGroupItem extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final availableModels = P.fileManager.availableModels.q;
     final fileInfos = availableModels.where((e) => e.worldType == worldType).where((file) {
       return file.isEncoder || (!file.isEncoder && file.fileName == socPair.$2);
@@ -159,7 +160,7 @@ downloading: $downloading""");
                   TextButton(
                     onPressed: _onDownloadAllTap,
                     child: T(
-                      S.current.download_all,
+                      s.download_all,
                       s: TS(
                         w: FW.w600,
                       ),
@@ -169,7 +170,7 @@ downloading: $downloading""");
                   TextButton(
                     onPressed: _onDownloadAllTap,
                     child: T(
-                      S.current.download_missing,
+                      s.download_missing,
                       s: const TS(
                         w: FW.w600,
                       ),
@@ -179,7 +180,7 @@ downloading: $downloading""");
                   TextButton(
                     onPressed: _onDeleteAllTap,
                     child: T(
-                      S.current.delete_all,
+                      s.delete_all,
                       s: const TS(
                         w: FW.w600,
                       ),
@@ -189,7 +190,7 @@ downloading: $downloading""");
                   TextButton(
                     onPressed: null,
                     child: T(
-                      S.current.exploring,
+                      s.exploring,
                       s: const TS(
                         w: FW.w600,
                       ),
@@ -200,7 +201,7 @@ downloading: $downloading""");
                   TextButton(
                     onPressed: loading ? null : _onStartToChatTap,
                     child: T(
-                      loading ? S.current.loading : S.current.start_to_chat,
+                      loading ? s.loading : s.start_to_chat,
                       s: const TS(
                         w: FW.w600,
                       ),
@@ -210,7 +211,7 @@ downloading: $downloading""");
                   TextButton(
                     onPressed: loading ? null : _onContinueTap,
                     child: T(
-                      loading ? S.current.loading : S.current.back_to_chat,
+                      loading ? s.loading : s.back_to_chat,
                       s: const TS(
                         w: FW.w600,
                       ),

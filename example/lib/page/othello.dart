@@ -28,7 +28,6 @@ class _Page extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
     final paddingTop = ref.watch(P.app.paddingTop);
     final usePortrait = ref.watch(P.othello.usePortrait);
     final playerShouldAtSameColumnWithSettings = ref.watch(P.othello.playerShouldAtSameColumnWithSettings);
@@ -115,7 +114,7 @@ class _Title extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
+    final s = S.of(context);
     final version = ref.watch(P.app.version);
     final buildNumber = ref.watch(P.app.buildNumber);
     final usePortrait = ref.watch(P.othello.usePortrait);
@@ -125,7 +124,7 @@ class _Title extends ConsumerWidget {
         12.w,
         T("$version($buildNumber)", s: TS(c: kB.q(.0), s: 10)),
         if (usePortrait) const Spacer(),
-        T(S.current.rwkv_othello, s: const TS(c: kB, s: 20, w: FW.w700)),
+        T(s.rwkv_othello, s: const TS(c: kB, s: 20, w: FW.w700)),
         if (usePortrait) const Spacer(),
         if (!usePortrait) 32.w,
         T("$version($buildNumber)", s: TS(c: kB.q(.5), s: 10)),
@@ -141,7 +140,7 @@ class _ModelSettings extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
+    final s = S.of(context);
     final usePortrait = ref.watch(P.othello.usePortrait);
     final searchDepth = ref.watch(P.othello.searchDepth);
     final searchBreadth = ref.watch(P.othello.searchBreadth);
@@ -244,20 +243,20 @@ class _ModelSettings extends ConsumerWidget {
           m: MAA.center,
           children: [
             T(
-              S.current.model_settings,
+              s.model_settings,
               s: const TS(w: FW.w700),
             ),
             8.h,
-            T(S.current.in_context_search_will_be_activated_when_both_breadth_and_depth_are_greater_than_2, s: TS(c: kB.q(.5), s: 10)),
+            T(s.in_context_search_will_be_activated_when_both_breadth_and_depth_are_greater_than_2, s: TS(c: kB.q(.5), s: 10)),
             8.h,
             usePortrait
                 ? Co(
                     c: CAA.stretch,
                     children: [
-                      T(S.current.search_depth, textAlign: TextAlign.center),
+                      T(s.search_depth, textAlign: TextAlign.center),
                       searchDepthControls,
                       4.h,
-                      T(S.current.search_breadth, textAlign: TextAlign.center),
+                      T(s.search_breadth, textAlign: TextAlign.center),
                       searchBreadthControls,
                     ],
                   )
@@ -265,13 +264,13 @@ class _ModelSettings extends ConsumerWidget {
                     children: [
                       Ro(
                         children: [
-                          T(S.current.search_depth, textAlign: TextAlign.center),
+                          T(s.search_depth, textAlign: TextAlign.center),
                           searchDepthControls,
                         ],
                       ),
                       Ro(
                         children: [
-                          T(S.current.search_breadth, textAlign: TextAlign.center),
+                          T(s.search_breadth, textAlign: TextAlign.center),
                           searchBreadthControls,
                         ],
                       ),
@@ -289,7 +288,7 @@ class _Players extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
+    final s = S.of(context);
     final blackIsAI = ref.watch(P.othello.blackIsAI);
     final whiteIsAI = ref.watch(P.othello.whiteIsAI);
     final playerShouldAtSameColumnWithSettings = ref.watch(P.othello.playerShouldAtSameColumnWithSettings);
@@ -302,7 +301,7 @@ class _Players extends ConsumerWidget {
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
-          T(S.current.black + ":", textAlign: TextAlign.center, s: const TS(w: FW.w700)),
+          T(s.black + ":", textAlign: TextAlign.center, s: const TS(w: FW.w700)),
           Wrap(
             children: [
               Ro(
@@ -315,7 +314,7 @@ class _Players extends ConsumerWidget {
                       P.othello.blackIsAI.q = false;
                     },
                   ),
-                  T(S.current.human),
+                  T(s.human),
                 ],
               ),
               Ro(
@@ -328,7 +327,7 @@ class _Players extends ConsumerWidget {
                       P.othello.blackIsAI.q = true;
                     },
                   ),
-                  T(S.current.rwkv),
+                  T(s.rwkv),
                 ],
               ),
             ],
@@ -343,7 +342,7 @@ class _Players extends ConsumerWidget {
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
-          T(S.current.white + ":", textAlign: TextAlign.center, s: const TS(w: FW.w700)),
+          T(s.white + ":", textAlign: TextAlign.center, s: const TS(w: FW.w700)),
           Wrap(
             children: [
               Ro(
@@ -356,7 +355,7 @@ class _Players extends ConsumerWidget {
                       P.othello.whiteIsAI.q = false;
                     },
                   ),
-                  T(S.current.human),
+                  T(s.human),
                 ],
               ),
               Ro(
@@ -369,7 +368,7 @@ class _Players extends ConsumerWidget {
                       P.othello.whiteIsAI.q = true;
                     },
                   ),
-                  T(S.current.rwkv),
+                  T(s.rwkv),
                 ],
               ),
             ],
@@ -393,7 +392,7 @@ class _Players extends ConsumerWidget {
           c: CAA.start,
           children: [
             T(
-              S.current.players,
+              s.players,
               s: const TS(w: FW.w700),
             ),
             12.h,
@@ -443,7 +442,7 @@ class _Score extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
+    final s = S.of(context);
     final blackScore = ref.watch(P.othello.blackScore);
     final whiteScore = ref.watch(P.othello.whiteScore);
     final blackTurn = ref.watch(P.othello.blackTurn);
@@ -458,10 +457,10 @@ class _Score extends ConsumerWidget {
         AnimatedOpacity(
           opacity: thinking ? 1.0 : .5,
           duration: const Duration(milliseconds: 150),
-          child: T(S.current.thinking, s: TS(c: kB, s: 10, w: thinking ? FW.w400 : FW.w400)),
+          child: T(s.thinking, s: TS(c: kB, s: 10, w: thinking ? FW.w400 : FW.w400)),
         ),
-        T("${S.current.prefill}: ${prefillSpeed.toStringAsFixed(1)} t/s", s: const TS(c: kB, s: 10, w: FW.w400)),
-        T("${S.current.decode}: ${decodeSpeed.toStringAsFixed(1)} t/s", s: const TS(c: kB, s: 10, w: FW.w400)),
+        T("${s.prefill}: ${prefillSpeed.toStringAsFixed(1)} t/s", s: const TS(c: kB, s: 10, w: FW.w400)),
+        T("${s.decode}: ${decodeSpeed.toStringAsFixed(1)} t/s", s: const TS(c: kB, s: 10, w: FW.w400)),
       ],
     );
 
@@ -471,7 +470,7 @@ class _Score extends ConsumerWidget {
           : () {
               P.othello.start();
             },
-      child: T(S.current.new_game, s: const TS(c: kB, s: 10, w: FW.w500)),
+      child: T(s.new_game, s: const TS(c: kB, s: 10, w: FW.w500)),
     );
 
     return Ro(
@@ -481,7 +480,7 @@ class _Score extends ConsumerWidget {
         if (!usePortrait) thinkingWidget,
         if (!usePortrait) 16.w,
         T(
-          "${S.current.black}\n$blackScore",
+          "${s.black}\n$blackScore",
           textAlign: TextAlign.center,
         ),
         16.w,
@@ -494,7 +493,7 @@ class _Score extends ConsumerWidget {
           ),
           child: Co(
             children: [
-              T(S.current.current_turn),
+              T(s.current_turn),
               4.h,
               if (blackTurn) const _Black(minSize: 5, maxSize: 25),
               if (!blackTurn) const _White(minSize: 5, maxSize: 25),
@@ -503,7 +502,7 @@ class _Score extends ConsumerWidget {
         ),
         16.w,
         T(
-          "${S.current.white}\n$whiteScore",
+          "${s.white}\n$whiteScore",
           textAlign: TextAlign.center,
         ),
         if (usePortrait) Exp(child: newGameButton),
@@ -519,7 +518,6 @@ class _Othello extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
     final screenWidth = ref.watch(P.app.screenWidth);
     final screenHeight = ref.watch(P.app.screenHeight);
     return Ro(
@@ -549,7 +547,6 @@ class _Grid extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
     final state = ref.watch(P.othello.state);
     final blackTurn = ref.watch(P.othello.blackTurn);
     final eatCountMatrixForBlack = ref.watch(P.othello.eatCountMatrixForBlack);
@@ -777,7 +774,6 @@ class _Console extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
     final controller = P.othello.receivedScrollController;
     final received = (ref.watch(P.othello.received)).split("\n");
     final usePortrait = ref.watch(P.othello.usePortrait);

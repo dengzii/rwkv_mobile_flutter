@@ -35,20 +35,15 @@ class PageSudoku extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isDesktop = ref.watch(P.app.isDesktop);
     ref.watch(P.app.screenHeight);
     ref.watch(P.app.screenWidth);
     ref.watch(P.app.paddingBottom);
     ref.watch(P.app.paddingTop);
 
-    // if (!isDesktop) {
     return const Pager(
       drawer: Menu(),
       child: _Page(),
     );
-    // }
-
-    return const _Page();
   }
 }
 
@@ -57,7 +52,6 @@ class _Page extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
     final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     final padding = MediaQuery.of(context).padding;
 
@@ -85,8 +79,9 @@ class _ButtonGenerate extends ConsumerWidget {
   const _ButtonGenerate();
 
   void _onPressed(BuildContext context, WidgetRef ref) async {
+    final s = S.of(context);
     if (!P.rwkv.loaded.q) {
-      Alert.info(S.current.please_load_model_first);
+      Alert.info(s.please_load_model_first);
       ModelSelector.show();
       return;
     }
@@ -95,7 +90,7 @@ class _ButtonGenerate extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
+    final s = S.of(context);
     final running = ref.watch(P.sudoku.running);
     return C(
       padding: const EI.o(b: _kButtonPadding),
@@ -110,7 +105,7 @@ class _ButtonGenerate extends ConsumerWidget {
             textStyle: WidgetStateProperty.all(const TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
           ),
           onPressed: running ? null : () => _onPressed(context, ref),
-          child: T(S.current.generate),
+          child: T(s.generate),
         ),
       ),
     );
@@ -121,8 +116,9 @@ class _ButtonGenerateHardest extends ConsumerWidget {
   const _ButtonGenerateHardest();
 
   void _onPressed(BuildContext context, WidgetRef ref) async {
+    final s = S.of(context);
     if (!P.rwkv.loaded.q) {
-      Alert.info(S.current.please_load_model_first);
+      Alert.info(s.please_load_model_first);
       ModelSelector.show();
       return;
     }
@@ -130,8 +126,8 @@ class _ButtonGenerateHardest extends ConsumerWidget {
     if (P.sudoku.running.q) {
       await showOkAlertDialog(
         context: context,
-        title: S.current.inference_is_running,
-        message: S.current.please_wait_for_it_to_finish,
+        title: s.inference_is_running,
+        message: s.please_wait_for_it_to_finish,
       );
       return;
     }
@@ -139,16 +135,16 @@ class _ButtonGenerateHardest extends ConsumerWidget {
     P.sudoku.loadHardestSudoku();
     await showOkAlertDialog(
       context: context,
-      title: S.current.just_watch_me,
-      message: S.current.this_is_the_hardest_sudoku_in_the_world,
-      okLabel: S.current.its_your_turn,
+      title: s.just_watch_me,
+      message: s.this_is_the_hardest_sudoku_in_the_world,
+      okLabel: s.its_your_turn,
     );
     if (context.mounted) await P.sudoku.onInferencePressed(context);
   }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
+    final s = S.of(context);
     final running = ref.watch(P.sudoku.running);
     return C(
       padding: const EI.o(b: _kButtonPadding),
@@ -164,7 +160,7 @@ class _ButtonGenerateHardest extends ConsumerWidget {
           ),
           onPressed: running ? null : () => _onPressed(context, ref),
           child: T(
-            S.current.generate_hardest_sudoku_in_the_world,
+            s.generate_hardest_sudoku_in_the_world,
             textAlign: TextAlign.center,
           ),
         ),
@@ -177,8 +173,9 @@ class _ButtonInference extends ConsumerWidget {
   const _ButtonInference();
 
   void _onPressed(BuildContext context, WidgetRef ref) async {
+    final s = S.of(context);
     if (!P.rwkv.loaded.q) {
-      Alert.info(S.current.please_load_model_first);
+      Alert.info(s.please_load_model_first);
       ModelSelector.show();
       return;
     }
@@ -188,7 +185,7 @@ class _ButtonInference extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
+    final s = S.of(context);
     final running = ref.watch(P.sudoku.running);
     final hasPuzzle = ref.watch(P.sudoku.hasPuzzle);
     return C(
@@ -217,12 +214,12 @@ class _ButtonInference extends ConsumerWidget {
                       ),
                     ),
                     const SB(width: 8, height: 8),
-                    T(S.current.thinking),
+                    T(s.thinking),
                   ],
                 )
               : hasPuzzle
-                  ? T(S.current.start_to_inference, textAlign: TextAlign.center)
-                  : T(S.current.no_puzzle, textAlign: TextAlign.center),
+                  ? T(s.start_to_inference, textAlign: TextAlign.center)
+                  : T(s.no_puzzle, textAlign: TextAlign.center),
         ),
       ),
     );
@@ -238,7 +235,7 @@ class _ButtonClear extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
+    final s = S.of(context);
     final running = ref.watch(P.sudoku.running);
     return C(
       padding: const EI.o(b: _kButtonPadding),
@@ -253,7 +250,7 @@ class _ButtonClear extends ConsumerWidget {
             textStyle: WidgetStateProperty.all(const TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
           ),
           onPressed: running ? null : () => _onPressed(context, ref),
-          child: T(S.current.clear),
+          child: T(s.clear),
         ),
       ),
     );
@@ -270,7 +267,7 @@ class _ButtonShowStack extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
+    final s = S.of(context);
     final showStack = ref.watch(P.sudoku.showStack);
     final currentStack = ref.watch(P.sudoku.currentStack);
     final enable = currentStack.isNotEmpty;
@@ -287,7 +284,7 @@ class _ButtonShowStack extends ConsumerWidget {
             textStyle: WidgetStateProperty.all(const TextStyle(fontSize: 10, fontWeight: FontWeight.w600)),
           ),
           onPressed: !enable ? null : () => _onPressed(context, ref),
-          child: showStack ? T(S.current.hide_stack) : T(S.current.show_stack),
+          child: showStack ? T(s.hide_stack) : T(s.show_stack),
         ),
       ),
     );
@@ -299,8 +296,6 @@ class _UI extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final RenderBox renderBox = context.findRenderObject() as RenderBox;
       final Offset position = renderBox.localToGlobal(Offset.zero);
@@ -535,7 +530,6 @@ class _TokensInfo extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    ref.watch(P.preference.preferredLanguage);
     final tokenCount = ref.watch(P.sudoku.tokensCount);
     final tokensPerSecond = ref.watch(P.rwkv.decodeSpeed);
     final isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;

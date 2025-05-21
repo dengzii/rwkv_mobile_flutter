@@ -39,6 +39,7 @@ class ArgumentsPanel extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final paddingBottom = ref.watch(P.app.paddingBottom);
     return ClipRRect(
       borderRadius: 16.r,
@@ -58,7 +59,7 @@ class ArgumentsPanel extends ConsumerWidget {
                   onPressed: () {
                     pop();
                   },
-                  child: T(S.current.cancel),
+                  child: T(s.cancel),
                 ),
                 Exp(
                   child: Ro(
@@ -68,7 +69,7 @@ class ArgumentsPanel extends ConsumerWidget {
                       const Icon(Icons.tune),
                       12.w,
                       T(
-                        S.current.session_configuration,
+                        s.session_configuration,
                         s: const TS(s: 16, w: FW.w500),
                       ),
                     ],
@@ -82,7 +83,7 @@ class ArgumentsPanel extends ConsumerWidget {
                   onPressed: () {
                     pop();
                   },
-                  child: T(S.current.apply),
+                  child: T(s.apply),
                 ),
                 4.w,
               ],
@@ -117,6 +118,7 @@ class _SamplerOptions extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final usingReasoningModel = ref.watch(P.rwkv.usingReasoningModel);
     return C(
       margin: const EI.s(h: 12),
@@ -133,7 +135,7 @@ class _SamplerOptions extends ConsumerWidget {
             onPressed: () {
               P.rwkv.resetSamplerParams(usingReasoningModel: usingReasoningModel);
             },
-            child: T(S.current.reset),
+            child: T(s.reset),
           ),
         ],
       ),
@@ -146,6 +148,7 @@ class _CompletionOptions extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final s = S.of(context);
     final usingReasoningModel = ref.watch(P.rwkv.usingReasoningModel);
     return C(
       margin: const EI.s(h: 12),
@@ -162,7 +165,7 @@ class _CompletionOptions extends ConsumerWidget {
             onPressed: () {
               P.rwkv.resetMaxLength(usingReasoningModel: usingReasoningModel);
             },
-            child: T(S.current.reset),
+            child: T(s.reset),
           ),
         ],
       ),
