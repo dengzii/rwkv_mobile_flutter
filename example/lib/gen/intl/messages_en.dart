@@ -193,6 +193,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_voice": MessageLookupByLibrary.simpleMessage("My voice"),
     "network_error": MessageLookupByLibrary.simpleMessage("Network error"),
     "new_chat": MessageLookupByLibrary.simpleMessage("New chat"),
+    "new_chat_started": MessageLookupByLibrary.simpleMessage(
+      "New chat started",
+    ),
     "new_game": MessageLookupByLibrary.simpleMessage("New Game"),
     "new_version_found": MessageLookupByLibrary.simpleMessage(
       "New version found",

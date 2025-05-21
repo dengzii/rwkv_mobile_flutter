@@ -3,12 +3,9 @@ import 'dart:developer';
 
 import 'package:halo_state/halo_state.dart';
 import 'package:zone/args.dart';
-import 'package:zone/gen/l10n.dart';
 import 'package:zone/model/demo_type.dart';
 import 'package:zone/model/message.dart' as model;
-import 'package:zone/model/role.dart';
 import 'package:zone/model/world_type.dart';
-import 'package:zone/route/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:halo/halo.dart';
@@ -37,7 +34,6 @@ class _PageChatState extends State<PageChat> {
   void initState() {
     super.initState();
     P.fileManager.modelSelectorShown.l(_onShowingModelSelectorChanged);
-    P.chat.showingCharacterSelector.l(_onShowingCharacterSelectorChanged);
     HF.wait(1000).then((_) {
       final loaded = P.rwkv.loaded.q;
       if (!loaded) {
@@ -52,29 +48,6 @@ class _PageChatState extends State<PageChat> {
       drawer: Menu(),
       child: _Page(),
     );
-  }
-
-  void _onShowingCharacterSelectorChanged(bool showing) async {
-    if (!showing) return;
-    HF.wait(1).then((_) {
-      P.chat.roles.q = P.chat.roles.q.shuffled;
-    });
-    await showModalBottomSheet(
-      isScrollControlled: true,
-      context: context,
-      builder: (context) {
-        return DraggableScrollableSheet(
-          initialChildSize: .8,
-          maxChildSize: .9,
-          expand: false,
-          snap: false,
-          builder: (BuildContext context, ScrollController scrollController) {
-            return _RoleSelector(scrollController: scrollController);
-          },
-        );
-      },
-    );
-    P.chat.showingCharacterSelector.q = false;
   }
 
   @Deprecated("Use ModelSelector.show in the future")
@@ -136,107 +109,6 @@ class _Page extends ConsumerWidget {
           Input(),
           AudioInput(),
         ],
-      ),
-    );
-  }
-}
-
-class _RoleSelector extends ConsumerWidget {
-  final ScrollController scrollController;
-
-  const _RoleSelector({required this.scrollController});
-
-  void _onStartChatTap() async {
-    await P.chat.startNewChat();
-    Navigator.pop(getContext()!);
-  }
-
-  void _onRoleTap(Role role) async {
-    await P.chat.startNewChat();
-    await HF.wait(100);
-    Navigator.pop(getContext()!);
-    await HF.wait(100);
-    P.chat.send(role.value);
-  }
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final s = S.of(context);
-    final roles = ref.watch(P.chat.roles);
-    final paddingBottom = ref.watch(P.app.quantizedIntPaddingBottom);
-    final loading = ref.watch(P.rwkv.loading);
-
-    return ClipRRect(
-      borderRadius: 16.r,
-      child: C(
-        margin: const EI.o(t: 16),
-        child: Co(
-          children: [
-            T(s.new_chat, s: const TS(s: 16, w: FW.w600)),
-            12.h,
-            T(s.you_can_select_a_role_to_chat),
-            12.h,
-            Exp(
-              child: ListView.builder(
-                padding: const EI.o(t: 24, l: 12, r: 12),
-                controller: scrollController,
-                itemBuilder: (context, index) {
-                  return C(
-                    margin: const EI.o(b: 12),
-                    child: Ro(
-                      children: [
-                        Exp(
-                          child: SelectionArea(
-                            child: Co(
-                              c: CAA.start,
-                              children: [
-                                T(roles[index].key, s: const TS(s: 14, w: FW.w600)),
-                                T(roles[index].value, s: const TS(s: 12)),
-                              ],
-                            ),
-                          ),
-                        ),
-                        12.w,
-                        GD(
-                          onTap: () {
-                            if (loading) return;
-                            _onRoleTap(roles[index]);
-                          },
-                          child: C(
-                            decoration: BD(
-                              color: loading ? kCG.q(.5) : kCG,
-                              borderRadius: 8.r,
-                            ),
-                            padding: const EI.a(8),
-                            child: T(loading ? s.loading : s.start_to_chat, s: const TS(c: kW)),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                itemCount: roles.length,
-              ),
-            ),
-            12.h,
-            Ro(
-              children: [
-                12.w,
-                Exp(child: T(s.or_you_can_start_a_new_empty_chat, s: const TS(c: kB, s: 16))),
-                TextButton(
-                  onPressed: _onStartChatTap,
-                  child: C(
-                    padding: const EI.s(h: 12, v: 4),
-                    child: T(s.start_a_new_chat, s: const TS(c: kB, s: 20)),
-                  ),
-                ),
-                12.w,
-              ],
-            ),
-            4.h,
-            paddingBottom.h,
-          ],
-        ),
       ),
     );
   }

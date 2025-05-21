@@ -1446,6 +1446,16 @@ class S {
       args: [],
     );
   }
+
+  /// `New chat started`
+  String get new_chat_started {
+    return Intl.message(
+      'New chat started',
+      name: 'new_chat_started',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

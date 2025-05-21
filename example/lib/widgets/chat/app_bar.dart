@@ -125,17 +125,7 @@ class ChatAppBar extends ConsumerWidget {
               ],
             ),
             actions: [
-              if (demoType == DemoType.chat)
-                IconButton(
-                  onPressed: loaded
-                      ? () {
-                          P.chat.showingCharacterSelector.q = false;
-                          P.chat.showingCharacterSelector.q = true;
-                          P.chat.loadSuggestions();
-                        }
-                      : null,
-                  icon: (Platform.isIOS || Platform.isMacOS) ? const Icon(CupertinoIcons.bubble_left_bubble_right) : const Icon(Icons.message_outlined),
-                ),
+              if (demoType == DemoType.chat) _NewConversationButton(),
               IconButton(
                 onPressed: _onTunePressed,
                 icon: const Icon(Icons.tune),
@@ -144,6 +134,33 @@ class ChatAppBar extends ConsumerWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _NewConversationButton extends ConsumerWidget {
+  const _NewConversationButton();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    late final Widget icon;
+
+    // if (Platform.isIOS || Platform.isMacOS) {
+    //   icon = const Icon(CupertinoIcons.news_solid);
+    // } else {
+    // }
+
+    icon = const Icon(Icons.add_comment_outlined);
+    final loaded = ref.watch(P.rwkv.loaded);
+    final isEmpty = ref.watch(P.chat.messages.select((v) => v.isEmpty));
+
+    return IconButton(
+      onPressed: loaded && !isEmpty
+          ? () {
+              P.chat.startNewChat();
+            }
+          : null,
+      icon: icon,
     );
   }
 }
