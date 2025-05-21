@@ -40,10 +40,6 @@ class _Chat {
     return messages.q[editingIndex].isMine == false;
   });
 
-  late final showingCharacterSelector = qs(false);
-
-  late final roles = qs<List<Role>>([]);
-
   late final latestClickedMessage = qsn<Message>();
 
   late final hasFocus = qs(false);
@@ -232,7 +228,7 @@ extension $Chat on _Chat {
   }
 
   FV startNewChat() async {
-    qq;
+    Alert.success(S.current.new_chat_started);
     P.rwkv.clearStates();
     messages.uc();
   }
@@ -488,8 +484,6 @@ extension _$Chat on _Chat {
       onError: _onStreamError,
     );
 
-    _loadRoles();
-
     P.world.audioFileStreamController.stream.listen(_onNewFileReceived);
     focusNode.addListener(_onFocusNodeChanged);
     hasFocus.q = focusNode.hasFocus;
@@ -692,17 +686,6 @@ extension _$Chat on _Chat {
       P.tts.selectSourceAudioPath.q = path;
       P.tts.selectedSpkName.uc();
     }
-  }
-
-  FV _loadRoles() async {
-    final demoType = P.app.demoType.q;
-    if (demoType != DemoType.chat) return;
-    final currentLocale = Intl.getCurrentLocale();
-    final useEn = currentLocale.startsWith("en");
-    final jsonString = await rootBundle.loadString(useEn ? Assets.config.chat.promptsEnUS : Assets.config.chat.promptsZhHans);
-    final json = HF.listJSON(jsonDecode(jsonString));
-    final roles = json.map((e) => Role.fromJson(e)).toList().shuffled;
-    this.roles.q = roles;
   }
 
   void _onPageKeyChanged(PageKey pageKey) {

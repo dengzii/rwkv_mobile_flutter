@@ -7,7 +7,6 @@ class _Guard {
 /// Public methods
 extension $Guard on _Guard {
   Future<bool> isSensitive(String text) async {
-    final start = HF.milliseconds;
     final blockedWords = _blockedWords.q;
     if (blockedWords.isEmpty) return false;
     final res = await compute((args) {
@@ -18,7 +17,6 @@ extension $Guard on _Guard {
       }
       return false;
     }, (text, blockedWords));
-    final end = HF.milliseconds;
     return res;
   }
 }

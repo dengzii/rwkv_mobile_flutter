@@ -112,6 +112,7 @@ class _ButtonGenerate extends ConsumerWidget {
   }
 }
 
+// ignore: unused_element
 class _ButtonGenerateHardest extends ConsumerWidget {
   const _ButtonGenerateHardest();
 

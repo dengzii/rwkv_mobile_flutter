@@ -154,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "my_voice": MessageLookupByLibrary.simpleMessage("我的声音"),
     "network_error": MessageLookupByLibrary.simpleMessage("网络错误"),
     "new_chat": MessageLookupByLibrary.simpleMessage("新聊天"),
+    "new_chat_started": MessageLookupByLibrary.simpleMessage("开始新聊天"),
     "new_game": MessageLookupByLibrary.simpleMessage("新游戏"),
     "new_version_found": MessageLookupByLibrary.simpleMessage("发现新版本"),
     "no_cell_available": MessageLookupByLibrary.simpleMessage("无子可下"),
