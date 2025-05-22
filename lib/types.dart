@@ -23,16 +23,15 @@ enum Backend {
   qnn,
 
   /// dummy mnn backend string
-  mnn,
-  ;
+  mnn;
 
   String get asArgument => switch (this) {
-        Backend.ncnn => 'ncnn',
-        Backend.webRwkv => 'web-rwkv',
-        Backend.llamacpp => 'llama.cpp',
-        Backend.qnn => 'qnn',
-        Backend.mnn => 'mnn',
-      };
+    Backend.ncnn => 'ncnn',
+    Backend.webRwkv => 'web-rwkv',
+    Backend.llamacpp => 'llama.cpp',
+    Backend.qnn => 'qnn',
+    Backend.mnn => 'mnn',
+  };
 
   static Backend fromString(String value) {
     final toLower = value.toLowerCase();

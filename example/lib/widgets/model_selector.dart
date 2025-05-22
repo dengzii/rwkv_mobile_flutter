@@ -100,7 +100,9 @@ class ModelSelector extends ConsumerWidget {
           children: [
             Ro(
               children: [
-                Exp(child: T(s.chat_welcome_to_use(Config.appTitle), s: const TS(s: 18, w: FW.w600))),
+                Exp(
+                  child: T(s.chat_welcome_to_use(Config.appTitle), s: const TS(s: 18, w: FW.w600)),
+                ),
                 IconButton(
                   onPressed: () {
                     pop();
@@ -112,29 +114,42 @@ class ModelSelector extends ConsumerWidget {
             if (demoType == DemoType.world) T(s.please_select_a_world_type, s: const TS(s: 16, w: FW.w500)),
             T(s.memory_used(memUsedString, memFreeString), s: TS(c: kB.q(.7), s: 12)),
             const _DownloadSource(),
-            if (demoType == DemoType.chat) T("👉${s.size_recommendation}👈", s: TS(c: kB.q(.7), s: 12, w: FW.w500)),
+            if (demoType == DemoType.chat)
+              T(
+                "👉${s.size_recommendation}👈",
+                s: TS(c: kB.q(.7), s: 12, w: FW.w500),
+              ),
             if (demoType == DemoType.world)
-              ...WorldType.values.where((e) => e.available).map((e) {
-                return e.socPairs.where((pair) {
-                  return pair.$1 == "" || pair.$1 == P.rwkv.soc.q;
-                }).map((pair) {
-                  return WorldGroupItem(e, socPair: pair);
-                });
-              }).reduce((v, e) {
-                return [...v, ...e];
-              }),
+              ...WorldType.values
+                  .where((e) => e.available)
+                  .map((e) {
+                    return e.socPairs
+                        .where((pair) {
+                          return pair.$1 == "" || pair.$1 == P.rwkv.soc.q;
+                        })
+                        .map((pair) {
+                          return WorldGroupItem(e, socPair: pair);
+                        });
+                  })
+                  .reduce((v, e) {
+                    return [...v, ...e];
+                  }),
             if (demoType == DemoType.tts)
               for (final fileInfo in ttsCores) TTSGroupItem(fileInfo),
             if (demoType == DemoType.chat || demoType == DemoType.sudoku)
-              for (final fileInfo in availableModels.sorted((a, b) {
-                return a.fileSize.compareTo(b.fileSize);
-              }).sorted((a, b) {
-                return (a.isDebug ? 1 : 0).compareTo((b.isDebug ? 1 : 0));
-              }).sorted((a, b) {
-                final aIsDownloaded = P.fileManager.locals(a).q.hasFile ? 1 : 0;
-                final bIsDownloaded = P.fileManager.locals(b).q.hasFile ? 1 : 0;
-                return bIsDownloaded.compareTo(aIsDownloaded);
-              }))
+              for (final fileInfo
+                  in availableModels
+                      .sorted((a, b) {
+                        return a.fileSize.compareTo(b.fileSize);
+                      })
+                      .sorted((a, b) {
+                        return (a.isDebug ? 1 : 0).compareTo((b.isDebug ? 1 : 0));
+                      })
+                      .sorted((a, b) {
+                        final aIsDownloaded = P.fileManager.locals(a).q.hasFile ? 1 : 0;
+                        final bIsDownloaded = P.fileManager.locals(b).q.hasFile ? 1 : 0;
+                        return bIsDownloaded.compareTo(aIsDownloaded);
+                      }))
                 ModelItem(fileInfo),
             16.h,
             paddingBottom.h,
@@ -156,7 +171,10 @@ class _DownloadSource extends ConsumerWidget {
       c: CrossAxisAlignment.stretch,
       children: [
         4.h,
-        T(S.current.download_source, s: TS(c: kB.q(.7), s: 12, w: FW.w600)),
+        T(
+          S.current.download_source,
+          s: TS(c: kB.q(.7), s: 12, w: FW.w600),
+        ),
         4.h,
         Wrap(
           runSpacing: 4,

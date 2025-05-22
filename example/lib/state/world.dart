@@ -232,7 +232,8 @@ extension _$World on _World {
     final demoType = P.app.demoType.q;
     final isWorldDemo = demoType == DemoType.world;
     final currentWorldType = P.rwkv.currentWorldType.q;
-    final isAudioDemo = currentWorldType == WorldType.engAudioQA || currentWorldType == WorldType.chineseASR || currentWorldType == WorldType.engASR;
+    final isAudioDemo =
+        currentWorldType == WorldType.engAudioQA || currentWorldType == WorldType.chineseASR || currentWorldType == WorldType.engASR;
 
     P.chat.clearMessages();
     imagePath.q = null;

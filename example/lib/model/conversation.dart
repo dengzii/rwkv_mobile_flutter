@@ -40,9 +40,9 @@ final class Conversation extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        name,
-        createdAt,
-        updatedAt,
-      ];
+    id,
+    name,
+    createdAt,
+    updatedAt,
+  ];
 }

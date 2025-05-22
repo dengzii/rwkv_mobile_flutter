@@ -60,26 +60,26 @@ final class Message extends Equatable {
 
   @override
   List<Object?> get props => [
-        id,
-        content,
-        isMine,
-        changing,
-        type,
-        imageUrl,
-        audioUrl,
-        audioLength,
-        isReasoning,
-        paused,
-        ttsTarget,
-        ttsSpeakerName,
-        ttsSourceAudioPath,
-        ttsInstruction,
-        ttsCFMSteps,
-        isSensitive,
-        ttsOverallProgress,
-        ...ttsPerWavProgress ?? [],
-        ...ttsFilePaths ?? [],
-      ];
+    id,
+    content,
+    isMine,
+    changing,
+    type,
+    imageUrl,
+    audioUrl,
+    audioLength,
+    isReasoning,
+    paused,
+    ttsTarget,
+    ttsSpeakerName,
+    ttsSourceAudioPath,
+    ttsInstruction,
+    ttsCFMSteps,
+    isSensitive,
+    ttsOverallProgress,
+    ...ttsPerWavProgress ?? [],
+    ...ttsFilePaths ?? [],
+  ];
 
   factory Message.fromJson(Map<String, dynamic> json) {
     return Message(

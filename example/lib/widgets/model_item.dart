@@ -177,7 +177,7 @@ class ModelItem extends ConsumerWidget {
                 ),
               if (!isCurrentModel) 8.w,
               if (!isCurrentModel) _Delete(fileInfo),
-            ]
+            ],
           ],
         ),
       ),
@@ -263,11 +263,12 @@ class _Delete extends ConsumerWidget {
       onTap: _onTap,
       child: C(
         decoration: BD(
+          color: kC,
+          borderRadius: 8.r,
+          border: Border.all(
             color: kC,
-            borderRadius: 8.r,
-            border: Border.all(
-              color: kC,
-            )),
+          ),
+        ),
         padding: const EI.a(5),
         child: Icon(
           Icons.delete_forever_outlined,
@@ -310,7 +311,10 @@ class FileKeyItem extends ConsumerWidget {
               fileInfo.name,
               s: const TS(c: kB, w: FW.w600),
             ),
-            T(gbDisplay(fileSize), s: TS(c: kB.q(.7), w: FW.w500)),
+            T(
+              gbDisplay(fileSize),
+              s: TS(c: kB.q(.7), w: FW.w500),
+            ),
             if (showDownloaded && localFile.hasFile)
               Icon(
                 Icons.download_done,

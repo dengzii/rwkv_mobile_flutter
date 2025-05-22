@@ -45,7 +45,9 @@ int? getValueForGrid(SudokuGrid grid, int row, int col) {
   final rowValues = getRow(grid, row).toSet();
   final colValues = getColumn(grid, col).toSet();
   final squareValues = getBlock(grid, row: row, col: col).toSet();
-  final values = possibleValues.where((value) => !rowValues.contains(value) && !colValues.contains(value) && !squareValues.contains(value)).toList();
+  final values = possibleValues.where((value) {
+    return !rowValues.contains(value) && !colValues.contains(value) && !squareValues.contains(value);
+  }).toList();
   return values.isEmpty ? null : values[Random().nextInt(values.length)];
 }
 
@@ -60,7 +62,14 @@ List<int> getColumn(SudokuGrid grid, int col) {
 List<int> getBlock(SudokuGrid grid, {required int row, required int col}) {
   final rowStart = row ~/ 3 * 3;
   final colStart = col ~/ 3 * 3;
-  final res = grid.sublist(rowStart, rowStart + 3).map((row) => row.sublist(colStart, colStart + 3)).toList().expand((x) => x).toList();
+  final res = grid
+      .sublist(rowStart, rowStart + 3)
+      .map((row) {
+        return row.sublist(colStart, colStart + 3);
+      })
+      .toList()
+      .expand((x) => x)
+      .toList();
   return res;
 }
 

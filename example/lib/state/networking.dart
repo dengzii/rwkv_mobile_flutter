@@ -27,24 +27,26 @@ Future<T?> Function<T extends http.BaseResponse>(
   required Map<String, String> headers,
   required List<_EA> ea,
   Encoding? encoding,
-}) _errorWrapper = <T extends http.BaseResponse>(
-  Future<T> response, {
-  required Uri uri,
-  required Map<String, String> headers,
-  required List<_EA> ea,
-  Encoding? encoding,
-}) async {
-  try {
-    return await response;
-  } catch (e) {
-    qqe("$uri");
-    qqe("$e");
-    if (ea.contains(_EA.alert)) {
-      Alert.error(S.current.network_error + (kDebugMode ? " $uri" : ""));
-    }
-    return null;
-  }
-};
+})
+_errorWrapper =
+    <T extends http.BaseResponse>(
+      Future<T> response, {
+      required Uri uri,
+      required Map<String, String> headers,
+      required List<_EA> ea,
+      Encoding? encoding,
+    }) async {
+      try {
+        return await response;
+      } catch (e) {
+        qqe("$uri");
+        qqe("$e");
+        if (ea.contains(_EA.alert)) {
+          Alert.error(S.current.network_error + (kDebugMode ? " $uri" : ""));
+        }
+        return null;
+      }
+    };
 
 // ignore: unused_element
 Future<Object?> _post(

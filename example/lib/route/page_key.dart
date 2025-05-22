@@ -10,8 +10,7 @@ enum PageKey {
   chat,
   othello,
   test,
-  sudoku,
-  ;
+  sudoku;
 
   String get path => "/$name";
 

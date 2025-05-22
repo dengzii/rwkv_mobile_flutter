@@ -128,11 +128,11 @@ class BottomBar extends ConsumerWidget {
                 child: Icon(
                   (Platform.isIOS || Platform.isMacOS)
                       ? editingBotMessage
-                          ? CupertinoIcons.pencil_circle_fill
-                          : CupertinoIcons.arrow_up_circle_fill
+                            ? CupertinoIcons.pencil_circle_fill
+                            : CupertinoIcons.arrow_up_circle_fill
                       : editingBotMessage
-                          ? Icons.edit
-                          : Icons.send,
+                      ? Icons.edit
+                      : Icons.send,
                   color: color,
                 ),
               ),

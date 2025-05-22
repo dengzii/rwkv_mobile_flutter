@@ -292,15 +292,17 @@ extension $Chat on _Chat {
     //   }
     // }
 
-    final historyMessage = messages.q.where((e) {
-      return e.type != MessageType.userImage;
-    }).m((e) {
-      if (!e.isReasoning) return e.content;
-      if (!e.isCotFormat) return e.content;
-      if (!e.containsCotEndMark) return e.content;
-      final (cotContent, cotResult) = e.cotContentAndResult;
-      return cotResult;
-    });
+    final historyMessage = messages.q
+        .where((e) {
+          return e.type != MessageType.userImage;
+        })
+        .m((e) {
+          if (!e.isReasoning) return e.content;
+          if (!e.isCotFormat) return e.content;
+          if (!e.containsCotEndMark) return e.content;
+          final (cotContent, cotResult) = e.cotContentAndResult;
+          return cotResult;
+        });
 
     final history = withHistory ? historyMessage : [message];
 
@@ -484,7 +486,11 @@ extension _$Chat on _Chat {
       // 获取上一个消息的 id
       final previousMessageId = currentMessageIds[i - 1];
       // 遍历所有消息链, 获取所有上一个消息的 id 等于 previousMessageId 的消息链
-      final branchIds = chains.where((e) => e.ids[i - 1] == previousMessageId).map((e) => e.ids[i]).sorted((a, b) => a.compareTo(b)).toList();
+      final branchIds = chains
+          .where((e) => e.ids[i - 1] == previousMessageId)
+          .map((e) => e.ids[i])
+          .sorted((a, b) => a.compareTo(b))
+          .toList();
       newValue.add(branchIds);
     }
     if (listEquals(branchesCountList.q, newValue)) return;
@@ -729,7 +735,8 @@ extension _$Chat on _Chat {
 
     if (!found) {
       qqe("message not found");
-      if (!kDebugMode) Sentry.captureException(Exception("message not found, callingFunction: $callingFunction"), stackTrace: StackTrace.current);
+      if (!kDebugMode)
+        Sentry.captureException(Exception("message not found, callingFunction: $callingFunction"), stackTrace: StackTrace.current);
     }
     messages.q = currentMessages;
     P.conversation.updateMessages(currentMessages);

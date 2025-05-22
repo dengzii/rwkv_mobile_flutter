@@ -33,21 +33,23 @@ class UserTtsContent extends ConsumerWidget {
           padding: const EI.s(h: 6, v: 4),
           child: Text.rich(
             // c: CAA.start,
-            TextSpan(children: [
-              if (msg.ttsSourceAudioPath != null) ...[
-                TextSpan(text: s.according_to_the_following_audio_file),
-                TextSpan(text: P.tts.flagChange(msg.ttsSourceAudioPath!.split("/").last).replaceAll("_", " ")),
+            TextSpan(
+              children: [
+                if (msg.ttsSourceAudioPath != null) ...[
+                  TextSpan(text: s.according_to_the_following_audio_file),
+                  TextSpan(text: P.tts.flagChange(msg.ttsSourceAudioPath!.split("/").last).replaceAll("_", " ")),
+                ],
+                if (msg.ttsSpeakerName != null) ...[
+                  TextSpan(text: " 模仿 ${P.tts.safe(msg.ttsSpeakerName!)} 的声音"),
+                ],
+                if (msg.ttsSpeakerName == null && msg.ttsInstruction != null && msg.ttsInstruction!.isNotEmpty) ...[
+                  TextSpan(text: msg.ttsInstruction!),
+                ],
+                if (msg.ttsCFMSteps != null) ...[
+                  TextSpan(text: " CFM Steps: ${msg.ttsCFMSteps!}"),
+                ],
               ],
-              if (msg.ttsSpeakerName != null) ...[
-                TextSpan(text: " 模仿 ${P.tts.safe(msg.ttsSpeakerName!)} 的声音"),
-              ],
-              if (msg.ttsSpeakerName == null && msg.ttsInstruction != null && msg.ttsInstruction!.isNotEmpty) ...[
-                TextSpan(text: msg.ttsInstruction!),
-              ],
-              if (msg.ttsCFMSteps != null) ...[
-                TextSpan(text: " CFM Steps: ${msg.ttsCFMSteps!}"),
-              ],
-            ]),
+            ),
           ),
         ),
         4.h,

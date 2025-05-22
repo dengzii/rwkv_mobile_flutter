@@ -134,19 +134,23 @@ extension _$ on _Othello {
       }
     }, fireImmediately: true);
 
-    P.rwkv.oldBroadcastStream.listen((event) {
-      final demoType = P.app.demoType.q;
-      if (demoType != DemoType.othello) return;
-      _onStreamEvent(event: event);
-    }, onDone: () {
-      final demoType = P.app.demoType.q;
-      if (demoType != DemoType.othello) return;
-      _onStreamDone();
-    }, onError: (error, stackTrace) {
-      final demoType = P.app.demoType.q;
-      if (demoType != DemoType.othello) return;
-      _onStreamError(error: error, stackTrace: stackTrace);
-    });
+    P.rwkv.oldBroadcastStream.listen(
+      (event) {
+        final demoType = P.app.demoType.q;
+        if (demoType != DemoType.othello) return;
+        _onStreamEvent(event: event);
+      },
+      onDone: () {
+        final demoType = P.app.demoType.q;
+        if (demoType != DemoType.othello) return;
+        _onStreamDone();
+      },
+      onError: (error, stackTrace) {
+        final demoType = P.app.demoType.q;
+        if (demoType != DemoType.othello) return;
+        _onStreamError(error: error, stackTrace: stackTrace);
+      },
+    );
 
     blackTurn.lv(_onBlackTurnChanged, fireImmediately: true);
     state.lv(_onStateChanged, fireImmediately: true);
@@ -733,7 +737,8 @@ extension _$ on _Othello {
     final blackTurn = this.blackTurn.q;
     final searchDepth = this.searchDepth.q;
     final searchBreadth = this.searchBreadth.q;
-    final prompt = """<input>
+    final prompt =
+        """<input>
 ${state.map((e) => e.map((f) => f.prompt).join()).join("\n")}
 NEXT ${blackTurn ? CellType.black.prompt : CellType.white.prompt}
 MAX_WIDTH-$searchBreadth

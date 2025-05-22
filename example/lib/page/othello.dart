@@ -31,7 +31,9 @@ class _Page extends ConsumerWidget {
     final paddingTop = ref.watch(P.app.paddingTop);
     final usePortrait = ref.watch(P.othello.usePortrait);
     final playerShouldAtSameColumnWithSettings = ref.watch(P.othello.playerShouldAtSameColumnWithSettings);
-    final settingsAndPlayersShouldAtDifferentColumnIsHorizontal = ref.watch(P.othello.settingsAndPlayersShouldAtDifferentColumnIsHorizontal);
+    final settingsAndPlayersShouldAtDifferentColumnIsHorizontal = ref.watch(
+      P.othello.settingsAndPlayersShouldAtDifferentColumnIsHorizontal,
+    );
     final screenWidth = ref.watch(P.app.screenWidth);
     final paddingRight = ref.watch(P.app.paddingRight);
 
@@ -99,7 +101,7 @@ class _Page extends ConsumerWidget {
                             ),
                           ),
                       ],
-                    )
+                    ),
                   ],
                 ),
                 paddingRight.w,
@@ -124,7 +126,10 @@ class _Title extends ConsumerWidget {
         12.w,
         T("$version($buildNumber)", s: TS(c: kB.q(.0), s: 10)),
         if (usePortrait) const Spacer(),
-        T(s.rwkv_othello, s: const TS(c: kB, s: 20, w: FW.w700)),
+        T(
+          s.rwkv_othello,
+          s: const TS(c: kB, s: 20, w: FW.w700),
+        ),
         if (usePortrait) const Spacer(),
         if (!usePortrait) 32.w,
         T("$version($buildNumber)", s: TS(c: kB.q(.5), s: 10)),
@@ -150,82 +155,90 @@ class _ModelSettings extends ConsumerWidget {
     final searchBreadthAddAvailable = searchBreadth < 5;
     final searchBreadthRemoveAvailable = searchBreadth > 1;
 
-    final searchDepthControls = Ro(mainAxisSize: MainAxisSize.min, m: MAA.center, children: [
-      SB(
-        width: 32,
-        height: 32,
-        child: IconButton(
-          padding: EI.zero,
-          onPressed: searchDepthRemoveAvailable
-              ? () {
-                  P.othello.searchDepth.ua(-1);
-                }
-              : null,
-          icon: const Icon(Icons.remove),
-          iconSize: 14,
-          style: ButtonStyle(
-            minimumSize: WidgetStateProperty.all(const Size(16, 16)),
-            padding: WidgetStateProperty.all(EdgeInsets.zero),
+    final searchDepthControls = Ro(
+      mainAxisSize: MainAxisSize.min,
+      m: MAA.center,
+      children: [
+        SB(
+          width: 32,
+          height: 32,
+          child: IconButton(
+            padding: EI.zero,
+            onPressed: searchDepthRemoveAvailable
+                ? () {
+                    P.othello.searchDepth.ua(-1);
+                  }
+                : null,
+            icon: const Icon(Icons.remove),
+            iconSize: 14,
+            style: ButtonStyle(
+              minimumSize: WidgetStateProperty.all(const Size(16, 16)),
+              padding: WidgetStateProperty.all(EdgeInsets.zero),
+            ),
           ),
         ),
-      ),
-      T(searchDepth.toString()),
-      SizedBox(
-        width: 32,
-        height: 32,
-        child: IconButton(
-          onPressed: searchDepthAddAvailable
-              ? () {
-                  P.othello.searchDepth.ua(1);
-                }
-              : null,
-          icon: const Icon(Icons.add),
-          iconSize: 14,
-          style: ButtonStyle(
-            minimumSize: WidgetStateProperty.all(const Size(16, 16)),
-            padding: WidgetStateProperty.all(EdgeInsets.zero),
+        T(searchDepth.toString()),
+        SizedBox(
+          width: 32,
+          height: 32,
+          child: IconButton(
+            onPressed: searchDepthAddAvailable
+                ? () {
+                    P.othello.searchDepth.ua(1);
+                  }
+                : null,
+            icon: const Icon(Icons.add),
+            iconSize: 14,
+            style: ButtonStyle(
+              minimumSize: WidgetStateProperty.all(const Size(16, 16)),
+              padding: WidgetStateProperty.all(EdgeInsets.zero),
+            ),
           ),
         ),
-      ),
-    ]);
+      ],
+    );
 
-    final searchBreadthControls = Ro(mainAxisSize: MainAxisSize.min, m: MAA.center, children: [
-      SizedBox(
-        width: 32,
-        height: 32,
-        child: IconButton(
-          onPressed: searchBreadthRemoveAvailable
-              ? () {
-                  P.othello.searchBreadth.ua(-1);
-                }
-              : null,
-          icon: const Icon(Icons.remove),
-          iconSize: 14,
-          style: ButtonStyle(
-            minimumSize: WidgetStateProperty.all(const Size(16, 16)),
-            padding: WidgetStateProperty.all(EdgeInsets.zero),
+    final searchBreadthControls = Ro(
+      mainAxisSize: MainAxisSize.min,
+      m: MAA.center,
+      children: [
+        SizedBox(
+          width: 32,
+          height: 32,
+          child: IconButton(
+            onPressed: searchBreadthRemoveAvailable
+                ? () {
+                    P.othello.searchBreadth.ua(-1);
+                  }
+                : null,
+            icon: const Icon(Icons.remove),
+            iconSize: 14,
+            style: ButtonStyle(
+              minimumSize: WidgetStateProperty.all(const Size(16, 16)),
+              padding: WidgetStateProperty.all(EdgeInsets.zero),
+            ),
           ),
         ),
-      ),
-      T(searchBreadth.toString()),
-      SizedBox(
-        width: 32,
-        height: 32,
-        child: IconButton(
-          onPressed: searchBreadthAddAvailable
-              ? () {
-                  P.othello.searchBreadth.ua(1);
-                }
-              : null,
-          icon: const Icon(Icons.add),
-          iconSize: 14,
-          style: ButtonStyle(
-            minimumSize: WidgetStateProperty.all(const Size(16, 16)),
-            padding: WidgetStateProperty.all(EdgeInsets.zero),
+        T(searchBreadth.toString()),
+        SizedBox(
+          width: 32,
+          height: 32,
+          child: IconButton(
+            onPressed: searchBreadthAddAvailable
+                ? () {
+                    P.othello.searchBreadth.ua(1);
+                  }
+                : null,
+            icon: const Icon(Icons.add),
+            iconSize: 14,
+            style: ButtonStyle(
+              minimumSize: WidgetStateProperty.all(const Size(16, 16)),
+              padding: WidgetStateProperty.all(EdgeInsets.zero),
+            ),
           ),
         ),
-      ),
-    ]);
+      ],
+    );
 
     return Material(
       color: kB.q(.0),
@@ -292,16 +305,26 @@ class _Players extends ConsumerWidget {
     final blackIsAI = ref.watch(P.othello.blackIsAI);
     final whiteIsAI = ref.watch(P.othello.whiteIsAI);
     final playerShouldAtSameColumnWithSettings = ref.watch(P.othello.playerShouldAtSameColumnWithSettings);
-    final settingsAndPlayersShouldAtDifferentColumnIsHorizontal = ref.watch(P.othello.settingsAndPlayersShouldAtDifferentColumnIsHorizontal);
+    final settingsAndPlayersShouldAtDifferentColumnIsHorizontal = ref.watch(
+      P.othello.settingsAndPlayersShouldAtDifferentColumnIsHorizontal,
+    );
     final usePortrait = ref.watch(P.othello.usePortrait);
 
     final blackOptions = C(
-      decoration: BD(color: kC, borderRadius: 4.r, border: Border.all(color: kB.q(.5), width: .5)),
+      decoration: BD(
+        color: kC,
+        borderRadius: 4.r,
+        border: Border.all(color: kB.q(.5), width: .5),
+      ),
       padding: const EI.o(l: 8, r: 8, t: 8),
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
-          T(s.black + ":", textAlign: TextAlign.center, s: const TS(w: FW.w700)),
+          T(
+            s.black + ":",
+            textAlign: TextAlign.center,
+            s: const TS(w: FW.w700),
+          ),
           Wrap(
             children: [
               Ro(
@@ -337,12 +360,20 @@ class _Players extends ConsumerWidget {
     );
 
     final whiteOptions = C(
-      decoration: BD(color: kC, borderRadius: 4.r, border: Border.all(color: kB.q(.5), width: .5)),
+      decoration: BD(
+        color: kC,
+        borderRadius: 4.r,
+        border: Border.all(color: kB.q(.5), width: .5),
+      ),
       padding: const EI.o(l: 8, r: 8, t: 8),
       child: Wrap(
         crossAxisAlignment: WrapCrossAlignment.center,
         children: [
-          T(s.white + ":", textAlign: TextAlign.center, s: const TS(w: FW.w700)),
+          T(
+            s.white + ":",
+            textAlign: TextAlign.center,
+            s: const TS(w: FW.w700),
+          ),
           Wrap(
             children: [
               Ro(
@@ -457,10 +488,19 @@ class _Score extends ConsumerWidget {
         AnimatedOpacity(
           opacity: thinking ? 1.0 : .5,
           duration: const Duration(milliseconds: 150),
-          child: T(s.thinking, s: TS(c: kB, s: 10, w: thinking ? FW.w400 : FW.w400)),
+          child: T(
+            s.thinking,
+            s: TS(c: kB, s: 10, w: thinking ? FW.w400 : FW.w400),
+          ),
         ),
-        T("${s.prefill}: ${prefillSpeed.toStringAsFixed(1)} t/s", s: const TS(c: kB, s: 10, w: FW.w400)),
-        T("${s.decode}: ${decodeSpeed.toStringAsFixed(1)} t/s", s: const TS(c: kB, s: 10, w: FW.w400)),
+        T(
+          "${s.prefill}: ${prefillSpeed.toStringAsFixed(1)} t/s",
+          s: const TS(c: kB, s: 10, w: FW.w400),
+        ),
+        T(
+          "${s.decode}: ${decodeSpeed.toStringAsFixed(1)} t/s",
+          s: const TS(c: kB, s: 10, w: FW.w400),
+        ),
       ],
     );
 
@@ -470,7 +510,10 @@ class _Score extends ConsumerWidget {
           : () {
               P.othello.start();
             },
-      child: T(s.new_game, s: const TS(c: kB, s: 10, w: FW.w500)),
+      child: T(
+        s.new_game,
+        s: const TS(c: kB, s: 10, w: FW.w500),
+      ),
     );
 
     return Ro(
@@ -601,7 +644,12 @@ class _Grid extends ConsumerWidget {
             top: 0,
             width: sizeForCell,
             height: labelSize,
-            child: Center(child: T(e, s: const TS(c: kB, s: 10, w: FW.w700))),
+            child: Center(
+              child: T(
+                e,
+                s: const TS(c: kB, s: 10, w: FW.w700),
+              ),
+            ),
           );
         }).toList();
 
@@ -612,7 +660,12 @@ class _Grid extends ConsumerWidget {
             top: top,
             height: sizeForCell,
             width: labelSize,
-            child: Center(child: T(e, s: const TS(c: kB, s: 10, w: FW.w700))),
+            child: Center(
+              child: T(
+                e,
+                s: const TS(c: kB, s: 10, w: FW.w700),
+              ),
+            ),
           );
         }).toList();
 
@@ -648,46 +701,48 @@ class _Cell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(builder: (context, constraints) {
-      final maxSize = min(constraints.maxWidth, constraints.maxHeight) * .7;
-      final minSize = 5.0;
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final maxSize = min(constraints.maxWidth, constraints.maxHeight) * .7;
+        final minSize = 5.0;
 
-      final maxAvailableSize = min(constraints.maxWidth, constraints.maxHeight) * .2;
-      final minAvailableSize = minSize - 2;
+        final maxAvailableSize = min(constraints.maxWidth, constraints.maxHeight) * .2;
+        final minAvailableSize = minSize - 2;
 
-      if (available) {
-        return Center(
-          child: Stack(
-            children: [
-              C(
-                constraints: BoxConstraints(
-                  minWidth: minAvailableSize,
-                  minHeight: minAvailableSize,
-                  maxWidth: maxAvailableSize,
-                  maxHeight: maxAvailableSize,
+        if (available) {
+          return Center(
+            child: Stack(
+              children: [
+                C(
+                  constraints: BoxConstraints(
+                    minWidth: minAvailableSize,
+                    minHeight: minAvailableSize,
+                    maxWidth: maxAvailableSize,
+                    maxHeight: maxAvailableSize,
+                  ),
+                  decoration: BD(color: Colors.green, borderRadius: 100.r),
                 ),
-                decoration: BD(color: Colors.green, borderRadius: 100.r),
-              ),
-            ],
-          ),
-        );
-      }
+              ],
+            ),
+          );
+        }
 
-      switch (cellType) {
-        case CellType.empty:
-          return const Center(
-            child: SizedBox.shrink(),
-          );
-        case CellType.black:
-          return Center(
-            child: _Black(minSize: minSize, maxSize: maxSize),
-          );
-        case CellType.white:
-          return Center(
-            child: _White(minSize: minSize, maxSize: maxSize),
-          );
-      }
-    });
+        switch (cellType) {
+          case CellType.empty:
+            return const Center(
+              child: SizedBox.shrink(),
+            );
+          case CellType.black:
+            return Center(
+              child: _Black(minSize: minSize, maxSize: maxSize),
+            );
+          case CellType.white:
+            return Center(
+              child: _White(minSize: minSize, maxSize: maxSize),
+            );
+        }
+      },
+    );
   }
 }
 

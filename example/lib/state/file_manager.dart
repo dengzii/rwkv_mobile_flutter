@@ -266,24 +266,23 @@ enum FileDownloadSource {
   hfmirror,
   huggingface,
   github,
-  googleapis,
-  ;
+  googleapis;
 
   String get prefix => switch (this) {
-        aifasthub => 'https://aifasthub.com/',
-        hfmirror => 'https://hf-mirror.com/',
-        huggingface => 'https://huggingface.co/',
-        github => 'https://github.com/',
-        googleapis => 'https://googleapis.com/',
-      };
+    aifasthub => 'https://aifasthub.com/',
+    hfmirror => 'https://hf-mirror.com/',
+    huggingface => 'https://huggingface.co/',
+    github => 'https://github.com/',
+    googleapis => 'https://googleapis.com/',
+  };
 
   String get suffix => switch (this) {
-        aifasthub => '?download=true',
-        hfmirror => '?download=true',
-        huggingface => '',
-        github => '',
-        googleapis => '',
-      };
+    aifasthub => '?download=true',
+    hfmirror => '?download=true',
+    huggingface => '',
+    github => '',
+    googleapis => '',
+  };
 
   bool get isDebug {
     switch (this) {

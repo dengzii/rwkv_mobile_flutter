@@ -25,7 +25,8 @@ final class MessageChain extends Equatable {
   MessageChain addAt(int id, int index) => MessageChain(ids: [...ids.take(index), id]);
 
   @override
-  String toString() => """
+  String toString() =>
+      """
 MessageChain(
   length: ${ids.length},
   ids: $ids,

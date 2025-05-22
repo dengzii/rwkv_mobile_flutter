@@ -7,8 +7,7 @@ class _Suggestion {
     final demoType = P.app.demoType.q;
     final isChat = demoType == DemoType.chat;
     if (!isChat && demoType != DemoType.tts) return;
-    final shouldUseEn =
-        P.preference.preferredLanguage.q.resolved.locale.languageCode != "zh";
+    final shouldUseEn = P.preference.preferredLanguage.q.resolved.locale.languageCode != "zh";
 
     const head = "assets/config/chat/suggestions";
     final lang = shouldUseEn ? ".en-US" : ".zh-hans";

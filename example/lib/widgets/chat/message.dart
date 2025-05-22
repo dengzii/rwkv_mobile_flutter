@@ -204,9 +204,7 @@ class Message extends ConsumerWidget {
       textScaler: textScaleFactor,
       horizontalRuleDecoration: BoxDecoration(
         color: kB.q(.1),
-        border: Border(
-          top: BorderSide(color: kB.q(.1), width: 1),
-        ),
+        border: Border(top: BorderSide(color: kB.q(.1), width: 1)),
       ),
     );
 
@@ -287,10 +285,7 @@ class Message extends ConsumerWidget {
     final rawMaxWidth = math.min(screenWidth, screenHeight);
 
     final bubbleContent = ConstrainedBox(
-      constraints: BoxConstraints(
-        maxWidth: width - kBubbleMaxWidthAdjust,
-        minHeight: kBubbleMinHeight,
-      ),
+      constraints: BoxConstraints(maxWidth: width - kBubbleMaxWidthAdjust, minHeight: kBubbleMinHeight),
       child: ClipRRect(
         borderRadius: !isUserImage
             ? BorderRadius.zero
@@ -325,10 +320,7 @@ class Message extends ConsumerWidget {
                 // 🔥 User message image
                 if (isUserImage)
                   ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxWidth: rawMaxWidth * .8,
-                      maxHeight: rawMaxWidth * .8,
-                    ),
+                    constraints: BoxConstraints(maxWidth: rawMaxWidth * .8, maxHeight: rawMaxWidth * .8),
                     child: PhotoViewerImage(
                       borderRadius: 24,
                       imageUrl: msg.imageUrl!,
@@ -348,11 +340,7 @@ class Message extends ConsumerWidget {
                 if (worldDemoMessageHeader.isNotEmpty)
                   T(
                     worldDemoMessageHeader,
-                    s: TS(
-                      c: kB.q(.5),
-                      w: FW.w700,
-                      s: 10,
-                    ),
+                    s: TS(c: kB.q(.5), w: FW.w700, s: 10),
                   ),
                 if (worldDemoMessageHeader.isNotEmpty) 4.h,
                 // 🔥 Bot message
@@ -378,7 +366,10 @@ class Message extends ConsumerWidget {
                       decoration: const BD(color: kC),
                       child: Ro(
                         children: [
-                          T(thisMessageIsReceiving ? s.thinking : s.thought_result, s: TS(c: kB.q(.5), w: FW.w600)),
+                          T(
+                            thisMessageIsReceiving ? s.thinking : s.thought_result,
+                            s: TS(c: kB.q(.5), w: FW.w600),
+                          ),
                           showingCotContent ? Icon(Icons.expand_more, color: kB.q(.5)) : Icon(Icons.expand_less, color: kB.q(.5)),
                         ],
                       ),
@@ -401,13 +392,7 @@ class Message extends ConsumerWidget {
                 // 🔥 Bot message cot result
                 if (cotResult.isNotEmpty && usingReasoningModel && showingCotContent) 12.h,
                 if (cotResult.isNotEmpty && usingReasoningModel)
-                  MarkdownBody(
-                    data: cotResult,
-                    selectable: false,
-                    shrinkWrap: true,
-                    styleSheet: markdownStyleSheet,
-                    onTapLink: _onTapLink,
-                  ),
+                  MarkdownBody(data: cotResult, selectable: false, shrinkWrap: true, styleSheet: markdownStyleSheet, onTapLink: _onTapLink),
                 BotMessageBottom(msg, index),
                 BotTtsContent(msg, index),
               ],
@@ -427,10 +412,7 @@ class Message extends ConsumerWidget {
           child: Padding(
             padding: const EI.s(h: marginHorizontal, v: marginVertical),
             child: SelectionArea(
-              child: GD(
-                onTap: _onTap,
-                child: bubbleContent,
-              ),
+              child: GD(onTap: _onTap, child: bubbleContent),
             ),
           ),
         ),

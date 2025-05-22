@@ -260,14 +260,16 @@ extension $RWKVLoad on _RWKV {
 
     final ttsTokenizerPath = await fromAssetsToTemp("assets/config/chat/b_rwkv_vocab_v20230424_tts.txt");
 
-    send(to_rwkv.LoadTTSModels(
-      campPlusPath: campPlusPath,
-      flowDecoderEstimatorPath: flowDecoderEstimatorPath,
-      flowEncoderPath: flowEncoderPath,
-      hiftGeneratorPath: hiftGeneratorPath,
-      speechTokenizerPath: speechTokenizerPath,
-      ttsTokenizerPath: ttsTokenizerPath,
-    ));
+    send(
+      to_rwkv.LoadTTSModels(
+        campPlusPath: campPlusPath,
+        flowDecoderEstimatorPath: flowDecoderEstimatorPath,
+        flowEncoderPath: flowEncoderPath,
+        hiftGeneratorPath: hiftGeneratorPath,
+        speechTokenizerPath: speechTokenizerPath,
+        ttsTokenizerPath: ttsTokenizerPath,
+      ),
+    );
 
     final ttsTextNormalizerDatePath = await fromAssetsToTemp("assets/config/chat/date-zh.fst");
     final ttsTextNormalizerNumberPath = await fromAssetsToTemp("assets/config/chat/number-zh.fst");
@@ -355,12 +357,14 @@ extension $RWKVLoad on _RWKV {
     final rootIsolateToken = RootIsolateToken.instance;
 
     if (_sendPort != null) {
-      send(to_rwkv.InitRuntime(
-        modelPath: modelPath,
-        backend: backend,
-        tokenizerPath: tokenizerPath,
-        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
-      ));
+      send(
+        to_rwkv.InitRuntime(
+          modelPath: modelPath,
+          backend: backend,
+          tokenizerPath: tokenizerPath,
+          latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
+        ),
+      );
     } else {
       final options = StartOptions(
         modelPath: modelPath,
@@ -383,14 +387,16 @@ extension $RWKVLoad on _RWKV {
     P.app.demoType.q = DemoType.othello;
 
     send(to_rwkv.SetMaxLength(64000));
-    send(to_rwkv.SetSamplerParams(
-      temperature: 1.0,
-      topK: 1,
-      topP: 1.0,
-      presencePenalty: .0,
-      frequencyPenalty: .0,
-      penaltyDecay: .0,
-    ));
+    send(
+      to_rwkv.SetSamplerParams(
+        temperature: 1.0,
+        topK: 1,
+        topP: 1.0,
+        presencePenalty: .0,
+        frequencyPenalty: .0,
+        penaltyDecay: .0,
+      ),
+    );
     send(to_rwkv.SetGenerationStopToken(0));
     send(to_rwkv.ClearStates());
   }
@@ -411,12 +417,14 @@ extension $RWKVLoad on _RWKV {
     final rootIsolateToken = RootIsolateToken.instance;
 
     if (_sendPort != null) {
-      send(to_rwkv.InitRuntime(
-        modelPath: modelPath,
-        backend: backend,
-        tokenizerPath: tokenizerPath,
-        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
-      ));
+      send(
+        to_rwkv.InitRuntime(
+          modelPath: modelPath,
+          backend: backend,
+          tokenizerPath: tokenizerPath,
+          latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
+        ),
+      );
     } else {
       final options = StartOptions(
         modelPath: modelPath,
@@ -439,14 +447,16 @@ extension $RWKVLoad on _RWKV {
     P.app.demoType.q = DemoType.sudoku;
 
     send(to_rwkv.SetMaxLength(6000_000));
-    send(to_rwkv.SetSamplerParams(
-      temperature: 1.0,
-      topK: 1,
-      topP: 1.0,
-      presencePenalty: .0,
-      frequencyPenalty: .0,
-      penaltyDecay: .0,
-    ));
+    send(
+      to_rwkv.SetSamplerParams(
+        temperature: 1.0,
+        topK: 1,
+        topP: 1.0,
+        presencePenalty: .0,
+        frequencyPenalty: .0,
+        penaltyDecay: .0,
+      ),
+    );
     send(to_rwkv.SetGenerationStopToken(_Sudoku.tokenStop));
     send(to_rwkv.ClearStates());
     _loading.q = false;
@@ -551,12 +561,14 @@ extension $RWKV on _RWKV {
     prefillSpeed.q = 0;
     decodeSpeed.q = 0;
     _initRuntimeCompleter = Completer<void>();
-    send(to_rwkv.InitRuntime(
-      modelPath: modelPath,
-      backend: backend,
-      tokenizerPath: tokenizerPath,
-      latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
-    ));
+    send(
+      to_rwkv.InitRuntime(
+        modelPath: modelPath,
+        backend: backend,
+        tokenizerPath: tokenizerPath,
+        latestRuntimeAddress: P.preference.latestRuntimeAddress.q,
+      ),
+    );
     return _initRuntimeCompleter.future;
   }
 
@@ -635,14 +647,16 @@ extension $RWKV on _RWKV {
     if (frequencyPenalty != null) arguments(Argument.frequencyPenalty).q = frequencyPenalty;
     if (penaltyDecay != null) arguments(Argument.penaltyDecay).q = penaltyDecay;
 
-    send(to_rwkv.SetSamplerParams(
-      temperature: _intIfFixedDecimalsIsZero(Argument.temperature),
-      topK: _intIfFixedDecimalsIsZero(Argument.topK),
-      topP: _intIfFixedDecimalsIsZero(Argument.topP),
-      presencePenalty: _intIfFixedDecimalsIsZero(Argument.presencePenalty),
-      frequencyPenalty: _intIfFixedDecimalsIsZero(Argument.frequencyPenalty),
-      penaltyDecay: _intIfFixedDecimalsIsZero(Argument.penaltyDecay),
-    ));
+    send(
+      to_rwkv.SetSamplerParams(
+        temperature: _intIfFixedDecimalsIsZero(Argument.temperature),
+        topK: _intIfFixedDecimalsIsZero(Argument.topK),
+        topP: _intIfFixedDecimalsIsZero(Argument.topP),
+        presencePenalty: _intIfFixedDecimalsIsZero(Argument.presencePenalty),
+        frequencyPenalty: _intIfFixedDecimalsIsZero(Argument.frequencyPenalty),
+        penaltyDecay: _intIfFixedDecimalsIsZero(Argument.penaltyDecay),
+      ),
+    );
 
     if (kDebugMode) send(to_rwkv.GetSamplerParams());
   }
@@ -719,28 +733,34 @@ extension _$RWKV on _RWKV {
 
     if (message["responseBufferContent"] != null) {
       final responseBufferContent = message["responseBufferContent"];
-      _oldMessagesController.add(LLMEvent(
-        content: responseBufferContent,
-        type: _RWKVMessageType.responseBufferContent,
-      ));
+      _oldMessagesController.add(
+        LLMEvent(
+          content: responseBufferContent,
+          type: _RWKVMessageType.responseBufferContent,
+        ),
+      );
       return;
     }
 
     if (message["responseBufferIds"] != null) {
       final responseBufferIdsList = message["responseBufferIds"];
-      _oldMessagesController.add(LLMEvent(
-        responseBufferIds: (responseBufferIdsList as List).map((e) => e as int).toList(),
-        type: _RWKVMessageType.responseBufferIds,
-      ));
+      _oldMessagesController.add(
+        LLMEvent(
+          responseBufferIds: (responseBufferIdsList as List).map((e) => e as int).toList(),
+          type: _RWKVMessageType.responseBufferIds,
+        ),
+      );
       return;
     }
 
     if (message["isGenerating"] != null) {
       final isGenerating = message["isGenerating"];
-      _oldMessagesController.add(LLMEvent(
-        content: isGenerating.toString(),
-        type: _RWKVMessageType.isGenerating,
-      ));
+      _oldMessagesController.add(
+        LLMEvent(
+          content: isGenerating.toString(),
+          type: _RWKVMessageType.isGenerating,
+        ),
+      );
       if (!isGenerating) {
         _getTokensTimer?.cancel();
         _getTokensTimer = null;
@@ -750,37 +770,45 @@ extension _$RWKV on _RWKV {
 
     if (message["currentPrompt"] != null) {
       qqq("Got currentPrompt: \"${message["currentPrompt"]}\"");
-      _oldMessagesController.add(LLMEvent(
-        content: message["currentPrompt"].toString(),
-        type: _RWKVMessageType.currentPrompt,
-      ));
+      _oldMessagesController.add(
+        LLMEvent(
+          content: message["currentPrompt"].toString(),
+          type: _RWKVMessageType.currentPrompt,
+        ),
+      );
       return;
     }
 
     if (message["generateStart"] == true) {
-      _oldMessagesController.add(const LLMEvent(
-        content: "",
-        type: _RWKVMessageType.generateStart,
-      ));
+      _oldMessagesController.add(
+        const LLMEvent(
+          content: "",
+          type: _RWKVMessageType.generateStart,
+        ),
+      );
       return;
     }
 
     if (message["response"] != null) {
       final responseText = message["response"].toString();
-      _oldMessagesController.add(LLMEvent(
-        content: responseText,
-        type: _RWKVMessageType.response,
-      ));
+      _oldMessagesController.add(
+        LLMEvent(
+          content: responseText,
+          type: _RWKVMessageType.response,
+        ),
+      );
       return;
     }
 
     if (message["streamResponse"] != null) {
       final responseText = message["streamResponse"].toString();
-      _oldMessagesController.add(LLMEvent(
-        content: responseText,
-        token: message["streamResponseToken"],
-        type: _RWKVMessageType.streamResponse,
-      ));
+      _oldMessagesController.add(
+        LLMEvent(
+          content: responseText,
+          token: message["streamResponseToken"],
+          type: _RWKVMessageType.streamResponse,
+        ),
+      );
       if (message["prefillSpeed"] != null && message["prefillSpeed"] != -1.0) {
         prefillSpeed.q = message["prefillSpeed"];
       }
@@ -791,10 +819,12 @@ extension _$RWKV on _RWKV {
     }
 
     if (message["generateStop"] != null) {
-      _oldMessagesController.add(const LLMEvent(
-        content: "",
-        type: _RWKVMessageType.generateStop,
-      ));
+      _oldMessagesController.add(
+        const LLMEvent(
+          content: "",
+          type: _RWKVMessageType.generateStop,
+        ),
+      );
       return;
     }
 
@@ -917,7 +947,6 @@ enum _RWKVMessageType {
 
   @Deprecated("Use FromRWKV instead")
   generateStop,
-  ;
 }
 
 @Deprecated("Use FromRWKV instead")
