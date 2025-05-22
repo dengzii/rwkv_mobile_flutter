@@ -38,17 +38,14 @@ class _RWKV {
     return argument.defaults;
   });
 
-  late final usingReasoningModel = qp((ref) {
-    return ref.watch(_usingReasoningModel);
-  });
-
+  late final usingReasoningModel = qp((ref) => ref.watch(_usingReasoningModel));
   late final _usingReasoningModel = qs(false);
 
-  late final preferChinese = qp((ref) {
-    return ref.watch(_preferChinese);
-  });
-
+  late final preferChinese = qp((ref) => ref.watch(_preferChinese));
   late final _preferChinese = qs(false);
+
+  late final preferPseudo = qp((ref) => ref.watch(_preferPseudo));
+  late final _preferPseudo = qs(false);
 
   /// 模型是否已加载
   late final loaded = qp((ref) {
@@ -566,10 +563,24 @@ extension $RWKV on _RWKV {
   FV setModelConfig({
     bool? usingReasoningModel,
     bool? preferChinese,
+    bool? preferPseudo,
     bool setPrompt = true,
   }) async {
     if (usingReasoningModel != null) _usingReasoningModel.q = usingReasoningModel;
-    if (preferChinese != null) _preferChinese.q = preferChinese;
+
+    if (preferChinese != null && preferPseudo != null) {
+      Alert.error("preferChinese and preferPseudo cannot be set at the same time");
+      return;
+    }
+
+    if (preferChinese != null) {
+      _preferChinese.q = preferChinese;
+      if (preferChinese) _preferPseudo.q = false;
+    }
+    if (preferPseudo != null) {
+      _preferPseudo.q = preferPseudo;
+      if (preferPseudo) _preferChinese.q = false;
+    }
 
     late final String finalPrompt;
 
@@ -579,7 +590,23 @@ extension $RWKV on _RWKV {
 
     send(to_rwkv.SetEnableReasoning(_usingReasoningModel.q));
     if (setPrompt) send(to_rwkv.SetPrompt(_usingReasoningModel.q ? "<EOD>" : finalPrompt));
-    send(to_rwkv.SetThinkingToken(_preferChinese.q ? "<think>嗯" : "<think"));
+
+    late final String thinkingToken;
+
+    if (_preferChinese.q && _preferPseudo.q) {
+      Alert.error("preferChinese and preferPseudo cannot be set at the same time");
+      return;
+    }
+
+    if (_preferChinese.q) {
+      thinkingToken = "<think>嗯";
+    } else if (_preferPseudo.q) {
+      thinkingToken = "<think></think>";
+    } else {
+      thinkingToken = "<think";
+    }
+
+    send(to_rwkv.SetThinkingToken(thinkingToken));
   }
 
   FV resetSamplerParams({required bool usingReasoningModel}) async {

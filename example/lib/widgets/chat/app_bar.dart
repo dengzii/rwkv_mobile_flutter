@@ -1,9 +1,7 @@
 // ignore: unused_import
 import 'dart:developer';
-import 'dart:io';
 import 'dart:ui';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:halo/halo.dart';
@@ -125,7 +123,7 @@ class ChatAppBar extends ConsumerWidget {
               ],
             ),
             actions: [
-              if (demoType == DemoType.chat) _NewConversationButton(),
+              if (demoType == DemoType.chat) const _NewConversationButton(),
               IconButton(
                 onPressed: _onTunePressed,
                 icon: const Icon(Icons.tune),

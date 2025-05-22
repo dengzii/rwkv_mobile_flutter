@@ -1,15 +1,22 @@
 // ignore: unused_import
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:halo/halo.dart';
+import 'package:halo_state/halo_state.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:zone/config.dart';
 import 'package:zone/gen/l10n.dart';
+import 'package:zone/model/demo_type.dart';
+import 'package:zone/model/message.dart';
+import 'package:zone/route/router.dart';
 import 'package:zone/state/p.dart';
 import 'package:zone/widgets/form_item.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class Settings extends ConsumerWidget {
   final ScrollController? scrollController;
@@ -156,6 +163,13 @@ class Settings extends ConsumerWidget {
             icon: Icon(Icons.feedback_outlined, color: kB.q(.667), size: 16),
             onTap: _openFeedback,
           ),
+          if (demoType == DemoType.world && Platform.isAndroid)
+            FormItem(
+              isSectionStart: false,
+              title: "Dump See Files",
+              icon: Icon(Icons.bug_report, color: kB.q(.667), size: 16),
+              onTap: _dumpSeeFiles,
+            ),
           FormItem(
             isSectionEnd: true,
             title: s.license,
@@ -197,6 +211,87 @@ class Settings extends ConsumerWidget {
 
   void _openFeedback() {
     launchUrlString("https://community.rwkv.cn/", mode: LaunchMode.externalApplication);
+  }
+
+  void _dumpSeeFiles() async {
+    qq;
+
+    // Request storage permission
+    var status = await Permission.storage.status;
+    if (!status.isGranted) {
+      status = await Permission.storage.request();
+    }
+
+    if (!status.isGranted) {
+      // Handle the case where permission is not granted
+      ScaffoldMessenger.of(getContext()!).showSnackBar(const SnackBar(content: T("Storage permission not granted")));
+      return;
+    }
+
+    final messages = P.chat.messages.q;
+    final List<String> imagePaths = [];
+    String content = "";
+    for (final m in messages) {
+      final type = m.type;
+      switch (type) {
+        case MessageType.text:
+          content += m.isMine ? "User:\n" : "Bot:\n";
+          content += m.content + "\n";
+          break;
+        case MessageType.userImage:
+          if (m.imageUrl != null && m.imageUrl!.isNotEmpty) {
+            imagePaths.add(m.imageUrl!);
+          }
+          break;
+        case MessageType.userAudio:
+        case MessageType.userTTS:
+        case MessageType.ttsGeneration:
+          break;
+      }
+    }
+
+    try {
+      Directory? externalDir;
+      if (Platform.isAndroid) {
+        externalDir = Directory("/storage/emulated/0/Download");
+        // Alternatively, use getExternalStorageDirectory() from path_provider
+        // externalDir = await getExternalStorageDirectory();
+      } else if (Platform.isIOS) {
+        externalDir = await getApplicationDocumentsDirectory();
+      }
+
+      if (externalDir == null) {
+        ScaffoldMessenger.of(getContext()!).showSnackBar(const SnackBar(content: T("Could not get external directory")));
+        return;
+      }
+
+      final timestamp = DateTime.now().millisecondsSinceEpoch;
+      final newDirPath = '${externalDir.path}/ChatDump_$timestamp';
+      final newDir = Directory(newDirPath);
+      await newDir.create(recursive: true);
+
+      // Save text content
+      final textFile = File('${newDir.path}/chat_log.txt');
+      await textFile.writeAsString(content);
+
+      // Save images
+      for (int i = 0; i < imagePaths.length; i++) {
+        final imagePath = imagePaths[i];
+        final originalFile = File(imagePath);
+        if (await originalFile.exists()) {
+          final fileName = imagePath.split('/').last;
+          final newImagePath = '${newDir.path}/$fileName';
+          await originalFile.copy(newImagePath);
+        }
+      }
+
+      ScaffoldMessenger.of(getContext()!).showSnackBar(
+        SnackBar(content: T('Files saved to ${newDir.path}')),
+      );
+    } catch (e) {
+      log('Error saving files: $e');
+      ScaffoldMessenger.of(getContext()!).showSnackBar(SnackBar(content: T('Error saving files: $e')));
+    }
   }
 
   void _showLicensePage(

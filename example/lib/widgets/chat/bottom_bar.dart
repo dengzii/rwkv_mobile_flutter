@@ -9,7 +9,7 @@ import 'package:halo_state/halo_state.dart';
 import 'package:zone/func/show_image_selector.dart';
 import 'package:zone/model/demo_type.dart';
 import 'package:zone/state/p.dart';
-import 'package:zone/widgets/chat/language_button.dart';
+import 'package:zone/widgets/chat/reasoning_option_button.dart';
 import 'package:zone/widgets/chat/reason_button.dart';
 
 class BottomBar extends ConsumerWidget {
@@ -67,7 +67,10 @@ class BottomBar extends ConsumerWidget {
         if (demoType == DemoType.chat) const ReasonButton(),
         if (usingReasoningModel) 4.w,
         if (usingReasoningModel)
-          if (demoType == DemoType.chat) const LanguageButton(),
+          if (demoType == DemoType.chat) const ReasoningOptionButton(option: ReasoningOption.language),
+        if (usingReasoningModel) 4.w,
+        if (usingReasoningModel)
+          if (demoType == DemoType.chat) const ReasoningOptionButton(option: ReasoningOption.pseudo),
         8.w,
         Co(
           c: CAA.start,
