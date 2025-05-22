@@ -36,7 +36,9 @@ import 'package:path/path.dart' as p;
       int dataIdOffset = currentOffset;
       int audioDataStartOffset = currentOffset + 8;
       if (audioDataStartOffset + chunkContentSize > wavBytes.lengthInBytes) {
-        debugPrint("Data chunk size exceeds file length. Path: $chunkId, Declared size: $chunkContentSize, Actual available: ${wavBytes.lengthInBytes - audioDataStartOffset}");
+        debugPrint(
+          "Data chunk size exceeds file length. Path: $chunkId, Declared size: $chunkContentSize, Actual available: ${wavBytes.lengthInBytes - audioDataStartOffset}",
+        );
         // Allow to proceed with available data if header size is wrong but data seems to be there till end
         // chunkContentSize = wavBytes.lengthInBytes - audioDataStartOffset;
         // if(chunkContentSize < 0) return null; // or throw
@@ -131,7 +133,9 @@ Future<String> mergeWavFiles(List<String> filePaths) async {
       final int currentBitsPerSample = byteDataView.getUint16(34, Endian.little);
 
       if (currentNumChannels != numChannels || currentSampleRate != sampleRate || currentBitsPerSample != bitsPerSample) {
-        throw FormatException("Mismatch in audio parameters between WAV files. Expected Ch=$numChannels, SR=$sampleRate, BPS=$bitsPerSample. Got Ch=$currentNumChannels, SR=$currentSampleRate, BPS=$currentBitsPerSample in $filePath");
+        throw FormatException(
+          "Mismatch in audio parameters between WAV files. Expected Ch=$numChannels, SR=$sampleRate, BPS=$bitsPerSample. Got Ch=$currentNumChannels, SR=$currentSampleRate, BPS=$currentBitsPerSample in $filePath",
+        );
       }
     }
     audioDataSegments.add(currentAudioData);
@@ -139,7 +143,9 @@ Future<String> mergeWavFiles(List<String> filePaths) async {
   }
 
   if (sampleRate == null || numChannels == null || bitsPerSample == null) {
-    throw StateError("Could not determine audio parameters from input files. All files might have been invalid or list was effectively empty of valid WAVs.");
+    throw StateError(
+      "Could not determine audio parameters from input files. All files might have been invalid or list was effectively empty of valid WAVs.",
+    );
   }
   if (audioDataSegments.isEmpty) {
     throw StateError("No audio data could be extracted from the provided files.");

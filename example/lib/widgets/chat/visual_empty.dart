@@ -67,26 +67,27 @@ class VisualEmpty extends ConsumerWidget {
               child: GD(
                 onTap: _onTapImageSelector,
                 child: C(
-                    decoration: BD(
-                      color: primaryContainer.q(.5),
-                      border: Border.all(
-                        color: primary.q(.5),
-                      ),
-                      borderRadius: 12.r,
+                  decoration: BD(
+                    color: primaryContainer.q(.5),
+                    border: Border.all(
+                      color: primary.q(.5),
                     ),
-                    width: math.min(maxW, maxH) - 16,
-                    height: math.min(maxW, maxH) * .75,
-                    child: Co(
-                      c: CAA.center,
-                      m: MAA.center,
-                      children: [
-                        if (imagePath == null) const Icon(Icons.image),
-                        if (imagePath == null) 8.h,
-                        if (imagePath == null) const T("Click to load image", s: TS(w: FW.w500, s: 20)),
-                        if (imagePath == null) 8.h,
-                        if (imagePath == null) const T("Then you can start to chat with RWKV"),
-                      ],
-                    )),
+                    borderRadius: 12.r,
+                  ),
+                  width: math.min(maxW, maxH) - 16,
+                  height: math.min(maxW, maxH) * .75,
+                  child: Co(
+                    c: CAA.center,
+                    m: MAA.center,
+                    children: [
+                      if (imagePath == null) const Icon(Icons.image),
+                      if (imagePath == null) 8.h,
+                      if (imagePath == null) const T("Click to load image", s: TS(w: FW.w500, s: 20)),
+                      if (imagePath == null) 8.h,
+                      if (imagePath == null) const T("Then you can start to chat with RWKV"),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

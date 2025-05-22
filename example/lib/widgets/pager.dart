@@ -177,10 +177,10 @@ class _CustomPageScrollPhysics extends PageScrollPhysics {
 
   @override
   SpringDescription get spring => const SpringDescription(
-        mass: 3, // 质量，控制惯性
-        stiffness: 400, // 刚度，控制弹簧力度
-        damping: 2, // 阻尼，控制减速
-      );
+    mass: 3, // 质量，控制惯性
+    stiffness: 400, // 刚度，控制弹簧力度
+    damping: 2, // 阻尼，控制减速
+  );
 
   // 获取目标页面索引
   int getTargetPage(ScrollMetrics position, double velocity) {

@@ -24,9 +24,11 @@ class BranchSwitcher extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final branches = ref.watch(P.chat.branchesCountList.select((list) {
-      return list.length > index ? list[index] : [];
-    }));
+    final branches = ref.watch(
+      P.chat.branchesCountList.select((list) {
+        return list.length > index ? list[index] : [];
+      }),
+    );
     if (branches.length <= 1) return const SizedBox.shrink();
     final primary = Theme.of(context).colorScheme.primary;
     final indexInBranches = branches.indexOf(msg.id);

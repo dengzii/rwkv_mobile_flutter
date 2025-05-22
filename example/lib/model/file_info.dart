@@ -148,20 +148,20 @@ class FileInfo extends Equatable {
   bool get isReasoning => tags.contains(Config.reasonTag);
 
   WorldType? get worldType => switch (fileName) {
-        "RWKV7-0.4B-G1-SigLIP2-ColdStart-encoder-f16.gguf" => WorldType.reasoningQA,
-        "RWKV7-0.4B-G1-SigLIP2-ColdStart-Q8_0.gguf" => WorldType.reasoningQA,
-        "RWKV7-0.4B-G1-SigLIP2-ColdStart-a16w8_8elite_combined_embedding.bin" => WorldType.reasoningQA,
-        "RWKV7-0.4B-G1-SigLIP2-ColdStart-a16w8_8gen3_combined_embedding.bin" => WorldType.reasoningQA,
-        "rwkv7-v-0.4B-siglip_vision_encoder-f16.gguf" => WorldType.qa,
-        "rwkv7-v-0.4B-Q8_0.gguf" => WorldType.qa,
-        "rwkv7-v-0.4B-a16w8_8elite_combined_embedding.bin" => WorldType.qa,
-        "rwkv7-v-0.4B-a16w8_8gen3_combined_embedding.bin" => WorldType.qa,
-        "RWKV7-0.4B-G1-SigLIP2-encoder-f16.gguf" => WorldType.ocr,
-        "RWKV7-0.4B-G1-SigLIP2-Q8_0.gguf" => WorldType.ocr,
-        "RWKV7-0.4B-G1-SigLIP2-a16w8_8elite_combined_embedding.bin" => WorldType.ocr,
-        "RWKV7-0.4B-G1-SigLIP2-a16w8_8gen3_combined_embedding.bin" => WorldType.ocr,
-        _ => null,
-      };
+    "RWKV7-0.4B-G1-SigLIP2-ColdStart-encoder-f16.gguf" => WorldType.reasoningQA,
+    "RWKV7-0.4B-G1-SigLIP2-ColdStart-Q8_0.gguf" => WorldType.reasoningQA,
+    "RWKV7-0.4B-G1-SigLIP2-ColdStart-a16w8_8elite_combined_embedding.bin" => WorldType.reasoningQA,
+    "RWKV7-0.4B-G1-SigLIP2-ColdStart-a16w8_8gen3_combined_embedding.bin" => WorldType.reasoningQA,
+    "rwkv7-v-0.4B-siglip_vision_encoder-f16.gguf" => WorldType.qa,
+    "rwkv7-v-0.4B-Q8_0.gguf" => WorldType.qa,
+    "rwkv7-v-0.4B-a16w8_8elite_combined_embedding.bin" => WorldType.qa,
+    "rwkv7-v-0.4B-a16w8_8gen3_combined_embedding.bin" => WorldType.qa,
+    "RWKV7-0.4B-G1-SigLIP2-encoder-f16.gguf" => WorldType.ocr,
+    "RWKV7-0.4B-G1-SigLIP2-Q8_0.gguf" => WorldType.ocr,
+    "RWKV7-0.4B-G1-SigLIP2-a16w8_8elite_combined_embedding.bin" => WorldType.ocr,
+    "RWKV7-0.4B-G1-SigLIP2-a16w8_8gen3_combined_embedding.bin" => WorldType.ocr,
+    _ => null,
+  };
 
   bool get isEncoder => tags.contains('encoder');
 
@@ -195,5 +195,4 @@ enum FileType {
   encoder,
   runtime,
   downloadTest,
-  ;
 }

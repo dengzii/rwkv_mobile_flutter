@@ -175,14 +175,14 @@ class _CompletionOptions extends ConsumerWidget {
 
 extension _ArgumentGaimon on Argument {
   bool get enableGaimon => switch (this) {
-        Argument.temperature => true,
-        Argument.topK => true,
-        Argument.topP => true,
-        Argument.presencePenalty => true,
-        Argument.frequencyPenalty => true,
-        Argument.penaltyDecay => true,
-        Argument.maxLength => false,
-      };
+    Argument.temperature => true,
+    Argument.topK => true,
+    Argument.topP => true,
+    Argument.presencePenalty => true,
+    Argument.frequencyPenalty => true,
+    Argument.penaltyDecay => true,
+    Argument.maxLength => false,
+  };
 }
 
 class _Value extends ConsumerWidget {

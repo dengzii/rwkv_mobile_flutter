@@ -81,8 +81,14 @@ class Empty extends ConsumerWidget {
                     if (loaded)
                       C(
                         padding: const EI.s(h: 4, v: 2),
-                        decoration: BD(border: Border.all(color: primary), borderRadius: 4.r),
-                        child: T(currentModel?.name ?? "", s: TS(s: 16, w: FW.w600, c: primary)),
+                        decoration: BD(
+                          border: Border.all(color: primary),
+                          borderRadius: 4.r,
+                        ),
+                        child: T(
+                          currentModel?.name ?? "",
+                          s: TS(s: 16, w: FW.w600, c: primary),
+                        ),
                       ),
                     const Spacer(),
                     if (demoType == DemoType.tts) (inputHeight / 1.5).h,

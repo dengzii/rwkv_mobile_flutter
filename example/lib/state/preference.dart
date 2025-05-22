@@ -24,15 +24,15 @@ class _Preference {
   //   "特别大（140%）",
   // ];
   Map<double, String> get textScalePairs => {
-        textScaleFactorSystem: S.current.follow_system,
-        .8: S.current.very_small,
-        .9: S.current.small,
-        1.0: S.current.font_size_default,
-        1.1: S.current.medium,
-        1.2: S.current.large,
-        1.3: S.current.extra_large,
-        1.4: S.current.ultra_large,
-      };
+    textScaleFactorSystem: S.current.follow_system,
+    .8: S.current.very_small,
+    .9: S.current.small,
+    1.0: S.current.font_size_default,
+    1.1: S.current.medium,
+    1.2: S.current.large,
+    1.3: S.current.extra_large,
+    1.4: S.current.ultra_large,
+  };
 
   late final latestRuntimeAddress = qs<int>(0);
 }
@@ -103,10 +103,12 @@ extension $Preference on _Preference {
       title: S.current.application_language,
       message: S.current.please_select_application_language,
       initialSelectedActionKey: currentQ,
-      actions: Language.values.m((lang) => AlertDialogAction<Language>(
-            label: lang.display ?? S.current.follow_system,
-            key: lang,
-          )),
+      actions: Language.values.m(
+        (lang) => AlertDialogAction<Language>(
+          label: lang.display ?? S.current.follow_system,
+          key: lang,
+        ),
+      ),
     );
 
     if (res == null) return;

@@ -2,13 +2,13 @@ part of 'p.dart';
 
 extension _Instruction on Language {
   String get _ttsSpkInstruct => switch (this) {
-        Language.none => "",
-        Language.en => "",
-        Language.ja => "日本語で話してください。",
-        Language.ko => "한국어로 말씀해주세요.",
-        Language.zh_Hans => "",
-        Language.zh_Hant => "",
-      };
+    Language.none => "",
+    Language.en => "",
+    Language.ja => "日本語で話してください。",
+    Language.ko => "한국어로 말씀해주세요.",
+    Language.zh_Hans => "",
+    Language.zh_Hant => "",
+  };
 }
 
 extension _TTSStatic on _TTS {
@@ -165,13 +165,15 @@ extension _$TTS on _TTS {
 
     ttsDone.q = false;
 
-    P.rwkv.send(to_rwkv.StartTTS(
-      ttsText: ttsText,
-      instructionText: instructionText,
-      promptWavPath: promptWavPath,
-      outputWavPath: outputWavPath,
-      promptSpeechText: promptSpeechText,
-    ));
+    P.rwkv.send(
+      to_rwkv.StartTTS(
+        ttsText: ttsText,
+        instructionText: instructionText,
+        promptWavPath: promptWavPath,
+        outputWavPath: outputWavPath,
+        promptSpeechText: promptSpeechText,
+      ),
+    );
 
     filePaths.q = [];
     perWavProgress.q = [];

@@ -41,9 +41,12 @@ FV _loadEnv() async {
 }
 
 FV _sentryAppRunner() async {
-  await SentryFlutter.init(_configureSentry, appRunner: () {
-    runApp(const _App());
-  });
+  await SentryFlutter.init(
+    _configureSentry,
+    appRunner: () {
+      runApp(const _App());
+    },
+  );
 }
 
 FV _debugAppRunner() async {

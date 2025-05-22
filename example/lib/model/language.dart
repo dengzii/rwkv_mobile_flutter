@@ -19,63 +19,62 @@ enum Language {
   zh_Hans,
 
   /// generic traditional Chinese 'zh_Hant'
-  zh_Hant,
-  ;
+  zh_Hant;
 
   String? get display => switch (this) {
-        none => null,
-        en => "English",
-        ja => "日本語",
-        ko => "한국어",
-        zh_Hans => "简体中文",
-        zh_Hant => "繁體中文",
-      };
+    none => null,
+    en => "English",
+    ja => "日本語",
+    ko => "한국어",
+    zh_Hans => "简体中文",
+    zh_Hant => "繁體中文",
+  };
 
   String? get soundDisplay => switch (this) {
-        none => null,
-        en => "English",
-        ja => "日本語",
-        ko => "한국어",
-        zh_Hans => "普通话",
-        zh_Hant => "普通话",
-      };
+    none => null,
+    en => "English",
+    ja => "日本語",
+    ko => "한국어",
+    zh_Hans => "普通话",
+    zh_Hant => "普通话",
+  };
 
   String? get flag => switch (this) {
-        none => null,
-        en => "🇺🇸",
-        ja => "🇯🇵",
-        ko => "🇰🇷",
-        zh_Hans => "🇨🇳",
-        zh_Hant => null,
-      };
+    none => null,
+    en => "🇺🇸",
+    ja => "🇯🇵",
+    ko => "🇰🇷",
+    zh_Hans => "🇨🇳",
+    zh_Hant => null,
+  };
 
   String? get enName => switch (this) {
-        none => null,
-        en => "English",
-        ja => "Japanese",
-        ko => "Korean",
-        zh_Hans => "Chinese",
-        zh_Hant => null,
-      };
+    none => null,
+    en => "English",
+    ja => "Japanese",
+    ko => "Korean",
+    zh_Hans => "Chinese",
+    zh_Hant => null,
+  };
 
   String? get jaName => switch (this) {
-        none => null,
-        en => "英語",
-        ja => "日本語",
-        ko => "韓国語",
-        zh_Hans => "簡体中国語",
-        zh_Hant => "繁体中国語",
-      };
+    none => null,
+    en => "英語",
+    ja => "日本語",
+    ko => "韓国語",
+    zh_Hans => "簡体中国語",
+    zh_Hant => "繁体中国語",
+  };
 
-// 영어 / 간체 중국어 / 번체 중국어 / 일본어 / 한국어
+  // 영어 / 간체 중국어 / 번체 중국어 / 일본어 / 한국어
   String? get koName => switch (this) {
-        none => null,
-        en => "영어",
-        ja => "일본어",
-        ko => "한국어",
-        zh_Hans => "간체 중국어",
-        zh_Hant => "번체 중국어",
-      };
+    none => null,
+    en => "영어",
+    ja => "일본어",
+    ko => "한국어",
+    zh_Hans => "간체 중국어",
+    zh_Hant => "번체 중국어",
+  };
 
   String? localizedName(Locale locale) {
     switch (locale.languageCode) {
@@ -100,9 +99,9 @@ enum Language {
   }
 
   Language get resolved => switch (this) {
-        none => fromSystemLocale(),
-        _ => this,
-      };
+    none => fromSystemLocale(),
+    _ => this,
+  };
 
   Locale get locale {
     if (this == none) {

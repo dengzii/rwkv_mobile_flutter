@@ -126,7 +126,11 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
                     children: [
                       Icon(Icons.audio_file, color: primaryColor),
                       2.h,
-                      if (e < 1) T((e * 100).toStringAsFixed(0) + "%", s: TS(c: kB.q(.8), w: FW.w600, s: 10)),
+                      if (e < 1)
+                        T(
+                          (e * 100).toStringAsFixed(0) + "%",
+                          s: TS(c: kB.q(.8), w: FW.w600, s: 10),
+                        ),
                       if (e >= 1) Icon(Icons.check, color: primaryColor, size: 12),
                     ],
                   );
@@ -153,7 +157,10 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
                     ),
                   ),
                   8.w,
-                  T(s.generating + " " + (overallProgress * 100).toStringAsFixed(0) + "%", s: TS(c: kB.q(.8), w: FW.w500)),
+                  T(
+                    s.generating + " " + (overallProgress * 100).toStringAsFixed(0) + "%",
+                    s: TS(c: kB.q(.8), w: FW.w500),
+                  ),
                 ],
               ),
             ),
@@ -222,12 +229,14 @@ class _BotTtsContentState extends ConsumerState<BotTtsContent> {
     final audioUrl = await mergeWavFiles(widget.msg.ttsFilePaths!);
     final file = File(audioUrl);
     if (!await file.exists()) return;
-    await SharePlus.instance.share(ShareParams(
-      files: [XFile(audioUrl)],
-      text: widget.msg.content,
-      subject: widget.msg.content,
-      title: widget.msg.content,
-    ));
+    await SharePlus.instance.share(
+      ShareParams(
+        files: [XFile(audioUrl)],
+        text: widget.msg.content,
+        subject: widget.msg.content,
+        title: widget.msg.content,
+      ),
+    );
   }
 }
 

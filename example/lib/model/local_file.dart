@@ -34,27 +34,26 @@ class LocalFile extends Equatable {
     String? targetPath,
     bool? hasFile,
     String? downloadTaskId,
-  }) =>
-      LocalFile(
-        fileInfo: fileInfo ?? _fileInfo,
-        progress: progress ?? this.progress,
-        networkSpeed: networkSpeed ?? this.networkSpeed,
-        timeRemaining: timeRemaining ?? this.timeRemaining,
-        downloading: downloading ?? this.downloading,
-        targetPath: targetPath ?? this.targetPath,
-        hasFile: hasFile ?? this.hasFile,
-        downloadTaskId: downloadTaskId ?? this.downloadTaskId,
-      );
+  }) => LocalFile(
+    fileInfo: fileInfo ?? _fileInfo,
+    progress: progress ?? this.progress,
+    networkSpeed: networkSpeed ?? this.networkSpeed,
+    timeRemaining: timeRemaining ?? this.timeRemaining,
+    downloading: downloading ?? this.downloading,
+    targetPath: targetPath ?? this.targetPath,
+    hasFile: hasFile ?? this.hasFile,
+    downloadTaskId: downloadTaskId ?? this.downloadTaskId,
+  );
 
   @override
   List<Object?> get props => [
-        progress,
-        networkSpeed,
-        timeRemaining,
-        downloading,
-        targetPath,
-        hasFile,
-        downloadTaskId,
-        _fileInfo,
-      ];
+    progress,
+    networkSpeed,
+    timeRemaining,
+    downloading,
+    targetPath,
+    hasFile,
+    downloadTaskId,
+    _fileInfo,
+  ];
 }

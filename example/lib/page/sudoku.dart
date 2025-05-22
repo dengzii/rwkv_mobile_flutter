@@ -219,8 +219,8 @@ class _ButtonInference extends ConsumerWidget {
                   ],
                 )
               : hasPuzzle
-                  ? T(s.start_to_inference, textAlign: TextAlign.center)
-                  : T(s.no_puzzle, textAlign: TextAlign.center),
+              ? T(s.start_to_inference, textAlign: TextAlign.center)
+              : T(s.no_puzzle, textAlign: TextAlign.center),
         ),
       ),
     );
@@ -335,21 +335,25 @@ class _UI extends ConsumerWidget {
       if (shouldUseVerticalLayout)
         Co(
           children: [
-            Ro(children: [
-              8.w,
-              const Exp(child: _ButtonGenerate()),
-              8.w,
-              const Exp(child: _ButtonInference()),
-              8.w,
-            ]),
+            Ro(
+              children: [
+                8.w,
+                const Exp(child: _ButtonGenerate()),
+                8.w,
+                const Exp(child: _ButtonInference()),
+                8.w,
+              ],
+            ),
             4.h,
-            Ro(children: [
-              8.w,
-              const Exp(child: _ButtonClear()),
-              4.w,
-              const Exp(child: _ButtonShowStack()),
-              8.w,
-            ]),
+            Ro(
+              children: [
+                8.w,
+                const Exp(child: _ButtonClear()),
+                4.w,
+                const Exp(child: _ButtonShowStack()),
+                8.w,
+              ],
+            ),
           ],
         ),
       if (!shouldUseVerticalLayout) ...[
@@ -423,30 +427,32 @@ class _Board extends ConsumerWidget {
     final isDesktop = ref.watch(P.app.isDesktop);
     final double magnification = isDesktop ? 2 : 1;
     return Co(
-      children: List.generate(9, (rowIndex) {
-        return Exp(
-          child: Ro(
-            children: List.generate(9, (colIndex) {
-              final staticValue = staticData[rowIndex][colIndex];
-              final dynamicValue = dynamicData[rowIndex][colIndex];
-              final isStatic = dynamicValue == 0 || dynamicValue == staticValue;
-              final value = isStatic ? staticValue : dynamicValue;
-              return Exp(
-                child: _Grid(
-                  value: value,
-                  isStatic: isStatic,
-                  col: colIndex,
-                  row: rowIndex,
-                ),
-              );
-            }).widgetJoin((e) {
-              return e % 3 == 2 ? (4 * magnification).w : (2 * magnification).w;
-            }),
-          ),
-        );
-      }).widgetJoin((e) {
-        return e % 3 == 2 ? (4 * magnification).h : (2 * magnification).h;
-      }),
+      children:
+          List.generate(9, (rowIndex) {
+            return Exp(
+              child: Ro(
+                children:
+                    List.generate(9, (colIndex) {
+                      final staticValue = staticData[rowIndex][colIndex];
+                      final dynamicValue = dynamicData[rowIndex][colIndex];
+                      final isStatic = dynamicValue == 0 || dynamicValue == staticValue;
+                      final value = isStatic ? staticValue : dynamicValue;
+                      return Exp(
+                        child: _Grid(
+                          value: value,
+                          isStatic: isStatic,
+                          col: colIndex,
+                          row: rowIndex,
+                        ),
+                      );
+                    }).widgetJoin((e) {
+                      return e % 3 == 2 ? (4 * magnification).w : (2 * magnification).w;
+                    }),
+              ),
+            );
+          }).widgetJoin((e) {
+            return e % 3 == 2 ? (4 * magnification).h : (2 * magnification).h;
+          }),
     );
   }
 }
@@ -475,51 +481,53 @@ class _Stack extends ConsumerWidget {
     return IgnorePointer(
       child: Stack(
         children: [
-          ...currentStack.m((e) {
-            final col = e.$2;
-            final row = e.$1;
-            final position = widgetPosition["$col-$row"];
-            if (position == null) return C();
-            return Positioned(
-              left: _kStackPointOffsetX + position.dx - uiOffset.dx,
-              top: _kStackPointOffsetY + position.dy - uiOffset.dy - padding.top,
-              child: C(
-                height: _kStackPointSize,
-                width: _kStackPointSize,
-                decoration: BD(
-                  color: _kStackColor,
-                  borderRadius: 100.r,
-                ),
-              ),
-            );
-          }).widgetJoin((e) {
-            final start = currentStack[e];
-            final end = currentStack[e + 1];
-            final colStart = start.$2;
-            final rowStart = start.$1;
-            final startOffset = widgetPosition["$colStart-$rowStart"];
-            final colEnd = end.$2;
-            final rowEnd = end.$1;
-            final endOffset = widgetPosition["$colEnd-$rowEnd"];
-            if (startOffset == null || endOffset == null) return C();
+          ...currentStack
+              .m((e) {
+                final col = e.$2;
+                final row = e.$1;
+                final position = widgetPosition["$col-$row"];
+                if (position == null) return C();
+                return Positioned(
+                  left: _kStackPointOffsetX + position.dx - uiOffset.dx,
+                  top: _kStackPointOffsetY + position.dy - uiOffset.dy - padding.top,
+                  child: C(
+                    height: _kStackPointSize,
+                    width: _kStackPointSize,
+                    decoration: BD(
+                      color: _kStackColor,
+                      borderRadius: 100.r,
+                    ),
+                  ),
+                );
+              })
+              .widgetJoin((e) {
+                final start = currentStack[e];
+                final end = currentStack[e + 1];
+                final colStart = start.$2;
+                final rowStart = start.$1;
+                final startOffset = widgetPosition["$colStart-$rowStart"];
+                final colEnd = end.$2;
+                final rowEnd = end.$1;
+                final endOffset = widgetPosition["$colEnd-$rowEnd"];
+                if (startOffset == null || endOffset == null) return C();
 
-            return AnimatedOpacity(
-              opacity: 1,
-              duration: const Duration(milliseconds: 300),
-              child: CustomPaint(
-                painter: _ArrowPainter(
-                  start: (startOffset - uiOffset).translate(
-                    _kStackPointOffsetX + _kStackPointSize / 2,
-                    _kStackPointOffsetY + _kStackPointSize / 2 - padding.top,
+                return AnimatedOpacity(
+                  opacity: 1,
+                  duration: const Duration(milliseconds: 300),
+                  child: CustomPaint(
+                    painter: _ArrowPainter(
+                      start: (startOffset - uiOffset).translate(
+                        _kStackPointOffsetX + _kStackPointSize / 2,
+                        _kStackPointOffsetY + _kStackPointSize / 2 - padding.top,
+                      ),
+                      end: (endOffset - uiOffset).translate(
+                        _kStackPointOffsetX + _kStackPointSize / 2,
+                        _kStackPointOffsetY + _kStackPointSize / 2 - padding.top,
+                      ),
+                    ),
                   ),
-                  end: (endOffset - uiOffset).translate(
-                    _kStackPointOffsetX + _kStackPointSize / 2,
-                    _kStackPointOffsetY + _kStackPointSize / 2 - padding.top,
-                  ),
-                ),
-              ),
-            );
-          }),
+                );
+              }),
         ],
       ),
     );
@@ -543,15 +551,31 @@ class _TokensInfo extends ConsumerWidget {
         ? Ro(
             m: MAA.center,
             children: [
-              T("$tokenCount ${tokenCount > 1 ? "tokens" : "token"}", textAlign: TextAlign.center, s: const TS(s: 10, c: Color(0xFF888888))),
+              T(
+                "$tokenCount ${tokenCount > 1 ? "tokens" : "token"}",
+                textAlign: TextAlign.center,
+                s: const TS(s: 10, c: Color(0xFF888888)),
+              ),
               const SB(width: 4, height: 4),
-              T("${tokensPerSecond.toStringAsFixed(2)} tokens/s", textAlign: TextAlign.center, s: const TS(s: 10, c: Color(0xFF888888))),
+              T(
+                "${tokensPerSecond.toStringAsFixed(2)} tokens/s",
+                textAlign: TextAlign.center,
+                s: const TS(s: 10, c: Color(0xFF888888)),
+              ),
             ],
           )
         : Co(
             children: [
-              T("$tokenCount ${tokenCount > 1 ? "tokens" : "token"}", textAlign: TextAlign.center, s: const TS(s: 10, c: Color(0xFF888888))),
-              T("${tokensPerSecond.toStringAsFixed(2)} tokens/s", textAlign: TextAlign.center, s: const TS(s: 10, c: Color(0xFF888888))),
+              T(
+                "$tokenCount ${tokenCount > 1 ? "tokens" : "token"}",
+                textAlign: TextAlign.center,
+                s: const TS(s: 10, c: Color(0xFF888888)),
+              ),
+              T(
+                "${tokensPerSecond.toStringAsFixed(2)} tokens/s",
+                textAlign: TextAlign.center,
+                s: const TS(s: 10, c: Color(0xFF888888)),
+              ),
             ],
           );
   }

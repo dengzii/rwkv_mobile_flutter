@@ -227,16 +227,18 @@ class TTSGroupItem extends ConsumerWidget {
                   ),
               ],
             ),
-            ...fileInfos.m((e) => C(
-                  decoration: BD(
-                    color: kC,
-                    border: Border.all(color: primaryColor),
-                    borderRadius: 6.r,
-                  ),
-                  padding: const EI.s(v: 4, h: 4),
-                  margin: const EI.o(t: 8),
-                  child: FileKeyItem(e, showDownloaded: true),
-                )),
+            ...fileInfos.m(
+              (e) => C(
+                decoration: BD(
+                  color: kC,
+                  border: Border.all(color: primaryColor),
+                  borderRadius: 6.r,
+                ),
+                padding: const EI.s(v: 4, h: 4),
+                margin: const EI.o(t: 8),
+                child: FileKeyItem(e, showDownloaded: true),
+              ),
+            ),
           ],
         ),
       ),

@@ -136,11 +136,13 @@ extension $Sudoku on _Sudoku {
     func_sudoku.SudokuGrid grid = staticData.q;
     final prompt = _genPrompt(grid);
     P.rwkv.send(to_rwkv.ClearStates());
-    P.rwkv.send(to_rwkv.Generate(
-      prompt,
-      decodeStream: false,
-      wantRawJSON: false,
-    ));
+    P.rwkv.send(
+      to_rwkv.Generate(
+        prompt,
+        decodeStream: false,
+        wantRawJSON: false,
+      ),
+    );
   }
 
   void clear() {
@@ -296,13 +298,16 @@ extension $Sudoku on _Sudoku {
 
   void _parseStack() {
     final events = _tempStackEvents;
-    List<(int, int)> stack = events.where((e) {
-      final token = e.$1;
-      return _kStackMap.containsKey(token);
-    }).map((e) {
-      final token = e.$1;
-      return _kStackMap[token]!;
-    }).toList();
+    List<(int, int)> stack = events
+        .where((e) {
+          final token = e.$1;
+          return _kStackMap.containsKey(token);
+        })
+        .map((e) {
+          final token = e.$1;
+          return _kStackMap[token]!;
+        })
+        .toList();
     // debugger();
 
     // 最大深度为 10
@@ -317,7 +322,13 @@ extension $Sudoku on _Sudoku {
   void _parseBoard() {
     final events = _tempBoardEvents;
     const gridValues = ["0 ", "1 ", "2 ", "3 ", "4 ", "5 ", "6 ", "7 ", "8 ", "9 "];
-    final grids = events.map((e) => e.$2).toList().where((e) => gridValues.contains(e)).toList().map((e) => int.parse(e.replaceAll(" ", ""))).toList();
+    final grids = events
+        .map((e) => e.$2)
+        .toList()
+        .where((e) => gridValues.contains(e))
+        .toList()
+        .map((e) => int.parse(e.replaceAll(" ", "")))
+        .toList();
     final grid = func_sudoku.genFromList(grids);
     dynamicData.q = grid;
     if (kDebugMode) {
@@ -498,7 +509,8 @@ extension _$Sudoku on _Sudoku {
   }
 
   String _genPrompt(func_sudoku.SudokuGrid grid) {
-    final newPrompt = '''<input>
+    final newPrompt =
+        '''<input>
 ${grid.map((row) => row.join(' ') + " \n").join("")}</input>
 
 ''';

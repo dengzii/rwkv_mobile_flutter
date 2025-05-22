@@ -11,22 +11,18 @@ import 'package:zone/state/p.dart';
 
 enum ReasoningOption {
   language,
-  pseudo,
-  ;
+  pseudo;
 
   IconData get icon => switch (this) {
-        ReasoningOption.language => Icons.translate,
-        ReasoningOption.pseudo => Icons.bolt,
-      };
+    ReasoningOption.language => Icons.translate,
+    ReasoningOption.pseudo => Icons.bolt,
+  };
 }
 
 class ReasoningOptionButton extends ConsumerWidget {
   final ReasoningOption option;
 
-  const ReasoningOptionButton({
-    super.key,
-    required this.option,
-  });
+  const ReasoningOptionButton({super.key, required this.option});
 
   void _onTap() async {
     final loading = P.rwkv.loading.q;
@@ -106,10 +102,7 @@ class ReasoningOptionButton extends ConsumerWidget {
           child: Ro(
             c: CAA.center,
             children: [
-              Icon(
-                option.icon,
-                color: iconColor,
-              ),
+              Icon(option.icon, color: iconColor),
               2.w,
               Co(
                 c: CAA.start,
@@ -123,7 +116,7 @@ class ReasoningOptionButton extends ConsumerWidget {
                     if (preferPseudo) T(s.prefer, s: const TS(c: kW, s: 10, height: 1)),
                     if (preferPseudo) const T("伪推理", s: TS(c: kW, s: 10, height: 1)),
                   ] else
-                    ...[]
+                    ...[],
                 ],
               ),
             ],

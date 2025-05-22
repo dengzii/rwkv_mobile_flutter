@@ -54,12 +54,18 @@ class TTSBar extends ConsumerWidget {
             if (selectedSpkName != null)
               C(
                 padding: const EI.s(v: 4),
-                child: T(target, s: TS(c: primary, w: FW.w600)),
+                child: T(
+                  target,
+                  s: TS(c: primary, w: FW.w600),
+                ),
               ),
             if (selectSourceAudioPath != null)
               C(
                 padding: const EI.s(v: 4),
-                child: T(s.imitate_target + ": " + (sourceWavName ?? ""), s: TS(c: primary, w: FW.w600)),
+                child: T(
+                  s.imitate_target + ": " + (sourceWavName ?? ""),
+                  s: TS(c: primary, w: FW.w600),
+                ),
               ),
             const _Actions(),
             if (audioInteractorShown) const _AudioInteractor(),
@@ -332,7 +338,8 @@ class _Actions extends ConsumerWidget {
               const _AudioButton(),
               const _SpkButton(),
               const _IntonationButton(),
-              if (!audioInteractorShown && !intonationShown && !spkShown && interactingInstruction == TTSInstruction.none) const _PerformanceInfo(),
+              if (!audioInteractorShown && !intonationShown && !spkShown && interactingInstruction == TTSInstruction.none)
+                const _PerformanceInfo(),
             ],
           ),
         ),
@@ -381,11 +388,11 @@ class _Actions extends ConsumerWidget {
                 child: Icon(
                   (Platform.isIOS || Platform.isMacOS)
                       ? editingBotMessage
-                          ? CupertinoIcons.pencil_circle_fill
-                          : CupertinoIcons.arrow_up_circle_fill
+                            ? CupertinoIcons.pencil_circle_fill
+                            : CupertinoIcons.arrow_up_circle_fill
                       : editingBotMessage
-                          ? Icons.edit
-                          : Icons.send,
+                      ? Icons.edit
+                      : Icons.send,
                   color: color,
                 ),
               ),
@@ -488,57 +495,58 @@ class _SpkPanel extends ConsumerWidget {
                   final display = P.tts.safe(k) + " " + P.tts.safe(v) + " " + (language?.flag ?? "");
 
                   return GD(
-                      onTap: () {
-                        qq;
-                        P.tts.selectedSpkName.q = k;
-                        P.tts.selectSourceAudioPath.q = null;
-                        Gaimon.light();
-                      },
-                      child: Ro(
-                        children: [
-                          Exp(
-                            child: C(
-                              padding: const EI.o(t: 4, b: 4, l: 8, r: 8),
-                              decoration: BD(
-                                color: selected ? primary.q(.1) : kC,
-                                borderRadius: 6.r,
-                              ),
-                              child: Ro(
-                                children: [
-                                  Exp(
-                                    child: T(
-                                      display,
-                                      s: TS(c: selected ? primary : primary.q(.8), w: selected ? FW.w600 : FW.w400),
-                                    ),
+                    onTap: () {
+                      qq;
+                      P.tts.selectedSpkName.q = k;
+                      P.tts.selectSourceAudioPath.q = null;
+                      Gaimon.light();
+                    },
+                    child: Ro(
+                      children: [
+                        Exp(
+                          child: C(
+                            padding: const EI.o(t: 4, b: 4, l: 8, r: 8),
+                            decoration: BD(
+                              color: selected ? primary.q(.1) : kC,
+                              borderRadius: 6.r,
+                            ),
+                            child: Ro(
+                              children: [
+                                Exp(
+                                  child: T(
+                                    display,
+                                    s: TS(c: selected ? primary : primary.q(.8), w: selected ? FW.w600 : FW.w400),
                                   ),
-                                  if (selected)
-                                    Icon(
-                                      Icons.check,
-                                      color: primary,
-                                      size: 14,
-                                    ),
-                                ],
-                              ),
+                                ),
+                                if (selected)
+                                  Icon(
+                                    Icons.check,
+                                    color: primary,
+                                    size: 14,
+                                  ),
+                              ],
                             ),
                           ),
-                          GD(
-                            onTap: () async {
-                              final path = await P.tts.getPrebuiltSpkAudioPathFromTemp(k);
-                              P.chat.latestClickedMessage.q = null;
-                              await P.world.play(path: path);
-                            },
-                            child: C(
-                              padding: const EI.a(6.5),
-                              decoration: const BD(color: kC),
-                              child: Icon(
-                                Icons.volume_up,
-                                color: primary,
-                                size: 14,
-                              ),
+                        ),
+                        GD(
+                          onTap: () async {
+                            final path = await P.tts.getPrebuiltSpkAudioPathFromTemp(k);
+                            P.chat.latestClickedMessage.q = null;
+                            await P.world.play(path: path);
+                          },
+                          child: C(
+                            padding: const EI.a(6.5),
+                            decoration: const BD(color: kC),
+                            child: Icon(
+                              Icons.volume_up,
+                              color: primary,
+                              size: 14,
                             ),
                           ),
-                        ],
-                      ));
+                        ),
+                      ],
+                    ),
+                  );
                 },
               ),
             ),
@@ -698,7 +706,9 @@ class _InstructOptions extends ConsumerWidget {
         duration: 250.ms,
         height: interactingInstruction == TTSInstruction.none ? 0 : 150,
         margin: const EI.o(t: 4),
-        decoration: BD(border: Border(top: BorderSide(color: kB.q(.5), width: .5))),
+        decoration: BD(
+          border: Border(top: BorderSide(color: kB.q(.5), width: .5)),
+        ),
         child: Wrap(
           alignment: WrapAlignment.start,
           spacing: 4,
