@@ -35,7 +35,7 @@ class ModelSelector extends ConsumerWidget {
       case DemoType.chat:
       case DemoType.tts:
       case DemoType.world:
-        P.chat.loadSuggestions();
+        P.suggestion.loadSuggestions();
     }
 
     if (!Args.disableRemoteConfig) {

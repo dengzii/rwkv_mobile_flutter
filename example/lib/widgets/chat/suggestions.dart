@@ -35,7 +35,7 @@ class Suggestions extends ConsumerWidget {
           final last = current.characters.last;
           final lastIsChinese = containsChineseCharacters(last);
           final lastIsEnglish = isEnglish(last);
-          P.chat.loadSuggestions();
+          P.suggestion.loadSuggestions();
           if (lastIsChinese) {
             P.chat.textEditingController.text = "$current。$suggestion";
           } else if (lastIsEnglish) {
@@ -69,7 +69,7 @@ class Suggestions extends ConsumerWidget {
     switch (demoType) {
       case DemoType.chat:
         show = messages.isEmpty && currentModel != null;
-        suggestions = ref.watch(P.chat.suggestions);
+        suggestions = ref.watch(P.suggestion.suggestions);
       case DemoType.world:
         switch (currentWorldType) {
           case WorldType.reasoningQA:
@@ -113,7 +113,7 @@ class Suggestions extends ConsumerWidget {
       case DemoType.othello:
       case DemoType.sudoku:
       case DemoType.tts:
-        suggestions = ref.watch(P.chat.suggestions);
+        suggestions = ref.watch(P.suggestion.suggestions);
         show = true;
     }
 
