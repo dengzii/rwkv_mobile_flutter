@@ -44,9 +44,6 @@ class _Chat {
 
   late final hasFocus = qs(false);
 
-  @Deprecated("Use P.suggestion.suggestions instead")
-  late final suggestions = qs<List<String>>([]);
-
   late final autoPauseId = qsn<int>();
 
   // late final messages = qp<List<Message>>((_) => []);
@@ -135,7 +132,7 @@ extension $Chat on _Chat {
 
     if (P.app.demoType.q == DemoType.tts) {
       await P.tts.gen();
-      P.chat.loadSuggestions();
+      P.suggestion.loadSuggestions();
       return;
     }
 
@@ -341,52 +338,6 @@ extension $Chat on _Chat {
     _pauseMessageById(id: id);
   }
 
-  @Deprecated("Use P.suggestion.loadSuggestions instead")
-  FV loadSuggestions() async {
-    final demoType = P.app.demoType.q;
-    final isChat = demoType == DemoType.chat;
-    if (!isChat && demoType != DemoType.tts) return;
-    final shouldUseEn = P.preference.preferredLanguage.q.resolved.locale.languageCode != "zh";
-
-    const head = "assets/config/chat/suggestions";
-    final lang = shouldUseEn ? ".en-US" : ".zh-hans";
-    final suffix = kDebugMode ? ".debug" : "";
-
-    final assetPath = "$head$lang$suffix.json";
-
-    final jsonString = await rootBundle.loadString(assetPath);
-    final list = HF.list(jsonDecode(jsonString));
-    final s = list
-        .map((e) {
-          if (isChat) {
-            return jsonEncode(e);
-          } else {
-            return e.toString().replaceAll("🚧", "");
-          }
-        })
-        .shuffled()
-        .take(3)
-        .toList();
-    suggestions.q = s;
-
-    if (kDebugMode) {
-      // Merge suggestions
-      final anotherAssetPath = "$head$lang$suffix.json";
-      final anotherJsonString = await rootBundle.loadString(anotherAssetPath);
-      final anotherList = HF.list(jsonDecode(anotherJsonString));
-      final anotherSuggestions = anotherList.map((e) {
-        if (isChat) {
-          return jsonEncode(e);
-        } else {
-          return e.toString().replaceAll("🚧", "");
-        }
-      }).toList();
-      suggestions.ul(anotherSuggestions);
-    }
-
-    suggestions.q = suggestions.q.shuffled.take(3).toList();
-  }
-
   FV loadConversation(Conversation? conversation) async {
     if (conversation == null) {
       messages.uc();
@@ -487,7 +438,7 @@ extension _$Chat on _Chat {
     P.world.audioFileStreamController.stream.listen(_onNewFileReceived);
     focusNode.addListener(_onFocusNodeChanged);
     hasFocus.q = focusNode.hasFocus;
-    loadSuggestions();
+    P.suggestion.loadSuggestions();
 
     receivingTokens.l(_onReceivingTokensChanged);
 
@@ -497,7 +448,7 @@ extension _$Chat on _Chat {
     if (Config.enableChain) chains.lv(_syncBranchesCountList);
     if (Config.enableChain) currentChain.lv(_syncBranchesCountList);
 
-    P.preference.preferredLanguage.lv(loadSuggestions);
+    P.preference.preferredLanguage.lv(P.suggestion.loadSuggestions);
   }
 
   FV _checkSensitive(String content) async {
