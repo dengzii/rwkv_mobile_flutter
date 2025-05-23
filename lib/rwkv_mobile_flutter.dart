@@ -550,7 +550,6 @@ class RWKVMobile {
           try {
             final ttsOutputFiles = rwkvMobile.rwkvmobile_runtime_tts_get_current_output_files(runtime);
             final outputFiles = ttsOutputFiles.cast<Utf8>().toDartString();
-            if (kDebugMode) print("💬 TTS output files: $outputFiles");
             fileList = outputFiles.split(',').map((f) => f.replaceAll('"', '').trim()).toList();
           } catch (_) {
             fileList = [];
@@ -565,9 +564,6 @@ class RWKVMobile {
           double ttsOverallProgress = numCurrentGeneratedWavs.toDouble();
           if (ttsPerWavProgress < 1.0) ttsOverallProgress += ttsPerWavProgress;
           ttsOverallProgress = ttsOverallProgress / numTotalWavs.toDouble();
-          if (kDebugMode) print("💬 TTS overall progress: $ttsOverallProgress");
-          if (kDebugMode) print("💬 TTS per wav progress: $perWavProgress");
-          if (kDebugMode) print("💬 TTS file list: $fileList");
           // Range from 0.0 to 1.0
           sendPort.send(TTSResult(filePaths: fileList, perWavProgress: perWavProgress, overallProgress: ttsOverallProgress, toRWKV: req));
 

@@ -35,6 +35,8 @@ class _Preference {
   };
 
   late final latestRuntimeAddress = qs<int>(0);
+
+  late final dumpping = qs(false);
 }
 
 /// Private methods
@@ -59,9 +61,29 @@ extension _$Preference on _Preference {
     }
 
     final latestRuntimeAddress = sp.getInt("halo_state.latestRuntimeAddress");
-    if (latestRuntimeAddress != null) {
-      this.latestRuntimeAddress.q = latestRuntimeAddress;
+    if (latestRuntimeAddress != null) this.latestRuntimeAddress.q = latestRuntimeAddress;
+
+    final status = await Permission.storage.status;
+    if (status.isGranted) {
+      final dumpping = sp.getBool("halo_state.dumpping");
+      if (dumpping != null) this.dumpping.q = dumpping;
+    } else {
+      await _saveDumpping(false);
     }
+  }
+
+  FV _saveDumpping(bool dumpping) async {
+    qqr("saveDumpping: $dumpping");
+    this.dumpping.q = dumpping;
+    final sp = await SharedPreferences.getInstance();
+    await sp.setBool("halo_state.dumpping", dumpping);
+  }
+
+  FV _saveLatestRuntimeAddress(int latestRuntimeAddress) async {
+    qqr("saveLatestRuntimeAddress: $latestRuntimeAddress");
+    this.latestRuntimeAddress.q = latestRuntimeAddress;
+    final sp = await SharedPreferences.getInstance();
+    await sp.setInt("halo_state.latestRuntimeAddress", latestRuntimeAddress);
   }
 }
 
@@ -116,12 +138,5 @@ extension $Preference on _Preference {
     preferredLanguage.q = res;
     final sp = await SharedPreferences.getInstance();
     await sp.setString("halo_state.language", res.locale.toString());
-  }
-
-  FV saveLatestRuntimeAddress(int latestRuntimeAddress) async {
-    qqr("saveLatestRuntimeAddress: $latestRuntimeAddress");
-    this.latestRuntimeAddress.q = latestRuntimeAddress;
-    final sp = await SharedPreferences.getInstance();
-    await sp.setInt("halo_state.latestRuntimeAddress", latestRuntimeAddress);
   }
 }

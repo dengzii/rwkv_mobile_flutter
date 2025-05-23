@@ -22,9 +22,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(demoName) => "欢迎探索 ${demoName}";
 
-  static String m1(memUsed, memFree) => "已用内存：${memUsed}，剩余内存：${memFree}";
+  static String m1(path) => "消息记录会存储在该文件夹下\n ${path}";
 
-  static String m2(modelName) => "您当前正在使用 ${modelName}";
+  static String m2(flag, nameCN, nameEN) =>
+      "模仿 ${flag} ${nameCN}(${nameEN}) 的声音";
+
+  static String m3(fileName) => "模仿 ${fileName}";
+
+  static String m4(memUsed, memFree) => "已用内存：${memUsed}，剩余内存：${memFree}";
+
+  static String m5(modelName) => "您当前正在使用 ${modelName}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -73,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "click_here_to_start_a_new_chat": MessageLookupByLibrary.simpleMessage(
       "点击此处开始新聊天",
     ),
+    "click_to_load_image": MessageLookupByLibrary.simpleMessage("点击加载图片"),
     "click_to_select_model": MessageLookupByLibrary.simpleMessage("点击选择模型"),
     "continue_download": MessageLookupByLibrary.simpleMessage("继续下载"),
     "continue_using_smaller_model": MessageLookupByLibrary.simpleMessage(
@@ -97,6 +105,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "download_model": MessageLookupByLibrary.simpleMessage("下载模型"),
     "download_source": MessageLookupByLibrary.simpleMessage("下载源"),
     "draw": MessageLookupByLibrary.simpleMessage("平局！"),
+    "dump_see_files": MessageLookupByLibrary.simpleMessage("自动 Dump 消息记录"),
+    "dump_see_files_alert_message": m1,
+    "dump_see_files_subtitle": MessageLookupByLibrary.simpleMessage("协助我们改进算法"),
+    "dump_started": MessageLookupByLibrary.simpleMessage("自动 dump 已开启"),
+    "dump_stopped": MessageLookupByLibrary.simpleMessage("自动 dump 已关闭"),
     "ensure_you_have_enough_memory_to_load_the_model":
         MessageLookupByLibrary.simpleMessage("请确保设备内存充足，否则可能导致应用崩溃"),
     "exploring": MessageLookupByLibrary.simpleMessage("探索中..."),
@@ -128,6 +141,8 @@ class MessageLookup extends MessageLookupByLibrary {
     ),
     "human": MessageLookupByLibrary.simpleMessage("人类"),
     "i_want_rwkv_to_say": MessageLookupByLibrary.simpleMessage("我想让 RWKV 说..."),
+    "imitate": m2,
+    "imitate_fle": m3,
     "imitate_target": MessageLookupByLibrary.simpleMessage("使用"),
     "in_context_search_will_be_activated_when_both_breadth_and_depth_are_greater_than_2":
         MessageLookupByLibrary.simpleMessage("当搜索深度和宽度都大于 2 时，将激活上下文搜索"),
@@ -149,7 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "license": MessageLookupByLibrary.simpleMessage("开源许可证"),
     "loading": MessageLookupByLibrary.simpleMessage("加载中..."),
     "medium": MessageLookupByLibrary.simpleMessage("中 (110%)"),
-    "memory_used": m1,
+    "memory_used": m4,
     "model_settings": MessageLookupByLibrary.simpleMessage("模型设置"),
     "my_voice": MessageLookupByLibrary.simpleMessage("我的声音"),
     "network_error": MessageLookupByLibrary.simpleMessage("网络错误"),
@@ -182,8 +197,10 @@ class MessageLookup extends MessageLookupByLibrary {
         MessageLookupByLibrary.simpleMessage("请授予使用麦克风的权限"),
     "please_load_model_first": MessageLookupByLibrary.simpleMessage("请先加载模型"),
     "please_select_a_world_type": MessageLookupByLibrary.simpleMessage(
-      "请选择 World 类型",
+      "请选择任务类型",
     ),
+    "please_select_an_image_from_the_following_options":
+        MessageLookupByLibrary.simpleMessage("请从以下选项中选择一个图片"),
     "please_select_application_language": MessageLookupByLibrary.simpleMessage(
       "请选择应用语言",
     ),
@@ -216,7 +233,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "search_breadth": MessageLookupByLibrary.simpleMessage("搜索宽度"),
     "search_depth": MessageLookupByLibrary.simpleMessage("搜索深度"),
     "select_a_model": MessageLookupByLibrary.simpleMessage("选择模型"),
-    "select_a_world_type": MessageLookupByLibrary.simpleMessage("选择 World 类型"),
+    "select_a_world_type": MessageLookupByLibrary.simpleMessage("选择任务类型"),
+    "select_from_library": MessageLookupByLibrary.simpleMessage("从相册选择"),
+    "select_image": MessageLookupByLibrary.simpleMessage("选择图片"),
+    "select_new_image": MessageLookupByLibrary.simpleMessage("选择新图片"),
     "send_message_to_rwkv": MessageLookupByLibrary.simpleMessage("发送消息给 RWKV"),
     "server_error": MessageLookupByLibrary.simpleMessage("服务器错误"),
     "session_configuration": MessageLookupByLibrary.simpleMessage("会话配置"),
@@ -233,8 +253,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "start_a_new_game": MessageLookupByLibrary.simpleMessage("开始对局"),
     "start_to_chat": MessageLookupByLibrary.simpleMessage("开始聊天"),
     "start_to_inference": MessageLookupByLibrary.simpleMessage("开始推理"),
+    "storage_permission_not_granted": MessageLookupByLibrary.simpleMessage(
+      "存储权限未授予",
+    ),
+    "take_photo": MessageLookupByLibrary.simpleMessage("拍照"),
     "technical_research_group": MessageLookupByLibrary.simpleMessage("技术研发群"),
     "the_puzzle_is_not_valid": MessageLookupByLibrary.simpleMessage("数独无效"),
+    "then_you_can_start_to_chat_with_rwkv":
+        MessageLookupByLibrary.simpleMessage("然后您就可以开始与 RWKV 对话了"),
     "thinking": MessageLookupByLibrary.simpleMessage("思考中..."),
     "this_is_the_hardest_sudoku_in_the_world":
         MessageLookupByLibrary.simpleMessage("这是世界上最难的数独"),
@@ -253,7 +279,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "white": MessageLookupByLibrary.simpleMessage("白方"),
     "white_score": MessageLookupByLibrary.simpleMessage("白方得分"),
     "white_wins": MessageLookupByLibrary.simpleMessage("白方获胜！"),
-    "you_are_now_using": m2,
+    "you_are_now_using": m5,
     "you_can_now_start_to_chat_with_rwkv": MessageLookupByLibrary.simpleMessage(
       "现在可以开始与 RWKV 聊天了",
     ),

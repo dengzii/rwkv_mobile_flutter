@@ -60,119 +60,99 @@ class S {
     return Intl.message('RWKV Chat', name: 'chat_title', desc: '', args: []);
   }
 
-  /// `RWKV Othello`
+  /// `RWKV 黑白棋`
   String get othello_title {
-    return Intl.message(
-      'RWKV Othello',
-      name: 'othello_title',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('RWKV 黑白棋', name: 'othello_title', desc: '', args: []);
   }
 
-  /// `Message RWKV`
+  /// `发送消息给 RWKV`
   String get send_message_to_rwkv {
     return Intl.message(
-      'Message RWKV',
+      '发送消息给 RWKV',
       name: 'send_message_to_rwkv',
       desc: '',
       args: [],
     );
   }
 
-  /// `Copied to clipboard`
+  /// `已复制到剪贴板`
   String get chat_copied_to_clipboard {
     return Intl.message(
-      'Copied to clipboard',
+      '已复制到剪贴板',
       name: 'chat_copied_to_clipboard',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter a message`
+  /// `请输入消息内容`
   String get chat_empty_message {
     return Intl.message(
-      'Please enter a message',
+      '请输入消息内容',
       name: 'chat_empty_message',
       desc: '',
       args: [],
     );
   }
 
-  /// `Welcome to explore {demoName}`
+  /// `欢迎探索 {demoName}`
   String chat_welcome_to_use(Object demoName) {
     return Intl.message(
-      'Welcome to explore $demoName',
+      '欢迎探索 $demoName',
       name: 'chat_welcome_to_use',
       desc: '',
       args: [demoName],
     );
   }
 
-  /// `Please select a model`
+  /// `请选择一个模型`
   String get chat_please_select_a_model {
     return Intl.message(
-      'Please select a model',
+      '请选择一个模型',
       name: 'chat_please_select_a_model',
       desc: '',
       args: [],
     );
   }
 
-  /// `You need to download the model first, before you can use it.`
+  /// `您需要先下载模型才能使用`
   String get chat_you_need_download_model_if_you_want_to_use_it {
     return Intl.message(
-      'You need to download the model first, before you can use it.',
+      '您需要先下载模型才能使用',
       name: 'chat_you_need_download_model_if_you_want_to_use_it',
       desc: '',
       args: [],
     );
   }
 
-  /// `Download model`
+  /// `下载模型`
   String get download_model {
-    return Intl.message(
-      'Download model',
-      name: 'download_model',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('下载模型', name: 'download_model', desc: '', args: []);
   }
 
-  /// `Use it now`
+  /// `立即使用`
   String get use_it_now {
-    return Intl.message('Use it now', name: 'use_it_now', desc: '', args: []);
+    return Intl.message('立即使用', name: 'use_it_now', desc: '', args: []);
   }
 
-  /// `Choose prebuilt character`
+  /// `选择预设角色`
   String get choose_prebuilt_character {
     return Intl.message(
-      'Choose prebuilt character',
+      '选择预设角色',
       name: 'choose_prebuilt_character',
       desc: '',
       args: [],
     );
   }
 
-  /// `Start to chat`
+  /// `开始聊天`
   String get start_to_chat {
-    return Intl.message(
-      'Start to chat',
-      name: 'start_to_chat',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('开始聊天', name: 'start_to_chat', desc: '', args: []);
   }
 
-  /// `Model name`
+  /// `模型名称`
   String get chat_model_name {
-    return Intl.message(
-      'Model name',
-      name: 'chat_model_name',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('模型名称', name: 'chat_model_name', desc: '', args: []);
   }
 
   /// `foo bar`
@@ -180,711 +160,591 @@ class S {
     return Intl.message('foo bar', name: 'foo_bar', desc: '', args: []);
   }
 
-  /// `Chatting`
+  /// `聊天中`
   String get chatting {
-    return Intl.message('Chatting', name: 'chatting', desc: '', args: []);
+    return Intl.message('聊天中', name: 'chatting', desc: '', args: []);
   }
 
-  /// `Welcome to use RWKV`
+  /// `欢迎使用 RWKV`
   String get welcome_to_use_rwkv {
     return Intl.message(
-      'Welcome to use RWKV',
+      '欢迎使用 RWKV',
       name: 'welcome_to_use_rwkv',
       desc: '',
       args: [],
     );
   }
 
-  /// `RWKV Othello`
+  /// `RWKV 黑白棋`
   String get rwkv_othello {
-    return Intl.message(
-      'RWKV Othello',
-      name: 'rwkv_othello',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('RWKV 黑白棋', name: 'rwkv_othello', desc: '', args: []);
   }
 
-  /// `RWKV Chat`
+  /// `RWKV 聊天`
   String get rwkv_chat {
-    return Intl.message('RWKV Chat', name: 'rwkv_chat', desc: '', args: []);
+    return Intl.message('RWKV 聊天', name: 'rwkv_chat', desc: '', args: []);
   }
 
-  /// `You can start a new chat by clicking the button below.`
+  /// `点击下方按钮开始新聊天`
   String get start_a_new_chat_by_clicking_the_button_below {
     return Intl.message(
-      'You can start a new chat by clicking the button below.',
+      '点击下方按钮开始新聊天',
       name: 'start_a_new_chat_by_clicking_the_button_below',
       desc: '',
       args: [],
     );
   }
 
-  /// `Get ready to experience RWKV v7, series of compact language models with 0.1, 0.4, 1.5, 2.9 billion parameters, optimized for seamless mobile devices inference. Once loaded, it functions offline without requiring any server communication.`
+  /// `欢迎探索 RWKV v7 系列大语言模型，包含 0.1B/0.4B/1.5B/2.9B 参数版本，专为移动设备优化，加载后可完全离线运行，无需服务器通信`
   String get intro {
     return Intl.message(
-      'Get ready to experience RWKV v7, series of compact language models with 0.1, 0.4, 1.5, 2.9 billion parameters, optimized for seamless mobile devices inference. Once loaded, it functions offline without requiring any server communication.',
+      '欢迎探索 RWKV v7 系列大语言模型，包含 0.1B/0.4B/1.5B/2.9B 参数版本，专为移动设备优化，加载后可完全离线运行，无需服务器通信',
       name: 'intro',
       desc: '',
       args: [],
     );
   }
 
-  /// `Select a model`
+  /// `选择模型`
   String get select_a_model {
-    return Intl.message(
-      'Select a model',
-      name: 'select_a_model',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('选择模型', name: 'select_a_model', desc: '', args: []);
   }
 
-  /// `You are now using {modelName}`
+  /// `您当前正在使用 {modelName}`
   String you_are_now_using(Object modelName) {
     return Intl.message(
-      'You are now using $modelName',
+      '您当前正在使用 $modelName',
       name: 'you_are_now_using',
       desc: '',
       args: [modelName],
     );
   }
 
-  /// `Click here to start a new chat`
+  /// `点击此处开始新聊天`
   String get click_here_to_start_a_new_chat {
     return Intl.message(
-      'Click here to start a new chat',
+      '点击此处开始新聊天',
       name: 'click_here_to_start_a_new_chat',
       desc: '',
       args: [],
     );
   }
 
-  /// `Click here to select a new model.`
+  /// `点击此处选择新模型`
   String get click_here_to_select_a_new_model {
     return Intl.message(
-      'Click here to select a new model.',
+      '点击此处选择新模型',
       name: 'click_here_to_select_a_new_model',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please ensure you have enough memory to load the model, otherwise the application may crash.`
+  /// `请确保设备内存充足，否则可能导致应用崩溃`
   String get ensure_you_have_enough_memory_to_load_the_model {
     return Intl.message(
-      'Please ensure you have enough memory to load the model, otherwise the application may crash.',
+      '请确保设备内存充足，否则可能导致应用崩溃',
       name: 'ensure_you_have_enough_memory_to_load_the_model',
       desc: '',
       args: [],
     );
   }
 
-  /// `Memory used: {memUsed}, Memory free: {memFree}`
+  /// `已用内存：{memUsed}，剩余内存：{memFree}`
   String memory_used(Object memUsed, Object memFree) {
     return Intl.message(
-      'Memory used: $memUsed, Memory free: $memFree',
+      '已用内存：$memUsed，剩余内存：$memFree',
       name: 'memory_used',
       desc: '',
       args: [memUsed, memFree],
     );
   }
 
-  /// `You can select a role to chat`
+  /// `您可以选择角色进行聊天`
   String get you_can_select_a_role_to_chat {
     return Intl.message(
-      'You can select a role to chat',
+      '您可以选择角色进行聊天',
       name: 'you_can_select_a_role_to_chat',
       desc: '',
       args: [],
     );
   }
 
-  /// `New chat`
+  /// `新聊天`
   String get new_chat {
-    return Intl.message('New chat', name: 'new_chat', desc: '', args: []);
+    return Intl.message('新聊天', name: 'new_chat', desc: '', args: []);
   }
 
-  /// `Or you can start a new empty chat`
+  /// `或开始一个空白聊天`
   String get or_you_can_start_a_new_empty_chat {
     return Intl.message(
-      'Or you can start a new empty chat',
+      '或开始一个空白聊天',
       name: 'or_you_can_start_a_new_empty_chat',
       desc: '',
       args: [],
     );
   }
 
-  /// `Start a new chat`
+  /// `开始新聊天`
   String get start_a_new_chat {
-    return Intl.message(
-      'Start a new chat',
-      name: 'start_a_new_chat',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('开始新聊天', name: 'start_a_new_chat', desc: '', args: []);
   }
 
-  /// `You can now start to chat with RWKV`
+  /// `现在可以开始与 RWKV 聊天了`
   String get you_can_now_start_to_chat_with_rwkv {
     return Intl.message(
-      'You can now start to chat with RWKV',
+      '现在可以开始与 RWKV 聊天了',
       name: 'you_can_now_start_to_chat_with_rwkv',
       desc: '',
       args: [],
     );
   }
 
-  /// `Bot message edited, you can now send new message`
+  /// `机器人消息已编辑，现在可以发送新消息`
   String get bot_message_edited {
     return Intl.message(
-      'Bot message edited, you can now send new message',
+      '机器人消息已编辑，现在可以发送新消息',
       name: 'bot_message_edited',
       desc: '',
       args: [],
     );
   }
 
-  /// `Download source`
+  /// `下载源`
   String get download_source {
-    return Intl.message(
-      'Download source',
-      name: 'download_source',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('下载源', name: 'download_source', desc: '', args: []);
   }
 
-  /// `Select a world type`
+  /// `选择任务类型`
   String get select_a_world_type {
     return Intl.message(
-      'Select a world type',
+      '选择任务类型',
       name: 'select_a_world_type',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please select a world type`
+  /// `请选择任务类型`
   String get please_select_a_world_type {
     return Intl.message(
-      'Please select a world type',
+      '请选择任务类型',
       name: 'please_select_a_world_type',
       desc: '',
       args: [],
     );
   }
 
-  /// `Loading...`
+  /// `加载中...`
   String get loading {
-    return Intl.message('Loading...', name: 'loading', desc: '', args: []);
+    return Intl.message('加载中...', name: 'loading', desc: '', args: []);
   }
 
-  /// `Cancel`
+  /// `取消`
   String get cancel {
-    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+    return Intl.message('取消', name: 'cancel', desc: '', args: []);
   }
 
-  /// `Session Configuration`
+  /// `会话配置`
   String get session_configuration {
     return Intl.message(
-      'Session Configuration',
+      '会话配置',
       name: 'session_configuration',
       desc: '',
       args: [],
     );
   }
 
-  /// `Apply`
+  /// `应用`
   String get apply {
-    return Intl.message('Apply', name: 'apply', desc: '', args: []);
+    return Intl.message('应用', name: 'apply', desc: '', args: []);
   }
 
-  /// `Reset`
+  /// `重置`
   String get reset {
-    return Intl.message('Reset', name: 'reset', desc: '', args: []);
+    return Intl.message('重置', name: 'reset', desc: '', args: []);
   }
 
-  /// `Auto`
+  /// `自动`
   String get auto {
-    return Intl.message('Auto', name: 'auto', desc: '', args: []);
+    return Intl.message('自动', name: 'auto', desc: '', args: []);
   }
 
-  /// `Create a new one by clicking the button above.`
+  /// `点击上方按钮创建新会话`
   String get create_a_new_one_by_clicking_the_button_above {
     return Intl.message(
-      'Create a new one by clicking the button above.',
+      '点击上方按钮创建新会话',
       name: 'create_a_new_one_by_clicking_the_button_above',
       desc: '',
       args: [],
     );
   }
 
-  /// `Speed:`
+  /// `下载速度：`
   String get speed {
-    return Intl.message('Speed:', name: 'speed', desc: '', args: []);
+    return Intl.message('下载速度：', name: 'speed', desc: '', args: []);
   }
 
-  /// `Remaining:`
+  /// `剩余时间：`
   String get remaining {
-    return Intl.message('Remaining:', name: 'remaining', desc: '', args: []);
+    return Intl.message('剩余时间：', name: 'remaining', desc: '', args: []);
   }
 
-  /// `Prefer Chinese`
+  /// `使用中文推理`
   String get prefer_chinese {
-    return Intl.message(
-      'Prefer Chinese',
-      name: 'prefer_chinese',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('使用中文推理', name: 'prefer_chinese', desc: '', args: []);
   }
 
-  /// `Reasoning enabled`
+  /// `推理模式`
   String get reasoning_enabled {
-    return Intl.message(
-      'Reasoning enabled',
-      name: 'reasoning_enabled',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('推理模式', name: 'reasoning_enabled', desc: '', args: []);
   }
 
-  /// `Please wait for the model to load`
+  /// `请等待模型加载`
   String get please_wait_for_the_model_to_load {
     return Intl.message(
-      'Please wait for the model to load',
+      '请等待模型加载',
       name: 'please_wait_for_the_model_to_load',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please wait for the model to finish generating`
+  /// `请等待模型生成完成`
   String get please_wait_for_the_model_to_finish_generating {
     return Intl.message(
-      'Please wait for the model to finish generating',
+      '请等待模型生成完成',
       name: 'please_wait_for_the_model_to_finish_generating',
       desc: '',
       args: [],
     );
   }
 
-  /// `Reason`
+  /// `推理`
   String get reason {
-    return Intl.message('Reason', name: 'reason', desc: '', args: []);
+    return Intl.message('推理', name: 'reason', desc: '', args: []);
   }
 
-  /// `Click to select a model`
+  /// `点击选择模型`
   String get click_to_select_model {
     return Intl.message(
-      'Click to select a model',
+      '点击选择模型',
       name: 'click_to_select_model',
       desc: '',
       args: [],
     );
   }
 
-  /// `Are you sure you want to delete this model?`
+  /// `确定要删除这个模型吗？`
   String get are_you_sure_you_want_to_delete_this_model {
     return Intl.message(
-      'Are you sure you want to delete this model?',
+      '确定要删除这个模型吗？',
       name: 'are_you_sure_you_want_to_delete_this_model',
       desc: '',
       args: [],
     );
   }
 
-  /// `Delete`
+  /// `删除`
   String get delete {
-    return Intl.message('Delete', name: 'delete', desc: '', args: []);
+    return Intl.message('删除', name: 'delete', desc: '', args: []);
   }
 
-  /// `Prefer`
+  /// `使用`
   String get prefer {
-    return Intl.message('Prefer', name: 'prefer', desc: '', args: []);
+    return Intl.message('使用', name: 'prefer', desc: '', args: []);
   }
 
-  /// `Chinese`
+  /// `中文`
   String get chinese {
-    return Intl.message('Chinese', name: 'chinese', desc: '', args: []);
+    return Intl.message('中文', name: 'chinese', desc: '', args: []);
   }
 
-  /// `Thinking...`
+  /// `思考中...`
   String get thinking {
-    return Intl.message('Thinking...', name: 'thinking', desc: '', args: []);
+    return Intl.message('思考中...', name: 'thinking', desc: '', args: []);
   }
 
-  /// `Thought result`
+  /// `思考结果`
   String get thought_result {
-    return Intl.message(
-      'Thought result',
-      name: 'thought_result',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('思考结果', name: 'thought_result', desc: '', args: []);
   }
 
-  /// `Resume`
+  /// `继续`
   String get chat_resume {
-    return Intl.message('Resume', name: 'chat_resume', desc: '', args: []);
+    return Intl.message('继续', name: 'chat_resume', desc: '', args: []);
   }
 
-  /// `Network error`
+  /// `网络错误`
   String get network_error {
-    return Intl.message(
-      'Network error',
-      name: 'network_error',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('网络错误', name: 'network_error', desc: '', args: []);
   }
 
-  /// `Server error`
+  /// `服务器错误`
   String get server_error {
-    return Intl.message(
-      'Server error',
-      name: 'server_error',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('服务器错误', name: 'server_error', desc: '', args: []);
   }
 
-  /// `New version found`
+  /// `发现新版本`
   String get new_version_found {
-    return Intl.message(
-      'New version found',
-      name: 'new_version_found',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('发现新版本', name: 'new_version_found', desc: '', args: []);
   }
 
-  /// `Cancel update`
+  /// `暂不更新`
   String get cancel_update {
-    return Intl.message(
-      'Cancel update',
-      name: 'cancel_update',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('暂不更新', name: 'cancel_update', desc: '', args: []);
   }
 
-  /// `Update now`
+  /// `立即更新`
   String get update_now {
-    return Intl.message('Update now', name: 'update_now', desc: '', args: []);
+    return Intl.message('立即更新', name: 'update_now', desc: '', args: []);
   }
 
-  /// `Back to Chat`
+  /// `返回聊天`
   String get back_to_chat {
-    return Intl.message(
-      'Back to Chat',
-      name: 'back_to_chat',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('返回聊天', name: 'back_to_chat', desc: '', args: []);
   }
 
-  /// `Delete all`
+  /// `全部删除`
   String get delete_all {
-    return Intl.message('Delete all', name: 'delete_all', desc: '', args: []);
+    return Intl.message('全部删除', name: 'delete_all', desc: '', args: []);
   }
 
-  /// `Download missing files`
+  /// `下载缺失文件`
   String get download_missing {
-    return Intl.message(
-      'Download missing files',
-      name: 'download_missing',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('下载缺失文件', name: 'download_missing', desc: '', args: []);
   }
 
-  /// `Exploring...`
+  /// `探索中...`
   String get exploring {
-    return Intl.message('Exploring...', name: 'exploring', desc: '', args: []);
+    return Intl.message('探索中...', name: 'exploring', desc: '', args: []);
   }
 
-  /// `I want RWKV to say...`
+  /// `我想让 RWKV 说...`
   String get i_want_rwkv_to_say {
     return Intl.message(
-      'I want RWKV to say...',
+      '我想让 RWKV 说...',
       name: 'i_want_rwkv_to_say',
       desc: '',
       args: [],
     );
   }
 
-  /// `Voice cloning`
+  /// `声音克隆`
   String get voice_cloning {
-    return Intl.message(
-      'Voice cloning',
-      name: 'voice_cloning',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('声音克隆', name: 'voice_cloning', desc: '', args: []);
   }
 
-  /// `Prebuilt voices`
+  /// `预设声音`
   String get prebuilt_voices {
-    return Intl.message(
-      'Prebuilt voices',
-      name: 'prebuilt_voices',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('预设声音', name: 'prebuilt_voices', desc: '', args: []);
   }
 
-  /// `Intonations`
+  /// `语气词`
   String get intonations {
-    return Intl.message('Intonations', name: 'intonations', desc: '', args: []);
+    return Intl.message('语气词', name: 'intonations', desc: '', args: []);
   }
 
-  /// `System`
+  /// `跟随系统`
   String get follow_system {
-    return Intl.message('System', name: 'follow_system', desc: '', args: []);
+    return Intl.message('跟随系统', name: 'follow_system', desc: '', args: []);
   }
 
-  /// `Language`
+  /// `应用语言`
   String get application_language {
     return Intl.message(
-      'Language',
+      '应用语言',
       name: 'application_language',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please select application language`
+  /// `请选择应用语言`
   String get please_select_application_language {
     return Intl.message(
-      'Please select application language',
+      '请选择应用语言',
       name: 'please_select_application_language',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please select font size`
+  /// `请选择字体大小`
   String get please_select_font_size {
     return Intl.message(
-      'Please select font size',
+      '请选择字体大小',
       name: 'please_select_font_size',
       desc: '',
       args: [],
     );
   }
 
-  /// `Font size`
+  /// `字体大小`
   String get font_size {
-    return Intl.message('Font size', name: 'font_size', desc: '', args: []);
+    return Intl.message('字体大小', name: 'font_size', desc: '', args: []);
   }
 
-  /// `Font setting`
+  /// `字体设置`
   String get font_setting {
-    return Intl.message(
-      'Font setting',
-      name: 'font_setting',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('字体设置', name: 'font_setting', desc: '', args: []);
   }
 
-  /// `Very small (80%)`
+  /// `非常小 (80%)`
   String get very_small {
-    return Intl.message(
-      'Very small (80%)',
-      name: 'very_small',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('非常小 (80%)', name: 'very_small', desc: '', args: []);
   }
 
-  /// `Small (90%)`
+  /// `小 (90%)`
   String get small {
-    return Intl.message('Small (90%)', name: 'small', desc: '', args: []);
+    return Intl.message('小 (90%)', name: 'small', desc: '', args: []);
   }
 
-  /// `Default (100%)`
+  /// `默认 (100%)`
   String get font_size_default {
     return Intl.message(
-      'Default (100%)',
+      '默认 (100%)',
       name: 'font_size_default',
       desc: '',
       args: [],
     );
   }
 
-  /// `Medium (110%)`
+  /// `中 (110%)`
   String get medium {
-    return Intl.message('Medium (110%)', name: 'medium', desc: '', args: []);
+    return Intl.message('中 (110%)', name: 'medium', desc: '', args: []);
   }
 
-  /// `Large (120%)`
+  /// `大 (120%)`
   String get large {
-    return Intl.message('Large (120%)', name: 'large', desc: '', args: []);
+    return Intl.message('大 (120%)', name: 'large', desc: '', args: []);
   }
 
-  /// `Extra large (130%)`
+  /// `特大 (130%)`
   String get extra_large {
-    return Intl.message(
-      'Extra large (130%)',
-      name: 'extra_large',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('特大 (130%)', name: 'extra_large', desc: '', args: []);
   }
 
-  /// `Ultra large (140%)`
+  /// `超大 (140%)`
   String get ultra_large {
-    return Intl.message(
-      'Ultra large (140%)',
-      name: 'ultra_large',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('超大 (140%)', name: 'ultra_large', desc: '', args: []);
   }
 
-  /// `Feedback`
+  /// `反馈问题`
   String get feedback {
-    return Intl.message('Feedback', name: 'feedback', desc: '', args: []);
+    return Intl.message('反馈问题', name: 'feedback', desc: '', args: []);
   }
 
-  /// `Open source license`
+  /// `开源许可证`
   String get license {
-    return Intl.message(
-      'Open source license',
-      name: 'license',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('开源许可证', name: 'license', desc: '', args: []);
   }
 
-  /// `Application settings`
+  /// `应用设置`
   String get application_settings {
     return Intl.message(
-      'Application settings',
+      '应用设置',
       name: 'application_settings',
       desc: '',
       args: [],
     );
   }
 
-  /// `Join the community`
+  /// `加入社区`
   String get join_the_community {
-    return Intl.message(
-      'Join the community',
-      name: 'join_the_community',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('加入社区', name: 'join_the_community', desc: '', args: []);
   }
 
-  /// `About`
+  /// `关于`
   String get about {
-    return Intl.message('About', name: 'about', desc: '', args: []);
+    return Intl.message('关于', name: 'about', desc: '', args: []);
   }
 
-  /// `Target`
+  /// `使用`
   String get imitate_target {
-    return Intl.message('Target', name: 'imitate_target', desc: '', args: []);
+    return Intl.message('使用', name: 'imitate_target', desc: '', args: []);
   }
 
-  /// `Hello, I can't answer this question yet, let's talk about something else.`
+  /// `你好，这个问题我暂时无法回答，让我们换个话题再聊聊吧。`
   String get filter {
     return Intl.message(
-      'Hello, I can\'t answer this question yet, let\'s talk about something else.',
+      '你好，这个问题我暂时无法回答，让我们换个话题再聊聊吧。',
       name: 'filter',
       desc: '',
       args: [],
     );
   }
 
-  /// `Game over!`
+  /// `游戏结束！`
   String get game_over {
-    return Intl.message('Game over!', name: 'game_over', desc: '', args: []);
+    return Intl.message('游戏结束！', name: 'game_over', desc: '', args: []);
   }
 
-  /// `Black wins!`
+  /// `黑方获胜！`
   String get black_wins {
-    return Intl.message('Black wins!', name: 'black_wins', desc: '', args: []);
+    return Intl.message('黑方获胜！', name: 'black_wins', desc: '', args: []);
   }
 
-  /// `White wins!`
+  /// `白方获胜！`
   String get white_wins {
-    return Intl.message('White wins!', name: 'white_wins', desc: '', args: []);
+    return Intl.message('白方获胜！', name: 'white_wins', desc: '', args: []);
   }
 
-  /// `Draw!`
+  /// `平局！`
   String get draw {
-    return Intl.message('Draw!', name: 'draw', desc: '', args: []);
+    return Intl.message('平局！', name: 'draw', desc: '', args: []);
   }
 
-  /// `Black score`
+  /// `黑方得分`
   String get black_score {
-    return Intl.message('Black score', name: 'black_score', desc: '', args: []);
+    return Intl.message('黑方得分', name: 'black_score', desc: '', args: []);
   }
 
-  /// `White score`
+  /// `白方得分`
   String get white_score {
-    return Intl.message('White score', name: 'white_score', desc: '', args: []);
+    return Intl.message('白方得分', name: 'white_score', desc: '', args: []);
   }
 
-  /// `Search Depth`
+  /// `搜索深度`
   String get search_depth {
-    return Intl.message(
-      'Search Depth',
-      name: 'search_depth',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('搜索深度', name: 'search_depth', desc: '', args: []);
   }
 
-  /// `Search Breadth`
+  /// `搜索宽度`
   String get search_breadth {
-    return Intl.message(
-      'Search Breadth',
-      name: 'search_breadth',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('搜索宽度', name: 'search_breadth', desc: '', args: []);
   }
 
-  /// `White`
+  /// `白方`
   String get white {
-    return Intl.message('White', name: 'white', desc: '', args: []);
+    return Intl.message('白方', name: 'white', desc: '', args: []);
   }
 
-  /// `Black`
+  /// `黑方`
   String get black {
-    return Intl.message('Black', name: 'black', desc: '', args: []);
+    return Intl.message('黑方', name: 'black', desc: '', args: []);
   }
 
-  /// `Human`
+  /// `人类`
   String get human {
-    return Intl.message('Human', name: 'human', desc: '', args: []);
+    return Intl.message('人类', name: 'human', desc: '', args: []);
   }
 
-  /// `Players`
+  /// `玩家`
   String get players {
-    return Intl.message('Players', name: 'players', desc: '', args: []);
+    return Intl.message('玩家', name: 'players', desc: '', args: []);
   }
 
-  /// `Model Settings`
+  /// `模型设置`
   String get model_settings {
-    return Intl.message(
-      'Model Settings',
-      name: 'model_settings',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('模型设置', name: 'model_settings', desc: '', args: []);
   }
 
-  /// `In-context search will be activated when both breadth and depth are greater than 2`
+  /// `当搜索深度和宽度都大于 2 时，将激活上下文搜索`
   String
   get in_context_search_will_be_activated_when_both_breadth_and_depth_are_greater_than_2 {
     return Intl.message(
-      'In-context search will be activated when both breadth and depth are greater than 2',
+      '当搜索深度和宽度都大于 2 时，将激活上下文搜索',
       name:
           'in_context_search_will_be_activated_when_both_breadth_and_depth_are_greater_than_2',
       desc: '',
@@ -892,9 +752,9 @@ class S {
     );
   }
 
-  /// `New Game`
+  /// `新游戏`
   String get new_game {
-    return Intl.message('New Game', name: 'new_game', desc: '', args: []);
+    return Intl.message('新游戏', name: 'new_game', desc: '', args: []);
   }
 
   /// `RWKV`
@@ -902,309 +762,254 @@ class S {
     return Intl.message('RWKV', name: 'rwkv', desc: '', args: []);
   }
 
-  /// `Prefill`
+  /// `预填`
   String get prefill {
-    return Intl.message('Prefill', name: 'prefill', desc: '', args: []);
+    return Intl.message('预填', name: 'prefill', desc: '', args: []);
   }
 
-  /// `Decode`
+  /// `解码`
   String get decode {
-    return Intl.message('Decode', name: 'decode', desc: '', args: []);
+    return Intl.message('解码', name: 'decode', desc: '', args: []);
   }
 
-  /// `Current Turn`
+  /// `当前回合`
   String get current_turn {
-    return Intl.message(
-      'Current Turn',
-      name: 'current_turn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('当前回合', name: 'current_turn', desc: '', args: []);
   }
 
-  /// `Start`
+  /// `开始对局`
   String get start_a_new_game {
-    return Intl.message('Start', name: 'start_a_new_game', desc: '', args: []);
+    return Intl.message('开始对局', name: 'start_a_new_game', desc: '', args: []);
   }
 
-  /// `Please wait for the model to generate`
+  /// `请等待模型生成`
   String get please_wait_for_the_model_to_generate {
     return Intl.message(
-      'Please wait for the model to generate',
+      '请等待模型生成',
       name: 'please_wait_for_the_model_to_generate',
       desc: '',
       args: [],
     );
   }
 
-  /// `Cancel Download`
+  /// `取消下载`
   String get cancel_download {
-    return Intl.message(
-      'Cancel Download',
-      name: 'cancel_download',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('取消下载', name: 'cancel_download', desc: '', args: []);
   }
 
-  /// `Continue Download`
+  /// `继续下载`
   String get continue_download {
-    return Intl.message(
-      'Continue Download',
-      name: 'continue_download',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('继续下载', name: 'continue_download', desc: '', args: []);
   }
 
-  /// `Generate`
+  /// `生成`
   String get generate {
-    return Intl.message('Generate', name: 'generate', desc: '', args: []);
+    return Intl.message('生成', name: 'generate', desc: '', args: []);
   }
 
-  /// `Inference is running`
+  /// `推理中`
   String get inference_is_running {
     return Intl.message(
-      'Inference is running',
+      '推理中',
       name: 'inference_is_running',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please wait for it to finish`
+  /// `请等待推理完成`
   String get please_wait_for_it_to_finish {
     return Intl.message(
-      'Please wait for it to finish',
+      '请等待推理完成',
       name: 'please_wait_for_it_to_finish',
       desc: '',
       args: [],
     );
   }
 
-  /// `😎 Just watch me!`
+  /// `😎 看我表演！`
   String get just_watch_me {
-    return Intl.message(
-      '😎 Just watch me!',
-      name: 'just_watch_me',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('😎 看我表演！', name: 'just_watch_me', desc: '', args: []);
   }
 
-  /// `This is the hardest Sudoku in the world`
+  /// `这是世界上最难的数独`
   String get this_is_the_hardest_sudoku_in_the_world {
     return Intl.message(
-      'This is the hardest Sudoku in the world',
+      '这是世界上最难的数独',
       name: 'this_is_the_hardest_sudoku_in_the_world',
       desc: '',
       args: [],
     );
   }
 
-  /// `It's your turn~`
+  /// `轮到你了~`
   String get its_your_turn {
-    return Intl.message(
-      'It\'s your turn~',
-      name: 'its_your_turn',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('轮到你了~', name: 'its_your_turn', desc: '', args: []);
   }
 
-  /// `Generate Hardest Sudoku in the world`
+  /// `生成世界上最难的数独`
   String get generate_hardest_sudoku_in_the_world {
     return Intl.message(
-      'Generate Hardest Sudoku in the world',
+      '生成世界上最难的数独',
       name: 'generate_hardest_sudoku_in_the_world',
       desc: '',
       args: [],
     );
   }
 
-  /// `Start to Inference`
+  /// `开始推理`
   String get start_to_inference {
-    return Intl.message(
-      'Start to Inference',
-      name: 'start_to_inference',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('开始推理', name: 'start_to_inference', desc: '', args: []);
   }
 
-  /// `No puzzle`
+  /// `没有数独`
   String get no_puzzle {
-    return Intl.message('No puzzle', name: 'no_puzzle', desc: '', args: []);
+    return Intl.message('没有数独', name: 'no_puzzle', desc: '', args: []);
   }
 
-  /// `Hide CoT Stack`
+  /// `隐藏思维链堆栈`
   String get hide_stack {
-    return Intl.message(
-      'Hide CoT Stack',
-      name: 'hide_stack',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('隐藏思维链堆栈', name: 'hide_stack', desc: '', args: []);
   }
 
-  /// `Show CoT Stack`
+  /// `显示思维链堆栈`
   String get show_stack {
-    return Intl.message(
-      'Show CoT Stack',
-      name: 'show_stack',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('显示思维链堆栈', name: 'show_stack', desc: '', args: []);
   }
 
-  /// `Clear`
+  /// `清除`
   String get clear {
-    return Intl.message('Clear', name: 'clear', desc: '', args: []);
+    return Intl.message('清除', name: 'clear', desc: '', args: []);
   }
 
-  /// `Set the value of grid`
+  /// `设置网格值`
   String get set_the_value_of_grid {
     return Intl.message(
-      'Set the value of grid',
+      '设置网格值',
       name: 'set_the_value_of_grid',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter a number. 0 means empty.`
+  /// `请输入一个数字。0 表示空。`
   String get please_enter_a_number_0_means_empty {
     return Intl.message(
-      'Please enter a number. 0 means empty.',
+      '请输入一个数字。0 表示空。',
       name: 'please_enter_a_number_0_means_empty',
       desc: '',
       args: [],
     );
   }
 
-  /// `Invalid value`
+  /// `无效值`
   String get invalid_value {
-    return Intl.message(
-      'Invalid value',
-      name: 'invalid_value',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('无效值', name: 'invalid_value', desc: '', args: []);
   }
 
-  /// `Value must be between 0 and 9`
+  /// `值必须在 0 和 9 之间`
   String get value_must_be_between_0_and_9 {
     return Intl.message(
-      'Value must be between 0 and 9',
+      '值必须在 0 和 9 之间',
       name: 'value_must_be_between_0_and_9',
       desc: '',
       args: [],
     );
   }
 
-  /// `Invalid puzzle`
+  /// `无效数独`
   String get invalid_puzzle {
-    return Intl.message(
-      'Invalid puzzle',
-      name: 'invalid_puzzle',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('无效数独', name: 'invalid_puzzle', desc: '', args: []);
   }
 
-  /// `The puzzle is not valid`
+  /// `数独无效`
   String get the_puzzle_is_not_valid {
     return Intl.message(
-      'The puzzle is not valid',
+      '数独无效',
       name: 'the_puzzle_is_not_valid',
       desc: '',
       args: [],
     );
   }
 
-  /// `Difficulty`
+  /// `难度`
   String get difficulty {
-    return Intl.message('Difficulty', name: 'difficulty', desc: '', args: []);
+    return Intl.message('难度', name: 'difficulty', desc: '', args: []);
   }
 
-  /// `Can not generate`
+  /// `无法生成`
   String get can_not_generate {
-    return Intl.message(
-      'Can not generate',
-      name: 'can_not_generate',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('无法生成', name: 'can_not_generate', desc: '', args: []);
   }
 
-  /// `Difficulty must be greater than 0`
+  /// `难度必须大于 0`
   String get difficulty_must_be_greater_than_0 {
     return Intl.message(
-      'Difficulty must be greater than 0',
+      '难度必须大于 0',
       name: 'difficulty_must_be_greater_than_0',
       desc: '',
       args: [],
     );
   }
 
-  /// `Generate random Sudoku puzzle`
+  /// `生成随机数独`
   String get generate_random_sudoku_puzzle {
     return Intl.message(
-      'Generate random Sudoku puzzle',
+      '生成随机数独',
       name: 'generate_random_sudoku_puzzle',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please enter the difficulty`
+  /// `请输入难度`
   String get please_enter_the_difficulty {
     return Intl.message(
-      'Please enter the difficulty',
+      '请输入难度',
       name: 'please_enter_the_difficulty',
       desc: '',
       args: [],
     );
   }
 
-  /// `Difficulty must be less than 81`
+  /// `难度必须小于 81`
   String get difficulty_must_be_less_than_81 {
     return Intl.message(
-      'Difficulty must be less than 81',
+      '难度必须小于 81',
       name: 'difficulty_must_be_less_than_81',
       desc: '',
       args: [],
     );
   }
 
-  /// `Number`
+  /// `数字`
   String get number {
-    return Intl.message('Number', name: 'number', desc: '', args: []);
+    return Intl.message('数字', name: 'number', desc: '', args: []);
   }
 
-  /// `OK`
+  /// `确定`
   String get ok {
-    return Intl.message('OK', name: 'ok', desc: '', args: []);
+    return Intl.message('确定', name: 'ok', desc: '', args: []);
   }
 
-  /// `According to: `
+  /// `根据: `
   String get according_to_the_following_audio_file {
     return Intl.message(
-      'According to: ',
+      '根据: ',
       name: 'according_to_the_following_audio_file',
       desc: '',
       args: [],
     );
   }
 
-  /// `QQ Group 1`
+  /// `QQ 群 1`
   String get qq_group_1 {
-    return Intl.message('QQ Group 1', name: 'qq_group_1', desc: '', args: []);
+    return Intl.message('QQ 群 1', name: 'qq_group_1', desc: '', args: []);
   }
 
-  /// `QQ Group 2`
+  /// `QQ 群 2`
   String get qq_group_2 {
-    return Intl.message('QQ Group 2', name: 'qq_group_2', desc: '', args: []);
+    return Intl.message('QQ 群 2', name: 'qq_group_2', desc: '', args: []);
   }
 
   /// `Discord`
@@ -1217,243 +1022,343 @@ class S {
     return Intl.message('Twitter', name: 'twitter', desc: '', args: []);
   }
 
-  /// `Application Internal Test Group`
+  /// `应用内测群`
   String get application_internal_test_group {
     return Intl.message(
-      'Application Internal Test Group',
+      '应用内测群',
       name: 'application_internal_test_group',
       desc: '',
       args: [],
     );
   }
 
-  /// `Technical Research Group`
+  /// `技术研发群`
   String get technical_research_group {
     return Intl.message(
-      'Technical Research Group',
+      '技术研发群',
       name: 'technical_research_group',
       desc: '',
       args: [],
     );
   }
 
-  /// `Join our Discord server`
+  /// `加入我们的 Discord 服务器`
   String get join_our_discord_server {
     return Intl.message(
-      'Join our Discord server',
+      '加入我们的 Discord 服务器',
       name: 'join_our_discord_server',
       desc: '',
       args: [],
     );
   }
 
-  /// `Follow us on Twitter`
+  /// `在 Twitter 上关注我们`
   String get follow_us_on_twitter {
     return Intl.message(
-      'Follow us on Twitter',
+      '在 Twitter 上关注我们',
       name: 'follow_us_on_twitter',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please load model first`
+  /// `请先加载模型`
   String get please_load_model_first {
     return Intl.message(
-      'Please load model first',
+      '请先加载模型',
       name: 'please_load_model_first',
       desc: '',
       args: [],
     );
   }
 
-  /// `🎉 Inference is done`
+  /// `🎉 推理完成`
   String get inference_is_done {
     return Intl.message(
-      '🎉 Inference is done',
+      '🎉 推理完成',
       name: 'inference_is_done',
       desc: '',
       args: [],
     );
   }
 
-  /// `Please check the result`
+  /// `请检查结果`
   String get please_check_the_result {
     return Intl.message(
-      'Please check the result',
+      '请检查结果',
       name: 'please_check_the_result',
       desc: '',
       args: [],
     );
   }
 
-  /// `Generating...`
+  /// `生成中...`
   String get generating {
-    return Intl.message(
-      'Generating...',
-      name: 'generating',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('生成中...', name: 'generating', desc: '', args: []);
   }
 
-  /// `All done`
+  /// `全部完成`
   String get all_done {
-    return Intl.message('All done', name: 'all_done', desc: '', args: []);
+    return Intl.message('全部完成', name: 'all_done', desc: '', args: []);
   }
 
-  /// `Playing partial generated audio`
+  /// `正在播放部分已生成的语音`
   String get playing_partial_generated_audio {
     return Intl.message(
-      'Playing partial generated audio',
+      '正在播放部分已生成的语音',
       name: 'playing_partial_generated_audio',
       desc: '',
       args: [],
     );
   }
 
-  /// `No cell available`
+  /// `无子可下`
   String get no_cell_available {
-    return Intl.message(
-      'No cell available',
-      name: 'no_cell_available',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('无子可下', name: 'no_cell_available', desc: '', args: []);
   }
 
-  /// `Turn transfer`
+  /// `落子权转移`
   String get turn_transfer {
-    return Intl.message(
-      'Turn transfer',
-      name: 'turn_transfer',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('落子权转移', name: 'turn_transfer', desc: '', args: []);
   }
 
-  /// `Continue using smaller model`
+  /// `继续使用较小模型`
   String get continue_using_smaller_model {
     return Intl.message(
-      'Continue using smaller model',
+      '继续使用较小模型',
       name: 'continue_using_smaller_model',
       desc: '',
       args: [],
     );
   }
 
-  /// `Reselect model`
+  /// `重新选择模型`
   String get reselect_model {
-    return Intl.message(
-      'Reselect model',
-      name: 'reselect_model',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('重新选择模型', name: 'reselect_model', desc: '', args: []);
   }
 
-  /// `It is recommended to choose at least a 1.5B model for better performance.`
+  /// `推荐至少选择 1.5B 模型，效果更好`
   String get size_recommendation {
     return Intl.message(
-      'It is recommended to choose at least a 1.5B model for better performance.',
+      '推荐至少选择 1.5B 模型，效果更好',
       name: 'size_recommendation',
       desc: '',
       args: [],
     );
   }
 
-  /// `You can record your voice and then let RWKV to copy it.`
+  /// `您可以录制您的声音，然后让 RWKV 模仿它。`
   String get you_can_record_your_voice_and_let_rwkv_to_copy_it {
     return Intl.message(
-      'You can record your voice and then let RWKV to copy it.',
+      '您可以录制您的声音，然后让 RWKV 模仿它。',
       name: 'you_can_record_your_voice_and_let_rwkv_to_copy_it',
       desc: '',
       args: [],
     );
   }
 
-  /// `Or select a wav file to let RWKV to copy it.`
+  /// `或者选择一个 wav 文件，让 RWKV 模仿它。`
   String get or_select_a_wav_file_to_let_rwkv_to_copy_it {
     return Intl.message(
-      'Or select a wav file to let RWKV to copy it.',
+      '或者选择一个 wav 文件，让 RWKV 模仿它。',
       name: 'or_select_a_wav_file_to_let_rwkv_to_copy_it',
       desc: '',
       args: [],
     );
   }
 
-  /// `Hold to Record, Release to Send`
+  /// `按住录音，松开发送`
   String get hold_to_record_release_to_send {
     return Intl.message(
-      'Hold to Record, Release to Send',
+      '按住录音，松开发送',
       name: 'hold_to_record_release_to_send',
       desc: '',
       args: [],
     );
   }
 
-  /// `Recording your voice...`
+  /// `正在录音...`
   String get recording_your_voice {
     return Intl.message(
-      'Recording your voice...',
+      '正在录音...',
       name: 'recording_your_voice',
       desc: '',
       args: [],
     );
   }
 
-  /// `Recording finished`
+  /// `录音完成`
   String get finish_recording {
-    return Intl.message(
-      'Recording finished',
-      name: 'finish_recording',
-      desc: '',
-      args: [],
-    );
+    return Intl.message('录音完成', name: 'finish_recording', desc: '', args: []);
   }
 
-  /// `Please grant permission to use microphone.`
+  /// `请授予使用麦克风的权限`
   String get please_grant_permission_to_use_microphone {
     return Intl.message(
-      'Please grant permission to use microphone.',
+      '请授予使用麦克风的权限',
       name: 'please_grant_permission_to_use_microphone',
       desc: '',
       args: [],
     );
   }
 
-  /// `Your voice is too short, please press the button longer to retrieve your voice.`
+  /// `您的声音太短，请长按按钮更久以获取您的声音。`
   String get your_voice_is_too_short {
     return Intl.message(
-      'Your voice is too short, please press the button longer to retrieve your voice.',
+      '您的声音太短，请长按按钮更久以获取您的声音。',
       name: 'your_voice_is_too_short',
       desc: '',
       args: [],
     );
   }
 
-  /// `My voice`
+  /// `我的声音`
   String get my_voice {
-    return Intl.message('My voice', name: 'my_voice', desc: '', args: []);
+    return Intl.message('我的声音', name: 'my_voice', desc: '', args: []);
   }
 
-  /// `Download all`
+  /// `下载全部`
   String get download_all {
+    return Intl.message('下载全部', name: 'download_all', desc: '', args: []);
+  }
+
+  /// `开始新聊天`
+  String get new_chat_started {
+    return Intl.message('开始新聊天', name: 'new_chat_started', desc: '', args: []);
+  }
+
+  /// `模仿 {flag} {nameCN}({nameEN}) 的声音`
+  String imitate(Object flag, Object nameCN, Object nameEN) {
     return Intl.message(
-      'Download all',
-      name: 'download_all',
+      '模仿 $flag $nameCN($nameEN) 的声音',
+      name: 'imitate',
+      desc: '',
+      args: [flag, nameCN, nameEN],
+    );
+  }
+
+  /// `模仿 {fileName}`
+  String imitate_fle(Object fileName) {
+    return Intl.message(
+      '模仿 $fileName',
+      name: 'imitate_fle',
+      desc: '',
+      args: [fileName],
+    );
+  }
+
+  /// `选择图片`
+  String get select_image {
+    return Intl.message('选择图片', name: 'select_image', desc: '', args: []);
+  }
+
+  /// `从相册选择`
+  String get select_from_library {
+    return Intl.message(
+      '从相册选择',
+      name: 'select_from_library',
       desc: '',
       args: [],
     );
   }
 
-  /// `New chat started`
-  String get new_chat_started {
+  /// `拍照`
+  String get take_photo {
+    return Intl.message('拍照', name: 'take_photo', desc: '', args: []);
+  }
+
+  /// `请从以下选项中选择一个图片`
+  String get please_select_an_image_from_the_following_options {
     return Intl.message(
-      'New chat started',
-      name: 'new_chat_started',
+      '请从以下选项中选择一个图片',
+      name: 'please_select_an_image_from_the_following_options',
       desc: '',
       args: [],
+    );
+  }
+
+  /// `点击加载图片`
+  String get click_to_load_image {
+    return Intl.message(
+      '点击加载图片',
+      name: 'click_to_load_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `然后您就可以开始与 RWKV 对话了`
+  String get then_you_can_start_to_chat_with_rwkv {
+    return Intl.message(
+      '然后您就可以开始与 RWKV 对话了',
+      name: 'then_you_can_start_to_chat_with_rwkv',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `选择新图片`
+  String get select_new_image {
+    return Intl.message('选择新图片', name: 'select_new_image', desc: '', args: []);
+  }
+
+  /// `存储权限未授予`
+  String get storage_permission_not_granted {
+    return Intl.message(
+      '存储权限未授予',
+      name: 'storage_permission_not_granted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `自动 dump 已开启`
+  String get dump_started {
+    return Intl.message(
+      '自动 dump 已开启',
+      name: 'dump_started',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `自动 dump 已关闭`
+  String get dump_stopped {
+    return Intl.message(
+      '自动 dump 已关闭',
+      name: 'dump_stopped',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `自动 Dump 消息记录`
+  String get dump_see_files {
+    return Intl.message(
+      '自动 Dump 消息记录',
+      name: 'dump_see_files',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `协助我们改进算法`
+  String get dump_see_files_subtitle {
+    return Intl.message(
+      '协助我们改进算法',
+      name: 'dump_see_files_subtitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `消息记录会存储在该文件夹下\n {path}`
+  String dump_see_files_alert_message(Object path) {
+    return Intl.message(
+      '消息记录会存储在该文件夹下\n $path',
+      name: 'dump_see_files_alert_message',
+      desc: '',
+      args: [path],
     );
   }
 }
@@ -1463,10 +1368,10 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
 
   List<Locale> get supportedLocales {
     return const <Locale>[
+      Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       Locale.fromSubtags(languageCode: 'en'),
       Locale.fromSubtags(languageCode: 'ja'),
       Locale.fromSubtags(languageCode: 'ko'),
-      Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hans'),
       Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
     ];
   }

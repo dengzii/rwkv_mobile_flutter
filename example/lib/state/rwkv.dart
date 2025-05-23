@@ -851,8 +851,7 @@ extension _$RWKV on _RWKV {
     _messagesController.add(message);
     switch (message) {
       case from_rwkv.LatestRuntimeAddress response:
-        P.preference.saveLatestRuntimeAddress(response.latestRuntimeAddress);
-        break;
+        P.preference._saveLatestRuntimeAddress(response.latestRuntimeAddress);
 
       case from_rwkv.Error response:
         if (kDebugMode) {
@@ -867,21 +866,13 @@ extension _$RWKV on _RWKV {
         prefillSpeed.q = response.prefillSpeed;
         decodeSpeed.q = response.decodeSpeed;
 
-      case from_rwkv.TTSResult response:
-        qqq(response.filePaths);
-        qqq(response.perWavProgress);
-        qqq(response.overallProgress);
-        break;
-
       case from_rwkv.StreamResponse response:
         final decodeSpeed = response.decodeSpeed;
         final prefillSpeed = response.prefillSpeed;
         if (decodeSpeed != -1.0) this.decodeSpeed.q = decodeSpeed;
         if (prefillSpeed != -1.0) this.prefillSpeed.q = prefillSpeed;
-        break;
 
       default:
-        break;
     }
   }
 

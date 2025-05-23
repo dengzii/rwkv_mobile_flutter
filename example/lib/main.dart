@@ -18,6 +18,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 void main() async {
   final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   await _loadEnv();
   HF.init();
   await P.init();
@@ -26,7 +27,7 @@ void main() async {
   } else {
     await _sentryAppRunner();
   }
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  await HF.wait(50);
   FlutterNativeSplash.remove();
 }
 

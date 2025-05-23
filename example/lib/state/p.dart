@@ -20,6 +20,7 @@ import 'package:halo_state/halo_state.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart' as ar;
 import 'package:rwkv_mobile_flutter/from_rwkv.dart' as from_rwkv;
 import 'package:rwkv_mobile_flutter/to_rwkv.dart' as to_rwkv;
@@ -70,6 +71,7 @@ part "preference.dart";
 part "guard.dart";
 part "sudoku.dart";
 part "suggestion.dart";
+part "dump.dart";
 
 abstract class P {
   static final app = _App();
@@ -87,6 +89,7 @@ abstract class P {
   static final guard = _Guard();
   static final sudoku = _Sudoku();
   static final suggestion = _Suggestion();
+  static final dump = _Dump();
 
   static FV init() async {
     WidgetsFlutterBinding.ensureInitialized();
@@ -110,6 +113,7 @@ abstract class P {
       guard._init(),
       sudoku._init(),
       suggestion._init(),
+      dump._init(),
     ]);
   }
 }

@@ -109,7 +109,7 @@ extension _$TTS on _TTS {
       final contains = next.contains(key);
       if (contains) {
         selectedLanguage.q = _TTSStatic._spkNameToLanguageMap[key]!;
-        return;
+        break;
       }
     }
   }
@@ -534,6 +534,29 @@ outputWavPath: $outputWavPath""");
     final sp = await SharedPreferences.getInstance();
     await sp.setInt(_TTSStatic._cfmStepsKey, res);
     setTTSCFMSteps(res);
+  }
+
+  (String flag, String nameCN, String nameEN) getSpkInfo(String spkName) {
+    String flag = "";
+    String nameCN = "";
+    String nameEN = "";
+
+    if (spkName.isEmpty) return (flag, nameCN, nameEN);
+
+    for (final entry in _TTSStatic._replaceMap.entries) {
+      final key = entry.key;
+      final value = entry.value;
+      if (spkName.contains(key)) {
+        flag = value;
+        nameEN = spkName.replaceAll(key, "").split("_").whereNot((e) => e.isEmpty).first;
+        break;
+      }
+    }
+
+    final spkPairs = this.spkPairs.q;
+    nameCN = spkPairs[spkName] ?? "";
+
+    return (flag, nameCN, nameEN);
   }
 }
 
