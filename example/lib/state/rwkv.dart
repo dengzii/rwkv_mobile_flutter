@@ -613,7 +613,7 @@ extension $RWKV on _RWKV {
     if (_preferChinese.q) {
       thinkingToken = "<think>嗯";
     } else if (_preferPseudo.q) {
-      thinkingToken = "<think></think>";
+      thinkingToken = "<think>\n</think>";
     } else {
       thinkingToken = "<think";
     }
