@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:halo/halo.dart';
 import 'package:halo_state/halo_state.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:zone/gen/l10n.dart';
 import 'package:zone/model/message.dart';
 import 'package:zone/route/router.dart';
 import 'package:zone/state/p.dart';
@@ -15,17 +16,17 @@ Future<void> showImageSelector() async {
   }
   final result = await showModalActionSheet(
     context: getContext()!,
-    title: "Select image",
-    message: "Please select an image from the following options",
-    cancelLabel: "Cancel",
+    title: S.current.select_image,
+    message: S.current.please_select_an_image_from_the_following_options,
+    cancelLabel: S.current.cancel,
     actions: [
-      const SheetAction(
-        label: "Take photo",
+      SheetAction(
+        label: S.current.take_photo,
         icon: Icons.camera,
         key: "take_photo",
       ),
-      const SheetAction(
-        label: "Select from library",
+      SheetAction(
+        label: S.current.select_from_library,
         icon: Icons.photo,
         key: "select_from_library",
       ),

@@ -5,10 +5,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:halo/halo.dart';
+import 'package:halo_state/halo_state.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:zone/config.dart';
-import 'package:zone/func/dump_chat_messages.dart';
 import 'package:zone/gen/l10n.dart';
 import 'package:zone/model/demo_type.dart';
 import 'package:zone/state/p.dart';
@@ -60,24 +60,15 @@ class Settings extends ConsumerWidget {
           const Ro(
             m: MAA.center,
             children: [
-              T(
-                Config.appTitle,
-                s: TS(s: 24),
-              ),
+              T(Config.appTitle, s: TS(s: 24)),
             ],
           ),
           4.h,
           Ro(
             m: MAA.center,
             children: [
-              T(
-                version,
-                s: const TS(s: 12),
-              ),
-              T(
-                " ($buildNumber)",
-                s: const TS(s: 12),
-              ),
+              T(version, s: const TS(s: 12)),
+              T(" ($buildNumber)", s: const TS(s: 12)),
             ],
           ),
           16.h,
@@ -162,9 +153,18 @@ class Settings extends ConsumerWidget {
           if (demoType == DemoType.world && Platform.isAndroid)
             FormItem(
               isSectionStart: false,
-              title: "Dump See Files",
+              title: S.current.dump_see_files,
+              subtitle: S.current.dump_see_files_subtitle,
               icon: Icon(Icons.bug_report, color: kB.q(.667), size: 16),
-              onTap: dumpChatMessages,
+              trailing: const _DumpSwitch(),
+              onTap: () {
+                if (P.preference.dumpping.q == true) {
+                  P.dump.stopDump();
+                } else {
+                  P.dump.startDump();
+                }
+              },
+              showArrow: false,
             ),
           FormItem(
             isSectionEnd: true,
@@ -224,6 +224,30 @@ class Settings extends ConsumerWidget {
         child: iconWidget,
       ),
       useRootNavigator: true,
+    );
+  }
+}
+
+class _DumpSwitch extends ConsumerWidget {
+  const _DumpSwitch();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final dumpping = ref.watch(P.preference.dumpping);
+    return SizedBox(
+      height: 24,
+      child: Switch.adaptive(
+        materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        padding: EdgeInsets.zero,
+        value: dumpping,
+        onChanged: (value) async {
+          if (value) {
+            await P.dump.startDump();
+          } else {
+            await P.dump.stopDump();
+          }
+        },
+      ),
     );
   }
 }

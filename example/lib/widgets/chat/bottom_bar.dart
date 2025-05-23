@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:halo/halo.dart';
 import 'package:halo_state/halo_state.dart';
 import 'package:zone/func/show_image_selector.dart';
+import 'package:zone/gen/l10n.dart';
 import 'package:zone/model/demo_type.dart';
 import 'package:zone/state/p.dart';
 import 'package:zone/widgets/chat/reasoning_option_button.dart';
@@ -41,6 +42,7 @@ class BottomBar extends ConsumerWidget {
     final demoType = ref.watch(P.app.demoType);
     final primaryContainer = Theme.of(context).colorScheme.primaryContainer;
     final usingReasoningModel = ref.watch(P.rwkv.usingReasoningModel);
+    final s = S.of(context);
 
     return Ro(
       children: [
@@ -59,7 +61,7 @@ class BottomBar extends ConsumerWidget {
               ),
               padding: const EI.o(l: 8, r: 8, t: 8, b: 8),
               child: T(
-                "Select new image",
+                s.select_new_image,
                 s: TS(c: color),
               ),
             ),

@@ -735,8 +735,9 @@ extension _$Chat on _Chat {
 
     if (!found) {
       qqe("message not found");
-      if (!kDebugMode)
+      if (!kDebugMode) {
         Sentry.captureException(Exception("message not found, callingFunction: $callingFunction"), stackTrace: StackTrace.current);
+      }
     }
     messages.q = currentMessages;
     P.conversation.updateMessages(currentMessages);

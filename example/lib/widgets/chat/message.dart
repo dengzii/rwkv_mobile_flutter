@@ -266,18 +266,41 @@ class Message extends ConsumerWidget {
         showUserCopyButton = false;
     }
 
-    EI padding = const EI.o(
-      t: 12,
-      l: 12,
-      r: 12,
-      // b: 12,
+    EI padding = const EI.o(t: 12, l: 12, r: 12);
+    Border border = Border.all(color: primaryColor.q(.2));
+    double radius = 20;
+
+    switch (msg.type) {
+      case model.MessageType.userTTS:
+      case model.MessageType.ttsGeneration:
+        radius = 16;
+      case model.MessageType.userImage:
+      case model.MessageType.text:
+      case model.MessageType.userAudio:
+    }
+
+    BorderRadius? borderRadius = BorderRadius.only(
+      topLeft: Radius.circular(isMine ? radius : 0),
+      topRight: Radius.circular(radius),
+      bottomLeft: Radius.circular(radius),
+      bottomRight: Radius.circular(isMine ? 0 : radius),
     );
 
-    Border border = Border.all(color: primaryColor.q(.2));
+    BorderRadius clipBorderRadius = BorderRadius.zero;
 
-    if (isUserImage) {
-      padding = EI.zero;
-      border = Border.all(width: 0);
+    switch (msg.type) {
+      case model.MessageType.userImage:
+        padding = EI.zero;
+        border = Border.all(width: 0);
+        clipBorderRadius = borderRadius;
+        borderRadius = null;
+
+      case model.MessageType.userTTS:
+        padding = EI.zero;
+
+      case model.MessageType.text:
+      case model.MessageType.ttsGeneration:
+      case model.MessageType.userAudio:
     }
 
     final screenWidth = ref.watch(P.app.screenWidth);
@@ -287,29 +310,13 @@ class Message extends ConsumerWidget {
     final bubbleContent = ConstrainedBox(
       constraints: BoxConstraints(maxWidth: width - kBubbleMaxWidthAdjust, minHeight: kBubbleMinHeight),
       child: ClipRRect(
-        borderRadius: !isUserImage
-            ? BorderRadius.zero
-            : BorderRadius.only(
-                topLeft: Radius.circular(isMine ? 24 : 0),
-                topRight: const Radius.circular(24),
-                bottomLeft: const Radius.circular(24),
-                bottomRight: Radius.circular(isMine ? 0 : 24),
-              ),
+        borderRadius: clipBorderRadius,
         child: C(
           padding: padding,
           decoration: BD(
             color: isMine ? primaryContainer : kW,
-            // color: isMine ? primaryContainer : kC,
             border: border,
-            // border: isMine ? border : null,
-            borderRadius: isUserImage
-                ? null
-                : BorderRadius.only(
-                    topLeft: Radius.circular(isMine ? 24 : 0),
-                    topRight: const Radius.circular(24),
-                    bottomLeft: const Radius.circular(24),
-                    bottomRight: Radius.circular(isMine ? 0 : 24),
-                  ),
+            borderRadius: borderRadius,
           ),
           child: Co(
             c: isMine ? CAA.end : CAA.start,
@@ -332,7 +339,7 @@ class Message extends ConsumerWidget {
                   ),
                 // 🔥 User message audio
                 if (isUserAudio) AudioBubble(msg),
-                UserTtsContent(msg, index),
+                UserTTSContent(msg, index),
                 UserMessageBottom(msg, index),
               ],
               if (!isMine) ...[
@@ -392,7 +399,13 @@ class Message extends ConsumerWidget {
                 // 🔥 Bot message cot result
                 if (cotResult.isNotEmpty && usingReasoningModel && showingCotContent) 12.h,
                 if (cotResult.isNotEmpty && usingReasoningModel)
-                  MarkdownBody(data: cotResult, selectable: false, shrinkWrap: true, styleSheet: markdownStyleSheet, onTapLink: _onTapLink),
+                  MarkdownBody(
+                    data: cotResult,
+                    selectable: false,
+                    shrinkWrap: true,
+                    styleSheet: markdownStyleSheet,
+                    onTapLink: _onTapLink,
+                  ),
                 BotMessageBottom(msg, index),
                 BotTtsContent(msg, index),
               ],

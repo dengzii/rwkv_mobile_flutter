@@ -8,17 +8,19 @@ class FormItem extends ConsumerWidget {
   final bool autoShowBottomBorder;
   final String title;
   final String? info;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final bool showArrow;
   final TextAlign? titleTextAlign;
   final Widget? icon;
   final Color? titleColor;
   final String? subtitle;
 
+  final Widget? trailing;
+
   const FormItem({
     super.key,
     required this.title,
-    required this.onTap,
+    this.onTap,
     this.isSectionStart = false,
     this.isSectionEnd = false,
     this.info,
@@ -28,6 +30,7 @@ class FormItem extends ConsumerWidget {
     this.titleTextAlign,
     this.titleColor,
     this.subtitle,
+    this.trailing,
   });
 
   @override
@@ -84,6 +87,7 @@ class FormItem extends ConsumerWidget {
                 ),
               ),
             if (!showArrow && info != null) 4.w,
+            ?trailing,
             if (showArrow) 8.w,
             if (showArrow)
               Icon(

@@ -4,9 +4,10 @@ import 'package:flutter/foundation.dart';
 enum MessageType {
   text,
   userImage,
-  userAudio,
   userTTS,
   ttsGeneration,
+  @Deprecated("Xuan 说 RWKV Chat 不添加 Audio QA 功能")
+  userAudio,
 }
 
 @immutable

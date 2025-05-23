@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:halo/halo.dart';
 import 'package:zone/func/show_image_selector.dart';
+import 'package:zone/gen/l10n.dart';
 import 'package:zone/model/world_type.dart';
 import 'package:zone/state/p.dart';
 
@@ -29,6 +30,7 @@ class VisualEmpty extends ConsumerWidget {
     final imagePath = ref.watch(P.world.imagePath);
     if (imagePath != null) return Positioned(child: IgnorePointer(child: C()));
     final currentWorldType = ref.watch(P.rwkv.currentWorldType);
+    final s = S.of(context);
 
     switch (currentWorldType) {
       case WorldType.engVisualQA:
@@ -69,9 +71,7 @@ class VisualEmpty extends ConsumerWidget {
                 child: C(
                   decoration: BD(
                     color: primaryContainer.q(.5),
-                    border: Border.all(
-                      color: primary.q(.5),
-                    ),
+                    border: Border.all(color: primary.q(.5)),
                     borderRadius: 12.r,
                   ),
                   width: math.min(maxW, maxH) - 16,
@@ -82,9 +82,9 @@ class VisualEmpty extends ConsumerWidget {
                     children: [
                       if (imagePath == null) const Icon(Icons.image),
                       if (imagePath == null) 8.h,
-                      if (imagePath == null) const T("Click to load image", s: TS(w: FW.w500, s: 20)),
+                      if (imagePath == null) T(s.click_to_load_image, s: const TS(w: FW.w500, s: 20)),
                       if (imagePath == null) 8.h,
-                      if (imagePath == null) const T("Then you can start to chat with RWKV"),
+                      if (imagePath == null) T(s.then_you_can_start_to_chat_with_rwkv),
                     ],
                   ),
                 ),

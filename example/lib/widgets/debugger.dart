@@ -239,6 +239,9 @@ class _TTSDebugger extends ConsumerWidget {
     final startTime = ref.watch(P.world.startTime);
     final endTime = ref.watch(P.world.endTime);
 
+    final selectedSpkName = ref.watch(P.tts.selectedSpkName);
+    final selectSourceAudioPath = ref.watch(P.tts.selectSourceAudioPath);
+
     return Positioned(
       left: 0,
       top: 0,
@@ -281,6 +284,10 @@ class _TTSDebugger extends ConsumerWidget {
                       T(startTime.toString()),
                       T("endTime".codeToName),
                       T(endTime.toString()),
+                      T("selectedSpkName".codeToName),
+                      T(selectedSpkName.toString()),
+                      T("selectSourceAudioPath".codeToName),
+                      T(selectSourceAudioPath.toString()),
                     ].indexMap((index, e) {
                       return C(
                         margin: EI.o(t: index % 2 == 0 ? 0 : 1),

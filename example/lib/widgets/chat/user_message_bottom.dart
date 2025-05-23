@@ -20,12 +20,17 @@ class UserMessageBottom extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     if (!msg.isMine) return const SizedBox.shrink();
-    final isUserImage = msg.type == model.MessageType.userImage;
-    final isUserAudio = msg.type == model.MessageType.userAudio;
 
-    if (isUserImage || isUserAudio) return const SizedBox.shrink();
+    switch (msg.type) {
+      case model.MessageType.userImage:
+      case model.MessageType.userAudio:
+      case model.MessageType.userTTS:
+        return const SizedBox.shrink();
+      case model.MessageType.text:
+      case model.MessageType.ttsGeneration:
+    }
 
-    final primaryColor = Theme.of(context).colorScheme.primary;
+    final primary = Theme.of(context).colorScheme.primary;
     final worldType = ref.watch(P.rwkv.currentWorldType);
 
     bool showUserEditButton = false;
@@ -71,7 +76,7 @@ class UserMessageBottom extends ConsumerWidget {
               padding: const EI.o(v: 12, l: 4, r: 4),
               child: Icon(
                 Icons.edit,
-                color: primaryColor.q(.8),
+                color: primary.q(.8),
                 size: 20,
               ),
             ),
@@ -81,7 +86,7 @@ class UserMessageBottom extends ConsumerWidget {
             onTap: _onTTSPlayPressed,
             child: Padding(
               padding: const EI.o(v: 12, l: 4, r: 4),
-              child: Icon(Icons.play_arrow, color: primaryColor.q(.8), size: 20),
+              child: Icon(Icons.play_arrow, color: primary.q(.8), size: 20),
             ),
           ),
         if (showUserTTSPlayButton && (playing && isCurrentMessage))
@@ -89,7 +94,7 @@ class UserMessageBottom extends ConsumerWidget {
             onTap: _onTTSPausePressed,
             child: Padding(
               padding: const EI.o(v: 12, l: 4, r: 4),
-              child: Icon(Icons.pause, color: primaryColor.q(.8), size: 20),
+              child: Icon(Icons.pause, color: primary.q(.8), size: 20),
             ),
           ),
         if (showUserCopyButton)
@@ -99,7 +104,7 @@ class UserMessageBottom extends ConsumerWidget {
               padding: const EI.o(v: 12, l: 4, r: 4),
               child: Icon(
                 Icons.copy,
-                color: primaryColor.q(.8),
+                color: primary.q(.8),
                 size: 20,
               ),
             ),
